@@ -1,0 +1,20 @@
+
+ *******************************************************************************
+ *   ___                                                                       *
+ *  /   \                                                                      *
+ * [ABORT]                                                                     *
+ *  \___/            non-compatible end of section VELOCITIES , File:          *
+ *    |          'md_smoke_fixed.inp', Line: 75, Column: 1, Chunk: <PRINT>     *
+ *  O/|                                                                        *
+ * /| |                                                                        *
+ * / \                                                     input_parsing.F:167 *
+ *******************************************************************************
+
+
+ ===== Routine Calling Stack ===== 
+
+            5 section_vals_parse
+            4 section_vals_parse
+            3 section_vals_parse
+            2 section_vals_parse
+            1 read_input

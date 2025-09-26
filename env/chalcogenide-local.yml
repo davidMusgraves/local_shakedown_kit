@@ -1,0 +1,14 @@
+name: geasse-local
+channels: [conda-forge]
+dependencies:
+  - python>=3.10
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - numba
+  - ase
+  - pyyaml
+  - pip
+  - pip:
+      - mdtraj

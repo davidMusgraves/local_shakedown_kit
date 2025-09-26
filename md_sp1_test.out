@@ -1,0 +1,30 @@
+
+ Possible matches for unknown keyword 
+
+ ENERGY_GAP
+
+   keyword EPS_GVG in section %__ROOT__%FORCE_EVAL%DFT%QS score:  103
+   keyword FORCE_PAW in section %__ROOT__%FORCE_EVAL%DFT%QS score:  103
+   enum LINEAR_P in section %__ROOT__%FORCE_EVAL%DFT%QS for keyword EXTRAPOLATION score:  103
+   enum LINEAR_P in section %__ROOT__%FORCE_EVAL%DFT%QS for keyword INTERPOLATION score:  103
+   enum LINEAR_P in section %__ROOT__%FORCE_EVAL%DFT%QS for keyword WF_INTERPOLATION score:  103
+
+ *******************************************************************************
+ *   ___                                                                       *
+ *  /   \                                                                      *
+ * [ABORT]                                                                     *
+ *  \___/            found an unknown keyword ENERGY_GAP in section QS         *
+ *    |                                                                        *
+ *  O/|                                                                        *
+ * /| |                                                                        *
+ * / \                                                     input_parsing.F:253 *
+ *******************************************************************************
+
+
+ ===== Routine Calling Stack ===== 
+
+            5 section_vals_parse
+            4 section_vals_parse
+            3 section_vals_parse
+            2 section_vals_parse
+            1 read_input

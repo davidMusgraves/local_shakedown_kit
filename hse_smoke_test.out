@@ -1,0 +1,31 @@
+
+ Possible matches for unknown subsection 
+
+ ADMM
+
+   subsection RI in section %__ROOT__%FORCE_EVAL%DFT%KG_METHOD%XC%HF score:  106
+   subsection RI in section %__ROOT__%FORCE_EVAL%DFT%KG_METHOD%XC%WF_CORRELATION%RI_RPA%HF score:  106
+   subsection RI in section %__ROOT__%FORCE_EVAL%DFT%KG_METHOD%XC%HFX_KERNEL%HF score:  106
+   subsection RI in section %__ROOT__%FORCE_EVAL%DFT%ENERGY_CORRECTION%XC%HF score:  106
+   subsection RI in section %__ROOT__%FORCE_EVAL%DFT%ENERGY_CORRECTION%XC%WF_CORRELATION%RI_RPA%HF score:  106
+
+ *******************************************************************************
+ *   ___                                                                       *
+ *  /   \                                                                      *
+ * [ABORT]                                                                     *
+ *  \___/                  unknown subsection ADMM of section HF               *
+ *    |                                                                        *
+ *  O/|                                                                        *
+ * /| |                                                                        *
+ * / \                                                     input_parsing.F:192 *
+ *******************************************************************************
+
+
+ ===== Routine Calling Stack ===== 
+
+            6 section_vals_parse
+            5 section_vals_parse
+            4 section_vals_parse
+            3 section_vals_parse
+            2 section_vals_parse
+            1 read_input
