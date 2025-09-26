@@ -1,0 +1,832 @@
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..6d7e8a1
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,21 @@
++# CP2K heavy artifacts
++*-RESTART.wfn*
++*.restart*
++*.ener
++*.frc
++*.pdos
++*.cube
++*-pos-*.xyz
++*-vel-*.xyz
++
++# Reports / generated assets
++reports/*.json
++reports/*.png
++reports/*.pdf
++
++# Python / OS miscellany
++.env/
++.venv/
++__pycache__/
++*.pyc
++.DS_Store
+diff --git a/Makefile b/Makefile
+new file mode 100644
+index 0000000..b0f04d7
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,31 @@
++SHELL := /bin/bash
++
++PY := python
++CP2K ?= $(shell command -v cp2k.psmp || command -v cp2k)
++
++.PHONY: sp md sp_fast md_fast eval clean
++
++sp:
++	$(PY) bin/run_cp2k.py --mode sp --profile compat --project sp_smoke_compat
++	$(PY) bin/eval_run.py sp_smoke_compat
++
++md:
++	$(PY) bin/run_cp2k.py --mode md --profile compat --project md_smoke_compat
++	$(PY) bin/eval_run.py md_smoke_compat
++
++sp_fast:
++	$(PY) bin/run_cp2k.py --mode sp --profile fast --project sp_smoke_fast
++
++md_fast:
++	$(PY) bin/run_cp2k.py --mode md --profile fast --project md_smoke_fast
++
++eval:
++	$(PY) bin/eval_run.py $(proj)
++
++clean:
++	rm -f *.out *.restart* *-RESTART.wfn* *-pos-*.xyz *-vel-*.xyz
++	rm -rf reports/*
+diff --git a/bin/doctor.sh b/bin/doctor.sh
+new file mode 100755
+index 0000000..e8b1a1e
+--- /dev/null
++++ b/bin/doctor.sh
+@@ -0,0 +1,15 @@
++#!/usr/bin/env bash
++set -e
++proj="$1"
++if [[ -z "$proj" ]]; then
++  echo "usage: bin/doctor.sh <project>"
++  exit 1
++fi
++echo "== Doctor for project: $proj =="
++ls -l "${proj}.out" || true
++ls -l ${proj}-pos-*.xyz 2>/dev/null || echo "no pos xyz found"
++ls -l ${proj}-vel-*.xyz 2>/dev/null || echo "no vel xyz found"
++python bin/eval_run.py "$proj" || true
++echo "== Done =="
++
++exit 0
+diff --git a/bin/eval_run.py b/bin/eval_run.py
+new file mode 100755
+index 0000000..d7a6b06
+--- /dev/null
++++ b/bin/eval_run.py
+@@ -0,0 +1,141 @@
++#!/usr/bin/env python3
++import argparse, os, json, subprocess, sys, glob, math
++from pathlib import Path
++
++here = Path(__file__).resolve().parent
++tools_dir = (here.parent / "tools").resolve()
++sys.path.insert(0, str(tools_dir))
++
++from parse_cp2k import parse_log
++
++# Physical constants
++BOHR_A = 0.529177210903  # Angstrom
++AU_TIME_FS = 0.024188843265857  # fs
++ANG_PER_FS_TO_M_PER_S = 1.0e5   # 1 Å/fs = 1e5 m/s
++AMU_KG = 1.66053906660e-27
++KB = 1.380649e-23
++MASSES = {"H":1.00784,"C":12.0107,"N":14.0067,"O":15.999,"Si":28.085,"Ge":72.630,"As":74.921595,"Se":78.971}
++
++def first_or_none(patterns):
++    for pat in patterns:
++        hits = sorted(glob.glob(pat))
++        if hits:
++            return hits[0]
++    return None
++
++def read_vel_xyz(path):
++    frames=[]; species=None
++    with open(path,"r") as f:
++        while True:
++            line=f.readline()
++            if not line: break
++            n=int(line.strip()); _=f.readline()
++            cr=[]; sp=[]
++            for _ in range(n):
++                parts=f.readline().split()
++                sp.append(parts[0]); cr.append([float(parts[1]),float(parts[2]),float(parts[3])])
++            if species is None: species=sp
++            frames.append(cr)
++    return species, frames
++
++def derive_temperature_from_vel(vel_xyz_path):
++    if not os.path.exists(vel_xyz_path): return None
++    species, frames = read_vel_xyz(vel_xyz_path)
++    if not frames: return None
++    conv = (BOHR_A / AU_TIME_FS) * ANG_PER_FS_TO_M_PER_S  # m/s per (bohr/au_t)
++    m = [MASSES.get(s, None) for s in species]
++    if any(x is None for x in m): return None
++    m = [x * AMU_KG for x in m]  # kg
++    temps=[]
++    for V in frames:
++        KE = 0.0
++        for (vx,vy,vz), mi in zip(V, m):
++            v2 = (vx*conv)**2 + (vy*conv)**2 + (vz*conv)**2
++            KE += 0.5 * mi * v2
++        N = len(V)
++        T = (2.0 * KE) / (3.0 * N * KB)
++        temps.append(T)
++    if not temps: return None
++    mean = sum(temps)/len(temps)
++    var = sum((t-mean)*(t-mean) for t in temps)/len(temps)
++    return {"temperature_from_vel_mean": mean, "temperature_from_vel_std": math.sqrt(var)}
++
++if __name__=="__main__":
++    ap=argparse.ArgumentParser(description="Evaluate a CP2K run (smoke-test).")
++    ap.add_argument("project"); ap.add_argument("--dt_fs",type=float,default=0.5)
++    a=ap.parse_args(); proj=a.project
++    os.makedirs("reports", exist_ok=True)
++
++    summary={"project":proj}
++    log_path = f"{proj}.out"
++    summary["log"] = parse_log(log_path) if os.path.exists(log_path) else None
++
++    pos = first_or_none([f"{proj}-pos-*.xyz", f"{proj}-POS-*.xyz", f"{proj}*-pos*.xyz", "*-pos-*.xyz"])
++    vel = first_or_none([f"{proj}-vel-*.xyz", f"{proj}-VEL-*.xyz", f"{proj}*-vel*.xyz", "*-vel-*.xyz"])
++    summary["pos_xyz"] = pos; summary["vel_xyz"] = vel
++
++    rdf_py  = str(tools_dir / "rdf.py")
++    vdos_py = str(tools_dir / "vacf_vdos.py")
++
++    if pos and os.path.exists(rdf_py):
++        subprocess.run([sys.executable, rdf_py, pos, "--out", "reports/rdf.json"], check=False)
++        summary["rdf_json"] = "reports/rdf.json"
++    else:
++        summary["rdf_json"] = None
++
++    if vel and os.path.exists(vdos_py):
++        subprocess.run([sys.executable, vdos_py, vel, "--dt_fs", str(a.dt_fs), "--out", "reports/vdos.json"], check=False)
++        summary["vdos_json"] = "reports/vdos.json"
++    else:
++        summary["vdos_json"] = None
++
++    derived = derive_temperature_from_vel(vel) if vel else None
++    summary["derived_temperature"] = derived
++    if summary.get("log") is None: summary["log"] = {}
++    if derived:
++        summary["log"].setdefault("temperature_mean", derived["temperature_from_vel_mean"])
++        summary["log"].setdefault("temperature_std",  derived["temperature_from_vel_std"])
++
++    with open("reports/run_summary.json","w") as f:
++        json.dump(summary, f, indent=2)
++    print(json.dumps(summary, indent=2))
+diff --git a/bin/run_cp2k.py b/bin/run_cp2k.py
+new file mode 100755
+index 0000000..aaf0c65
+--- /dev/null
++++ b/bin/run_cp2k.py
+@@ -0,0 +1,53 @@
++#!/usr/bin/env python3
++import argparse, os, subprocess, json, pathlib, sys
++
++def which(p):
++    for d in os.environ.get("PATH","").split(os.pathsep):
++        f=os.path.join(d,p)
++        if os.path.isfile(f) and os.access(f,os.X_OK): return f
++    return None
++
++def default_inp(mode, profile):
++    return f"inputs/{mode}_smoke_{profile}.inp"
++
++def main():
++    ap=argparse.ArgumentParser(description="Run CP2K with profiles or explicit input path.")
++    ap.add_argument("inp", nargs="?", help="Explicit input file (optional if --mode/--profile given)")
++    ap.add_argument("--mode", choices=["sp","md"], help="Smoke test mode (sp|md)")
++    ap.add_argument("--profile", choices=["compat","fast"], default="compat", help="Input profile")
++    ap.add_argument("--project", help="CP2K PROJECT name")
++    ap.add_argument("--cp2k", help="Path to cp2k executable (cp2k.psmp or cp2k)")
++    a=ap.parse_args()
++
++    inp = a.inp or (default_inp(a.mode, a.profile) if a.mode else None)
++    if not inp:
++        ap.error("Provide an input file or --mode with --profile")
++
++    cp2k = a.cp2k or which("cp2k.psmp") or which("cp2k")
++    if not cp2k:
++        raise SystemExit("cp2k not found on PATH")
++
++    env=os.environ.copy()
++    env["PROJECT"]=a.project or pathlib.Path(inp).stem
++    out=f"{env['PROJECT']}.out"
++    with open(out,"w") as fout:
++        p=subprocess.Popen([cp2k,"-i",inp],stdout=fout,stderr=subprocess.STDOUT,env=env)
++        rc=p.wait()
++    print(json.dumps({"project":env["PROJECT"],"logfile":out,"return_code":rc}))
++
++if __name__=="__main__":
++    sys.exit(main())
+diff --git a/examples/make_as2se3_96.py b/examples/make_as2se3_96.py
+new file mode 100755
+index 0000000..3a8bdf2
+--- /dev/null
++++ b/examples/make_as2se3_96.py
+@@ -0,0 +1,33 @@
++#!/usr/bin/env python3
++import numpy as np, argparse
++
++def random_pack(symbols, L, dmin=2.2, max_trials=200000):
++    n=len(symbols); pos=np.zeros((n,3))
++    for i in range(n):
++        ok=False
++        for _ in range(max_trials):
++            cand=np.random.rand(3)*L
++            if all(np.linalg.norm(cand-pos[j])>=dmin for j in range(i)):
++                pos[i]=cand; ok=True; break
++        if not ok: raise SystemExit("packing failed; reduce dmin or increase L")
++    return pos
++
++if __name__=='__main__':
++    ap=argparse.ArgumentParser()
++    ap.add_argument('--n_as', type=int, default=38)
++    ap.add_argument('--n_se', type=int, default=58)
++    ap.add_argument('--L', type=float, default=20.0)
++    ap.add_argument('--out', default='inputs/as2se3_96_seed.xyz')
++    a=ap.parse_args()
++    syms=['As']*a.n_as + ['Se']*a.n_se
++    pos=random_pack(syms, a.L, dmin=2.2)
++    with open(a.out,'w') as f:
++        f.write(f"{len(syms)}\nAs2Se3 ~96-atom random packed seed (PBC), L={a.L} Å\n")
++        for s,(x,y,z) in zip(syms,pos):
++            f.write(f"{s:2s} {x:10.5f} {y:10.5f} {z:10.5f}\n")
++    print(a.out)
+diff --git a/inputs/as2se3_96_seed.xyz b/inputs/as2se3_96_seed.xyz
+new file mode 100644
+index 0000000..7b0f1c2
+--- /dev/null
++++ b/inputs/as2se3_96_seed.xyz
+@@ -0,0 +1,99 @@
++96
++As2Se3 ~96-atom random packed seed (PBC), L=20.0 Å
++As   8.13406   4.77226   1.70891
++As  12.37394   6.23667  16.64982
++As   8.09124   8.50326  16.30408
++As   2.08220   2.22941   8.10510
++As   8.02821   6.79862   6.38887
++As   9.06793   3.49813   8.83747
++As  16.34333  12.60585   5.72227
++As   1.17535  10.85845  17.99629
++As  14.95672  10.58131   1.70319
++As   5.51234  13.13636   3.42787
++As   4.42987   6.01584  10.73474
++As   1.96531   5.66013  14.68606
++As  14.64621   1.48445   3.65250
++As   6.84015  17.77456   8.88974
++As  10.19030  15.32563   9.79283
++As   3.69548  16.88179  16.64851
++As  18.06229  16.15523  12.47871
++As  14.47693  18.22267  18.82475
++As   3.41487  11.87028  11.35148
++As   6.61765  12.14456  15.37774
++Se  16.97666   1.24516  11.76191
++Se   6.43142  16.46646  17.28491
++Se   3.98955   1.92248  14.90816
++Se  10.21867   1.11265   6.77008
++Se  17.66607   3.84618   4.06088
++Se   3.61354  14.92280   4.86706
++Se  10.71370   8.90435   2.99788
++Se   4.77464  18.41006  11.83699
++Se  10.82865  18.03558  14.85672
++Se   6.19105   4.99462  14.03193
++Se   9.40267  11.40759   5.57979
++Se  12.72383   3.05667   9.92878
++Se  12.51204  10.14424   4.15110
++Se  18.05027   8.37435   1.96447
++Se  14.30933   6.81159  12.14902
++Se   2.76648   9.70081   3.03229
++Se   5.73977   9.13748  10.43762
++Se   8.92702  17.51522   3.75494
++Se   7.69028   1.18974  11.09780
++Se  16.01858  17.99964   6.26495
++Se  13.02771  12.88386  14.23681
++Se   2.26092  17.29267   2.16024
++Se  12.23231  16.43931  11.04707
++Se   6.54149   8.99067   1.01978
++Se   3.22551   4.33725   4.78862
++Se  16.17330   9.70277  18.19767
++Se   4.46004  11.57579   8.04039
++Se  10.15467   6.04023  17.93231
++Se   8.57728  13.70643  17.19847
++Se  17.98757   6.20965   8.95740
++Se  18.42023  11.07823  10.93430
++Se   1.16164   8.31118  13.60238
++Se   7.39175  10.68671   6.73991
++Se  13.89801   8.39269  18.42509
++Se   9.73502   3.23263  12.70475
++Se   5.21391   2.87130  11.41047
++Se   1.96337  12.92853  18.15612
++Se  12.88235  14.92127   6.52819
++Se   5.78469  12.28136   6.75629
++Se   8.78846  15.92328   5.05820
++Se  15.66058  15.50434   1.23022
++Se   2.39127  15.78338  12.57021
++Se   3.17286   6.96111   2.59583
++Se  11.60094  12.61732  18.37656
++Se   4.95335   7.77477  13.37867
++Se  11.58876  12.10652   8.56032
++Se  12.92962  18.36326  17.47152
++Se   6.99398   3.08534   3.45864
++Se   7.30287   6.47517  17.12569
++Se  15.46351   3.16108  18.65357
++Se  15.73455   6.22528   2.48331
++Se   9.68843  10.22965  10.47107
++Se   2.40751  10.76995   8.92363
++Se   1.09302   4.94471   1.94567
++Se  18.69846  13.71528  13.75521
++Se   5.68325  10.51634  15.94880
++Se  11.98334   5.27857   5.81077
++Se   3.94776  17.72660   6.59391
++Se  17.97962   9.91963  14.19285
++Se  10.90248  14.08822  12.41353
++Se  13.53458  16.92464   3.70792
++Se   9.02813   7.02562  12.15428
++Se   5.57485   6.17208   7.99067
++Se  14.00462   4.87661  15.42770
++Se   4.22341  10.03672  17.07775
++Se  12.08047   7.48430  15.24057
++Se   7.93065  12.98051   1.33043
+diff --git a/inputs/md_smoke_compat.inp b/inputs/md_smoke_compat.inp
+new file mode 100644
+index 0000000..4f0a60b
+--- /dev/null
++++ b/inputs/md_smoke_compat.inp
+@@ -0,0 +1,73 @@
++@SET P ${ENV:PROJECT}
++&GLOBAL
++  PROJECT ${PROJECT}
++  RUN_TYPE MD
++  PRINT_LEVEL LOW
++&END GLOBAL
++&FORCE_EVAL
++  METHOD QS
++  &DFT
++    BASIS_SET_FILE_NAME  BASIS_MOLOPT
++    POTENTIAL_FILE_NAME  GTH_POTENTIALS
++    &MGRID
++      CUTOFF 500
++      REL_CUTOFF 60
++    &END MGRID
++    &QS
++      EPS_DEFAULT 1.0E-12
++      EXTRAPOLATION ASPC
++      EXTRAPOLATION_ORDER 3
++    &END QS
++    &SCF
++      SCF_GUESS ATOMIC
++      EPS_SCF 1.0E-6
++      MAX_SCF 120
++      &OT
++        MINIMIZER DIIS
++        PRECONDITIONER FULL_SINGLE_INVERSE
++        LINESEARCH 2PNT
++      &END OT
++    &END SCF
++    &XC
++      &XC_FUNCTIONAL PBE
++      &END XC_FUNCTIONAL
++      &VDW_POTENTIAL
++        POTENTIAL_TYPE PAIR_POTENTIAL
++        &PAIR_POTENTIAL
++          TYPE DFTD3
++          PARAMETER_FILE_NAME dftd3.dat
++          REFERENCE_FUNCTIONAL PBE
++          R_CUTOFF 16
++        &END PAIR_POTENTIAL
++      &END VDW_POTENTIAL
++    &END XC
++  &END DFT
++  &SUBSYS
++    &CELL
++      ABC 20.0 20.0 20.0
++    &END CELL
++    &TOPOLOGY
++      COORD_FILE_FORMAT XYZ
++      COORD_FILE inputs/as2se3_96_seed.xyz
++    &END TOPOLOGY
++    &KIND As
++      BASIS_SET DZVP-MOLOPT-SR-GTH
++      POTENTIAL GTH-PBE
++    &END KIND
++    &KIND Se
++      BASIS_SET DZVP-MOLOPT-SR-GTH
++      POTENTIAL GTH-PBE
++    &END KIND
++  &END SUBSYS
++&END FORCE_EVAL
++&MOTION
++  &MD
++    ENSEMBLE NVT
++    STEPS 500
++    TIMESTEP 0.5
++    TEMPERATURE 300
++    &THERMOSTAT
++      TYPE CSVR
++      &CSVR TIMECON 1000 &END CSVR
++    &END THERMOSTAT
++  &END MD
++  &PRINT
++    &TRAJECTORY
++      FORMAT XYZ
++      FILENAME ${P}-pos-1.xyz
++      &EACH MD 5 &END
++    &END TRAJECTORY
++    &VELOCITIES
++      FILENAME ${P}-vel-1.xyz
++      &EACH MD 5 &END
++    &END VELOCITIES
++  &END PRINT
++&END MOTION
+diff --git a/inputs/md_smoke_fast.inp b/inputs/md_smoke_fast.inp
+new file mode 100644
+index 0000000..f2c7f9f
+--- /dev/null
++++ b/inputs/md_smoke_fast.inp
+@@ -0,0 +1,86 @@
++@SET P ${ENV:PROJECT}
++&GLOBAL
++  PROJECT ${PROJECT}
++  RUN_TYPE MD
++  PRINT_LEVEL LOW
++&END GLOBAL
++&FORCE_EVAL
++  METHOD QS
++  &DFT
++    BASIS_SET_FILE_NAME  BASIS_MOLOPT
++    POTENTIAL_FILE_NAME  GTH_POTENTIALS
++    &MGRID
++      CUTOFF 500
++      REL_CUTOFF 60
++    &END MGRID
++    &QS
++      EPS_DEFAULT 1.0E-12
++      EXTRAPOLATION ASPC
++      EXTRAPOLATION_ORDER 3
++    &END QS
++    &SCF
++      SCF_GUESS ATOMIC
++      EPS_SCF 2.0E-6
++      MAX_SCF 80
++      ADDED_MOS 20
++      &OT
++        MINIMIZER DIIS
++        PRECONDITIONER FULL_SINGLE_INVERSE
++        LINESEARCH 2PNT
++      &END OT
++      &SMEAR
++        METHOD FERMI_DIRAC
++        ELECTRONIC_TEMPERATURE [K] 500
++      &END SMEAR
++      &OUTER_SCF
++        EPS_SCF 1.0E-6
++        MAX_SCF 8
++      &END OUTER_SCF
++    &END SCF
++    &XC
++      &XC_FUNCTIONAL PBE
++      &END XC_FUNCTIONAL
++      &VDW_POTENTIAL
++        POTENTIAL_TYPE PAIR_POTENTIAL
++        &PAIR_POTENTIAL
++          TYPE DFTD3
++          PARAMETER_FILE_NAME dftd3.dat
++          REFERENCE_FUNCTIONAL PBE
++        &END PAIR_POTENTIAL
++      &END VDW_POTENTIAL
++    &END XC
++  &END DFT
++  &SUBSYS
++    &CELL
++      ABC 20.0 20.0 20.0
++    &END CELL
++    &TOPOLOGY
++      COORD_FILE_FORMAT XYZ
++      COORD_FILE inputs/as2se3_96_seed.xyz
++    &END TOPOLOGY
++    &KIND As
++      BASIS_SET DZVP-MOLOPT-SR-GTH
++      POTENTIAL GTH-PBE
++    &END KIND
++    &KIND Se
++      BASIS_SET DZVP-MOLOPT-SR-GTH
++      POTENTIAL GTH-PBE
++    &END KIND
++  &END SUBSYS
++&END FORCE_EVAL
++&MOTION
++  &MD
++    ENSEMBLE NVT
++    STEPS 500
++    TIMESTEP 0.5
++    TEMPERATURE 300
++    &THERMOSTAT
++      TYPE CSVR
++      &CSVR TIMECON 1000 &END CSVR
++    &END THERMOSTAT
++  &END MD
++  &PRINT
++    &TRAJECTORY
++      FORMAT XYZ
++      FILENAME ${P}-pos-1.xyz
++      &EACH MD 5 &END
++    &END TRAJECTORY
++    &VELOCITIES
++      FILENAME ${P}-vel-1.xyz
++      &EACH MD 5 &END
++    &END VELOCITIES
++  &END PRINT
++&END MOTION
+diff --git a/inputs/sp_smoke_compat.inp b/inputs/sp_smoke_compat.inp
+new file mode 100644
+index 0000000..a0c8c7c
+--- /dev/null
++++ b/inputs/sp_smoke_compat.inp
+@@ -0,0 +1,43 @@
++&GLOBAL
++  PROJECT ${PROJECT}
++  RUN_TYPE ENERGY
++  PRINT_LEVEL LOW
++&END GLOBAL
++&FORCE_EVAL
++  METHOD QS
++  &DFT
++    BASIS_SET_FILE_NAME  BASIS_MOLOPT
++    POTENTIAL_FILE_NAME  GTH_POTENTIALS
++    &MGRID
++      CUTOFF 500
++      REL_CUTOFF 60
++    &END MGRID
++    &QS
++      EPS_DEFAULT 1.0E-12
++      EXTRAPOLATION ASPC
++      EXTRAPOLATION_ORDER 3
++    &END QS
++    &SCF
++      SCF_GUESS ATOMIC
++      EPS_SCF 1.0E-6
++      MAX_SCF 150
++      &OT
++        MINIMIZER DIIS
++        PRECONDITIONER FULL_SINGLE_INVERSE
++        LINESEARCH 2PNT
++      &END OT
++    &END SCF
++    &XC
++      &XC_FUNCTIONAL PBE
++      &END XC_FUNCTIONAL
++      &VDW_POTENTIAL
++        POTENTIAL_TYPE PAIR_POTENTIAL
++        &PAIR_POTENTIAL
++          TYPE DFTD3
++          PARAMETER_FILE_NAME dftd3.dat
++          REFERENCE_FUNCTIONAL PBE
++          R_CUTOFF 16
++        &END PAIR_POTENTIAL
++      &END VDW_POTENTIAL
++    &END XC
++  &END DFT
++  &SUBSYS
++    &CELL
++      ABC 15.0 15.0 15.0
++    &END CELL
++    &TOPOLOGY
++      COORD_FILE_FORMAT XYZ
++      COORD_FILE inputs/as2se3_cluster.xyz
++    &END TOPOLOGY
++    &KIND As
++      BASIS_SET DZVP-MOLOPT-SR-GTH
++      POTENTIAL GTH-PBE
++    &END KIND
++    &KIND Se
++      BASIS_SET DZVP-MOLOPT-SR-GTH
++      POTENTIAL GTH-PBE
++    &END KIND
++  &END SUBSYS
++&END FORCE_EVAL
+diff --git a/inputs/sp_smoke_fast.inp b/inputs/sp_smoke_fast.inp
+new file mode 100644
+index 0000000..3bcb0c6
+--- /dev/null
++++ b/inputs/sp_smoke_fast.inp
+@@ -0,0 +1,48 @@
++&GLOBAL
++  PROJECT ${PROJECT}
++  RUN_TYPE ENERGY
++  PRINT_LEVEL LOW
++&END GLOBAL
++&FORCE_EVAL
++  METHOD QS
++  &DFT
++    BASIS_SET_FILE_NAME  BASIS_MOLOPT
++    POTENTIAL_FILE_NAME  GTH_POTENTIALS
++    &MGRID
++      CUTOFF 500
++      REL_CUTOFF 60
++    &END MGRID
++    &QS
++      EPS_DEFAULT 1.0E-12
++      EXTRAPOLATION ASPC
++      EXTRAPOLATION_ORDER 3
++    &END QS
++    &SCF
++      SCF_GUESS ATOMIC
++      EPS_SCF 2.0E-6
++      MAX_SCF 80
++      ADDED_MOS 20
++      &OT
++        MINIMIZER DIIS
++        PRECONDITIONER FULL_SINGLE_INVERSE
++        LINESEARCH 2PNT
++      &END OT
++      &SMEAR
++        METHOD FERMI_DIRAC
++        ELECTRONIC_TEMPERATURE [K] 500
++      &END SMEAR
++      &OUTER_SCF
++        EPS_SCF 1.0E-6
++        MAX_SCF 8
++      &END OUTER_SCF
++    &END SCF
++    &XC
++      &XC_FUNCTIONAL PBE
++      &END XC_FUNCTIONAL
++      &VDW_POTENTIAL
++        POTENTIAL_TYPE PAIR_POTENTIAL
++        &PAIR_POTENTIAL
++          TYPE DFTD3
++          PARAMETER_FILE_NAME dftd3.dat
++          REFERENCE_FUNCTIONAL PBE
++        &END PAIR_POTENTIAL
++      &END VDW_POTENTIAL
++    &END XC
++  &END DFT
++  &SUBSYS
++    &CELL
++      ABC 15.0 15.0 15.0
++    &END CELL
++    &TOPOLOGY
++      COORD_FILE_FORMAT XYZ
++      COORD_FILE inputs/as2se3_cluster.xyz
++    &END TOPOLOGY
++    &KIND As
++      BASIS_SET DZVP-MOLOPT-SR-GTH
++      POTENTIAL GTH-PBE
++    &END KIND
++    &KIND Se
++      BASIS_SET DZVP-MOLOPT-SR-GTH
++      POTENTIAL GTH-PBE
++    &END KIND
++  &END SUBSYS
++&END FORCE_EVAL
+diff --git a/tools/parse_cp2k.py b/tools/parse_cp2k.py
+new file mode 100644
+index 0000000..1b6a7d1
+--- /dev/null
++++ b/tools/parse_cp2k.py
+@@ -0,0 +1,30 @@
++#!/usr/bin/env python3
++import re, json, sys
++
++ENERGY_PATTERNS=[r"Total FORCE_EVAL\s*\(\s*QS\s*\)\s*energy\s*=\s*([-\d\.Ee\+]+)", r"Total energy:\s*([-\d\.Ee\+]+)"]
++TEMP_PATTERNS=[r"Temperature\s*\[K\]\s*:\s*([-\d\.Ee\+]+)", r"TEMPERATURE\s+([-\d\.Ee\+]+)", r"Temperature:\s*([-\d\.Ee\+]+)"]
++SCF_PATTERNS=[r"SCF run converged in\s*(\d+)\s*steps", r"Step\s*(\d+)\s*.*?Convergence"]
++
++def grep_all(pats, txt, cast=float):
++    out=[]; import re
++    for p in pats:
++        for m in re.finditer(p, txt, flags=re.IGNORECASE): out.append(cast(m.group(1)))
++    return out
++
++def parse_log(path):
++    try: txt=open(path,"r",errors="ignore").read()
++    except: return {"energies":[],"temperatures":[],"scf_cycles":[],"temperature_mean":None,"temperature_std":None,"scf_cycles_mean":None}
++    e=grep_all(ENERGY_PATTERNS,txt,float); t=grep_all(TEMP_PATTERNS,txt,float); s=grep_all(SCF_PATTERNS,txt,int)
++    tmean=sum(t)/len(t) if t else None
++    tstd=(sum((x-tmean)**2 for x in t)/len(t))**0.5 if t else None
++    smean=sum(s)/len(s) if s else None
++    return {"energies":e,"temperatures":t,"scf_cycles":s,"temperature_mean":tmean,"temperature_std":tstd,"scf_cycles_mean":smean}
++
++if __name__=="__main__":
++    print(json.dumps(parse_log(sys.argv[1] if len(sys.argv)>1 else ""), indent=2))
+diff --git a/tools/rdf.py b/tools/rdf.py
+new file mode 100644
+index 0000000..62dcf5c
+--- /dev/null
++++ b/tools/rdf.py
+@@ -0,0 +1,52 @@
++#!/usr/bin/env python3
++import numpy as np, json, os
++
++def read_xyz_traj(path):
++    frames = []
++    with open(path,"r") as f:
++        while True:
++            nline = f.readline()
++            if not nline: break
++            n = int(nline.strip())
++            _ = f.readline()
++            species=[]; coords=[]
++            for _ in range(n):
++                parts=f.readline().split()
++                if len(parts)<4: return frames
++                species.append(parts[0])
++                coords.append([float(parts[1]),float(parts[2]),float(parts[3])])
++            frames.append((np.array(species), np.array(coords)))
++    return frames
++
++def compute_rdf(frames, pairs=(("As","Se"),("Se","Se"),("As","As")), rmax=6.0, nbins=200):
++    hist = {pair: np.zeros(nbins) for pair in pairs}
++    dr = rmax/nbins
++    for species, coords in frames:
++        for i in range(len(coords)):
++            for j in range(i+1,len(coords)):
++                r = np.linalg.norm(coords[j]-coords[i])
++                if r<rmax:
++                    a,b = species[i], species[j]
++                    key = (a,b) if (a,b) in hist else (b,a) if (b,a) in hist else None
++                    if key is not None:
++                        hist[key][int(r/dr)] += 2
++    rgrid = np.linspace(dr/2, rmax-dr/2, nbins)
++    out = {}
++    for pair, h in hist.items():
++        key = f"{pair[0]}-{pair[1]}"
++        out[key] = {"r": rgrid.tolist(), "g_r": (h/np.max(h) if np.max(h)>0 else h).tolist()}
++    return out
++
++if __name__=="__main__":
++    import argparse
++    ap=argparse.ArgumentParser()
++    ap.add_argument("xyz")
++    ap.add_argument("--out", default="reports/rdf.json")
++    a=ap.parse_args()
++    os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)
++    frames = read_xyz_traj(a.xyz)
++    res = compute_rdf(frames)
++    with open(a.out,"w") as f: json.dump(res,f,indent=2)
++    print(a.out)
+diff --git a/tools/vacf_vdos.py b/tools/vacf_vdos.py
+new file mode 100644
+index 0000000..f0b4c64
+--- /dev/null
++++ b/tools/vacf_vdos.py
+@@ -0,0 +1,49 @@
++#!/usr/bin/env python3
++import numpy as np, json, os
++
++def read_vel_xyz(path):
++    frames=[]; species=None
++    with open(path,"r") as f:
++        while True:
++            line=f.readline()
++            if not line: break
++            n=int(line.strip())
++            _=f.readline()
++            cr=[]; sp=[]
++            for _ in range(n):
++                parts=f.readline().split()
++                sp.append(parts[0]); cr.append([float(parts[1]),float(parts[2]),float(parts[3])])
++            if species is None: species=sp
++            frames.append(np.array(cr))
++    return species, np.array(frames)
++
++def vacf(vels):
++    v0=vels[0]
++    ac=[]
++    for t in range(len(vels)):
++        ac.append(np.mean(np.sum(vels[t]*v0,axis=1)))
++    ac=np.array(ac)
++    return ac/ac[0] if ac[0]!=0 else ac
++
++def vdos_from_vacf(ac, dt_fs):
++    spec=np.abs(np.fft.rfft(ac))
++    freq=np.fft.rfftfreq(len(ac), d=dt_fs*1e-15)
++    cm1 = freq/3e10
++    return cm1, (spec/np.max(spec) if np.max(spec)>0 else spec)
++
++if __name__=="__main__":
++    import argparse
++    ap=argparse.ArgumentParser()
++    ap.add_argument("vel_xyz")
++    ap.add_argument("--dt_fs", type=float, default=0.5)
++    ap.add_argument("--out", default="reports/vdos.json")
++    a=ap.parse_args()
++    os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)
++    _,vels = read_vel_xyz(a.vel_xyz)
++    ac = vacf(vels)
++    cm1, vdos = vdos_from_vacf(ac, a.dt_fs)
++    with open(a.out,"w") as f: json.dump({"cm-1": cm1.tolist(), "vdos": vdos.tolist()}, f, indent=2)
++    print(a.out)

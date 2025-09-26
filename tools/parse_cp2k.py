@@ -1,69 +1,24 @@
 #!/usr/bin/env python3
-import re, json
+import re, json, sys
 
-def parse_log(logfile):
-    """Parse CP2K log file and extract key metrics"""
-    if not logfile:
-        return {"energies": [], "temperatures": [], "scf_cycles": [], 
-                "temperature_mean": None, "temperature_std": None, "scf_cycles_mean": None}
-    
-    try:
-        with open(logfile, 'r') as f:
-            content = f.read()
-    except:
-        return {"energies": [], "temperatures": [], "scf_cycles": [], 
-                "temperature_mean": None, "temperature_std": None, "scf_cycles_mean": None}
-    
-    # Extract energies - multiple patterns
-    energies = []
-    energy_patterns = [
-        r'Total energy:\s+(-?\d+\.\d+)',
-        r'Total FORCE_EVAL \( QS \) energy =\s+(-?\d+\.\d+)',
-        r'ENERGY\| Total FORCE_EVAL \( QS \) energy =\s+(-?\d+\.\d+)'
-    ]
-    for pattern in energy_patterns:
-        for match in re.finditer(pattern, content):
-            energies.append(float(match.group(1)))
-    
-    # Extract temperatures - multiple patterns
-    temperatures = []
-    temp_patterns = [
-        r'TEMPERATURE\s+(\d+\.\d+)',
-        r'TEMPERATURE\s+\[K\]\s+(\d+\.\d+)',
-        r'Temperature:\s+(\d+\.\d+)',
-        r'T\s+=\s+(\d+\.\d+)'
-    ]
-    for pattern in temp_patterns:
-        for match in re.finditer(pattern, content):
-            temperatures.append(float(match.group(1)))
-    
-    # Extract SCF cycles - multiple patterns
-    scf_cycles = []
-    scf_patterns = [
-        r'Step\s+(\d+)\s+.*?Convergence',
-        r'SCF\s+(\d+)\s+.*?Convergence',
-        r'Iteration\s+(\d+)\s+.*?Convergence'
-    ]
-    for pattern in scf_patterns:
-        for match in re.finditer(pattern, content):
-            scf_cycles.append(int(match.group(1)))
-    
-    # Calculate statistics
-    temp_mean = sum(temperatures) / len(temperatures) if temperatures else None
-    temp_std = (sum((t - temp_mean)**2 for t in temperatures) / len(temperatures))**0.5 if temperatures and len(temperatures) > 1 else None
-    scf_mean = sum(scf_cycles) / len(scf_cycles) if scf_cycles else None
-    
-    return {
-        "energies": energies,
-        "temperatures": temperatures,
-        "scf_cycles": scf_cycles,
-        "temperature_mean": temp_mean,
-        "temperature_std": temp_std,
-        "scf_cycles_mean": scf_mean
-    }
+ENERGY_PATTERNS=[r"Total FORCE_EVAL\s*\(\s*QS\s*\)\s*energy\s*=\s*([-\d\.Ee\+]+)", r"Total energy:\s*([-\d\.Ee\+]+)"]
+TEMP_PATTERNS=[r"Temperature\s*\[K\]\s*:\s*([-\d\.Ee\+]+)", r"TEMPERATURE\s+([-\d\.Ee\+]+)", r"Temperature:\s*([-\d\.Ee\+]+)"]
+SCF_PATTERNS=[r"SCF run converged in\s*(\d+)\s*steps", r"Step\s*(\d+)\s*.*?Convergence"]
 
-if __name__ == "__main__":
-    import sys
-    if len(sys.argv) > 1:
-        result = parse_log(sys.argv[1])
-        print(json.dumps(result, indent=2))
+def grep_all(pats, txt, cast=float):
+    out=[]; import re
+    for p in pats:
+        for m in re.finditer(p, txt, flags=re.IGNORECASE): out.append(cast(m.group(1)))
+    return out
+
+def parse_log(path):
+    try: txt=open(path,"r",errors="ignore").read()
+    except: return {"energies":[],"temperatures":[],"scf_cycles":[],"temperature_mean":None,"temperature_std":None,"scf_cycles_mean":None}
+    e=grep_all(ENERGY_PATTERNS,txt,float); t=grep_all(TEMP_PATTERNS,txt,float); s=grep_all(SCF_PATTERNS,txt,int)
+    tmean=sum(t)/len(t) if t else None
+    tstd=(sum((x-tmean)**2 for x in t)/len(t))**0.5 if t else None
+    smean=sum(s)/len(s) if s else None
+    return {"energies":e,"temperatures":t,"scf_cycles":s,"temperature_mean":tmean,"temperature_std":tstd,"scf_cycles_mean":smean}
+
+if __name__=="__main__":
+    print(json.dumps(parse_log(sys.argv[1] if len(sys.argv)>1 else ""), indent=2))

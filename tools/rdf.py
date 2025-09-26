@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import numpy as np, json, os
 
 def read_xyz_traj(path):
@@ -32,7 +33,8 @@ def compute_rdf(frames, pairs=(("As","Se"),("Se","Se"),("As","As")), rmax=6.0, n
     rgrid = np.linspace(dr/2, rmax-dr/2, nbins)
     out = {}
     for pair, h in hist.items():
-        out[f"{pair[0]}-{pair[1]}"] = {"r": rgrid.tolist(), "g_r": (h/np.max(h) if np.max(h)>0 else h).tolist()}
+        key = f"{pair[0]}-{pair[1]}"
+        out[key] = {"r": rgrid.tolist(), "g_r": (h/np.max(h) if np.max(h)>0 else h).tolist()}
     return out
 
 if __name__=="__main__":

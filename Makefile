@@ -1,22 +1,27 @@
-.PHONY: smoke md hse eval_sp eval_md clean
+SHELL := /bin/bash
 
-smoke:
-	python bin/run_cp2k.py inputs/sp_smoke.inp --project sp_smoke
-	python bin/eval_run.py sp_smoke
+PY := python
+CP2K ?= $(shell command -v cp2k.psmp || command -v cp2k)
+
+.PHONY: sp md sp_fast md_fast eval clean
+
+sp:
+	$(PY) bin/run_cp2k.py --mode sp --profile compat --project sp_smoke_compat
+	$(PY) bin/eval_run.py sp_smoke_compat
 
 md:
-	python bin/run_cp2k.py inputs/md_smoke.inp --project md_smoke
-	python bin/eval_run.py md_smoke
+	$(PY) bin/run_cp2k.py --mode md --profile compat --project md_smoke_compat
+	$(PY) bin/eval_run.py md_smoke_compat
 
-hse:
-	python bin/run_cp2k.py inputs/hse06_sp_template.inp --project hse_smoke
+sp_fast:
+	$(PY) bin/run_cp2k.py --mode sp --profile fast --project sp_smoke_fast
 
-eval_sp:
-	python bin/eval_run.py sp_smoke
+md_fast:
+	$(PY) bin/run_cp2k.py --mode md --profile fast --project md_smoke_fast
 
-eval_md:
-	python bin/eval_run.py md_smoke
+eval:
+	$(PY) bin/eval_run.py $(proj)
 
 clean:
-	rm -f *.out *.restart *-pos-*.xyz *-vel-*.xyz *-RESTART.wfn
+	rm -f *.out *.restart* *-RESTART.wfn* *-pos-*.xyz *-vel-*.xyz
 	rm -rf reports/*

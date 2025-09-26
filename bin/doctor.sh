@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -e
 proj="$1"
+if [[ -z "$proj" ]]; then
+  echo "usage: bin/doctor.sh <project>"
+  exit 1
+fi
 echo "== Doctor for project: $proj =="
 ls -l "${proj}.out" || true
 ls -l ${proj}-pos-*.xyz 2>/dev/null || echo "no pos xyz found"

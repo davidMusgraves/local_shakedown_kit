@@ -1,0 +1,21 @@
+# CP2K heavy artifacts
+*-RESTART.wfn*
+*.restart*
+*.ener
+*.frc
+*.pdos
+*.cube
+*-pos-*.xyz
+*-vel-*.xyz
+
+# Reports / generated assets
+reports/*.json
+reports/*.png
+reports/*.pdf
+
+# Python / OS miscellany
+.env/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store

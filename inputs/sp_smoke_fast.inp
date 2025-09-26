@@ -19,13 +19,22 @@
     &END QS
     &SCF
       SCF_GUESS ATOMIC
-      EPS_SCF 1.0E-6
-      MAX_SCF 150
+      EPS_SCF 2.0E-6
+      MAX_SCF 80
+      ADDED_MOS 20
       &OT
         MINIMIZER DIIS
         PRECONDITIONER FULL_SINGLE_INVERSE
         LINESEARCH 2PNT
       &END OT
+      &SMEAR
+        METHOD FERMI_DIRAC
+        ELECTRONIC_TEMPERATURE [K] 500
+      &END SMEAR
+      &OUTER_SCF
+        EPS_SCF 1.0E-6
+        MAX_SCF 8
+      &END OUTER_SCF
     &END SCF
     &XC
       &XC_FUNCTIONAL PBE
@@ -36,7 +45,6 @@
           TYPE DFTD3
           PARAMETER_FILE_NAME dftd3.dat
           REFERENCE_FUNCTIONAL PBE
-          R_CUTOFF 16
         &END PAIR_POTENTIAL
       &END VDW_POTENTIAL
     &END XC

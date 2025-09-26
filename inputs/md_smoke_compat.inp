@@ -1,9 +1,9 @@
+@SET P ${ENV:PROJECT}
 &GLOBAL
-  PROJECT md_smoke_compat
+  PROJECT ${PROJECT}
   RUN_TYPE MD
   PRINT_LEVEL LOW
 &END GLOBAL
-
 &FORCE_EVAL
   METHOD QS
   &DFT
@@ -44,11 +44,11 @@
   &END DFT
   &SUBSYS
     &CELL
-      ABC 16.0 16.0 16.0
+      ABC 20.0 20.0 20.0
     &END CELL
     &TOPOLOGY
       COORD_FILE_FORMAT XYZ
-      COORD_FILE inputs/as2se3_cluster.xyz
+      COORD_FILE inputs/as2se3_96_seed.xyz
     &END TOPOLOGY
     &KIND As
       BASIS_SET DZVP-MOLOPT-SR-GTH
@@ -60,33 +60,26 @@
     &END KIND
   &END SUBSYS
 &END FORCE_EVAL
-
 &MOTION
   &MD
     ENSEMBLE NVT
-    STEPS 200
+    STEPS 500
     TIMESTEP 0.5
     TEMPERATURE 300
     &THERMOSTAT
       TYPE CSVR
-      &CSVR
-        TIMECON 1000
-      &END CSVR
+      &CSVR TIMECON 1000 &END CSVR
     &END THERMOSTAT
   &END MD
   &PRINT
     &TRAJECTORY
       FORMAT XYZ
-      FILENAME md_smoke_compat-pos-1.xyz
-      &EACH
-        MD 5
-      &END EACH
+      FILENAME ${P}-pos-1.xyz
+      &EACH MD 5 &END
     &END TRAJECTORY
     &VELOCITIES
-      FILENAME md_smoke_compat-vel-1.xyz
-      &EACH
-        MD 5
-      &END EACH
+      FILENAME ${P}-vel-1.xyz
+      &EACH MD 5 &END
     &END VELOCITIES
   &END PRINT
 &END MOTION
