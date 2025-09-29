@@ -1,6 +1,5 @@
-@SET P ${ENV:PROJECT}
 &GLOBAL
-  PROJECT ${PROJECT}
+  PROJECT md_smoke_compat
   RUN_TYPE MD
   PRINT_LEVEL LOW
 &END GLOBAL
@@ -22,6 +21,7 @@
       SCF_GUESS ATOMIC
       EPS_SCF 1.0E-6
       MAX_SCF 120
+      IGNORE_CONVERGENCE_FAILURE
       &OT
         MINIMIZER DIIS
         PRECONDITIONER FULL_SINGLE_INVERSE
@@ -68,18 +68,24 @@
     TEMPERATURE 300
     &THERMOSTAT
       TYPE CSVR
-      &CSVR TIMECON 1000 &END CSVR
+      &CSVR
+        TIMECON 1000
+      &END CSVR
     &END THERMOSTAT
   &END MD
   &PRINT
     &TRAJECTORY
       FORMAT XYZ
-      FILENAME ${P}-pos-1.xyz
-      &EACH MD 5 &END
+      FILENAME md_smoke_compat-pos-1.xyz
+      &EACH
+        MD 5
+      &END EACH
     &END TRAJECTORY
     &VELOCITIES
-      FILENAME ${P}-vel-1.xyz
-      &EACH MD 5 &END
+      FILENAME md_smoke_compat-vel-1.xyz
+      &EACH
+        MD 5
+      &END EACH
     &END VELOCITIES
   &END PRINT
 &END MOTION

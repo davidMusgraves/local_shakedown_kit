@@ -18,12 +18,12 @@
  DBCSR| Split modifier for TAS multiplication algorithm                  1.0E+00 (U)
 
 
-  **** **** ******  **  PROGRAM STARTED AT               2025-09-26 10:19:28.286
+  **** **** ******  **  PROGRAM STARTED AT               2025-09-29 12:38:16.712
  ***** ** ***  *** **   PROGRAM STARTED ON                                   Mac
  **    ****   ******    PROGRAM STARTED BY                           jdmusgraves
- ***** **    ** ** **   PROGRAM PROCESS ID                                  3031
-  **** **  *******  **  PROGRAM STARTED IN /Users/jdmusgraves/Downloads/local_sh
-                                           akedown_kit
+ ***** **    ** ** **   PROGRAM PROCESS ID                                  8537
+  **** **  *******  **  PROGRAM STARTED IN /Users/jdmusgraves/GitHub/local_shake
+                                           down_kit
 
  CP2K| version string:                                       CP2K version 2025.1
  CP2K| source code revision number:                                             
@@ -32,7 +32,7 @@
  CP2K| Program compiled at                                   2025-01-01 12:26:53
  CP2K| Program compiled on                                                      
  CP2K| Program compiled for                                                arm64
- CP2K| Data directory path      /opt/homebrew/Cellar/cp2k/2025.1/share/cp2k/data
+ CP2K| Data directory path                         /opt/homebrew/share/cp2k/data
  CP2K| Input file name                                inputs/sp_smoke_compat.inp
 
  GLOBAL| Force Environment number                                              1
@@ -150,37 +150,37 @@
   Step     Update method      Time    Convergence         Total energy    Change
   ------------------------------------------------------------------------------
      1 OT DIIS     0.80E-01    1.3     0.12432584       -39.8533952055 -3.99E+01
-     2 OT DIIS     0.80E-01    1.3     0.07619624       -40.3022788166 -4.49E-01
+     2 OT DIIS     0.80E-01    1.4     0.07619624       -40.3022788166 -4.49E-01
      3 OT DIIS     0.80E-01    1.3     0.04246610       -40.4666147541 -1.64E-01
      4 OT DIIS     0.80E-01    1.3     0.03660776       -40.5593909774 -9.28E-02
-     5 OT DIIS     0.80E-01    1.3     0.03343819       -40.6483462725 -8.90E-02
-     6 OT DIIS     0.80E-01    1.3     0.02724529       -40.7374527835 -8.91E-02
-     7 OT DIIS     0.80E-01    1.3     0.01906303       -40.8003770681 -6.29E-02
+     5 OT DIIS     0.80E-01    1.4     0.03343819       -40.6483462725 -8.90E-02
+     6 OT DIIS     0.80E-01    1.4     0.02724529       -40.7374527835 -8.91E-02
+     7 OT DIIS     0.80E-01    1.4     0.01906303       -40.8003770681 -6.29E-02
      8 OT DIIS     0.80E-01    1.4     0.00996290       -40.8409438735 -4.06E-02
      9 OT DIIS     0.80E-01    1.4     0.00772727       -40.8458958771 -4.95E-03
-    10 OT DIIS     0.80E-01    1.4     0.00493406       -40.8524370170 -6.54E-03
+    10 OT DIIS     0.80E-01    1.3     0.00493406       -40.8524370170 -6.54E-03
     11 OT DIIS     0.80E-01    1.3     0.00295303       -40.8565629782 -4.13E-03
     12 OT DIIS     0.80E-01    1.3     0.00191699       -40.8581811897 -1.62E-03
-    13 OT DIIS     0.80E-01    1.3     0.00116233       -40.8586865963 -5.05E-04
+    13 OT DIIS     0.80E-01    1.4     0.00116233       -40.8586865963 -5.05E-04
     14 OT DIIS     0.80E-01    1.3     0.00072345       -40.8589099031 -2.23E-04
     15 OT DIIS     0.80E-01    1.3     0.00048124       -40.8589986414 -8.87E-05
     16 OT DIIS     0.80E-01    1.3     0.00033962       -40.8590423991 -4.38E-05
-    17 OT DIIS     0.80E-01    1.4     0.00021536       -40.8590690267 -2.66E-05
+    17 OT DIIS     0.80E-01    1.3     0.00021536       -40.8590690267 -2.66E-05
     18 OT DIIS     0.80E-01    1.3     0.00014742       -40.8590789832 -9.96E-06
     19 OT DIIS     0.80E-01    1.3     0.00009633       -40.8590835996 -4.62E-06
     20 OT DIIS     0.80E-01    1.3     0.00006704       -40.8590853402 -1.74E-06
-    21 OT DIIS     0.80E-01    1.4     0.00004237       -40.8590862755 -9.35E-07
-    22 OT DIIS     0.80E-01    1.4     0.00002879       -40.8590866251 -3.50E-07
-    23 OT DIIS     0.80E-01    1.4     0.00001987       -40.8590867763 -1.51E-07
+    21 OT DIIS     0.80E-01    1.3     0.00004237       -40.8590862755 -9.35E-07
+    22 OT DIIS     0.80E-01    1.3     0.00002879       -40.8590866251 -3.50E-07
+    23 OT DIIS     0.80E-01    1.3     0.00001987       -40.8590867763 -1.51E-07
     24 OT DIIS     0.80E-01    1.4     0.00001426       -40.8590868434 -6.71E-08
-    25 OT DIIS     0.80E-01    1.3     0.00001011       -40.8590868773 -3.39E-08
+    25 OT DIIS     0.80E-01    1.4     0.00001011       -40.8590868773 -3.39E-08
     26 OT DIIS     0.80E-01    1.4     0.00000737       -40.8590868946 -1.73E-08
-    27 OT DIIS     0.80E-01    1.3     0.00000513       -40.8590869051 -1.05E-08
-    28 OT DIIS     0.80E-01    1.3     0.00000372       -40.8590869099 -4.83E-09
-    29 OT DIIS     0.80E-01    1.3     0.00000285       -40.8590869122 -2.29E-09
-    30 OT DIIS     0.80E-01    1.3     0.00000212       -40.8590869137 -1.53E-09
+    27 OT DIIS     0.80E-01    1.4     0.00000513       -40.8590869051 -1.05E-08
+    28 OT DIIS     0.80E-01    1.4     0.00000372       -40.8590869099 -4.83E-09
+    29 OT DIIS     0.80E-01    1.4     0.00000285       -40.8590869122 -2.29E-09
+    30 OT DIIS     0.80E-01    1.4     0.00000212       -40.8590869137 -1.53E-09
     31 OT DIIS     0.80E-01    1.3     0.00000141       -40.8590869148 -1.06E-09
-    32 OT DIIS     0.80E-01    1.4     0.00000107       -40.8590869152 -3.74E-10
+    32 OT DIIS     0.80E-01    1.3     0.00000107       -40.8590869152 -3.74E-10
     33 OT DIIS     0.80E-01    1.3     0.00000077       -40.8590869154 -2.31E-10
 
   *** SCF run converged in    33 steps ***
@@ -193,14 +193,14 @@
 
   Overlap energy of the core charge distribution:               0.00000000405870
   Self energy of the core charge distribution:                -86.86221981996565
-  Core Hamiltonian energy:                                     19.30430955763376
-  Hartree energy:                                              35.92214930794463
-  Exchange-correlation energy:                                 -9.22155061352389
+  Core Hamiltonian energy:                                     19.30430955763374
+  Hartree energy:                                              35.92214930794466
+  Exchange-correlation energy:                                 -9.22155061352387
   Dispersion energy:                                           -0.00177535154733
 
-  Total energy:                                               -40.85908691539976
+  Total energy:                                               -40.85908691539972
 
- ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]            -40.859086915399764
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]            -40.859086915399722
 
  -------------------------------------------------------------------------------
  -                                                                             -
@@ -390,61 +390,61 @@
  -------------------------------------------------------------------------------
  SUBROUTINE                       CALLS  ASD         SELF TIME        TOTAL TIME
                                 MAXIMUM       AVERAGE  MAXIMUM  AVERAGE  MAXIMUM
- CP2K                                 1  1.0    0.044    0.044   46.860   46.860
- qs_energies                          1  2.0    0.003    0.003   45.233   45.233
- scf_env_do_scf                       1  3.0    0.000    0.000   44.602   44.602
- scf_env_do_scf_inner_loop           33  4.0    0.004    0.004   43.317   43.317
- qs_ks_update_qs_env                 34  5.0    0.000    0.000   32.550   32.550
- rebuild_ks_matrix                   33  6.0    0.000    0.000   32.549   32.549
- qs_ks_build_kohn_sham_matrix        33  7.0    0.005    0.005   32.549   32.549
- fft_wrap_pw1pw2                    567 10.3    0.007    0.007   26.182   26.182
- fft_wrap_pw1pw2_250                366 11.7    3.244    3.244   25.240   25.240
- qs_vxc_create                       33  8.0    0.001    0.001   23.948   23.948
- xc_vxc_pw_create                    33  9.0    1.449    1.449   23.947   23.947
- xc_pw_derive                       198 11.0    0.002    0.002   14.978   14.978
- fft3d_s                            568 12.2   14.373   14.373   14.377   14.377
- xc_rho_set_and_dset_create          33 10.0    0.536    0.536   12.200   12.200
- xc_pw_divergence                    33 10.0    0.001    0.001   10.139   10.139
- qs_rho_update_rho_low               34  5.0    0.000    0.000    7.987    7.987
- calculate_rho_elec                  34  6.0    1.297    1.297    7.987    7.987
- density_rs2pw                       34  7.0    0.002    0.002    5.514    5.514
- pw_scatter_s                       298 12.7    5.259    5.259    5.259    5.259
- qs_scf_new_mos                      33  5.0    0.000    0.000    4.371    4.371
- qs_scf_loop_do_ot                   33  6.0    0.000    0.000    4.371    4.371
- ot_scf_mini                         33  7.0    0.000    0.000    4.245    4.245
- xc_functional_eval                  33 11.0    0.000    0.000    4.074    4.074
- pbe_lda_eval                        33 12.0    4.074    4.074    4.074    4.074
- dbcsr_multiply_generic             730 10.1    0.070    0.070    3.424    3.424
- ot_mini                             33  8.0    0.000    0.000    3.230    3.230
- sum_up_and_integrate                33  8.0    0.001    0.001    3.197    3.197
- integrate_v_rspace                  33  9.0    0.006    0.006    3.106    3.106
- potential_pw2rs                     33 10.0    0.038    0.038    2.936    2.936
- pw_poisson_solve                    33  8.0    0.001    0.001    2.815    2.815
- qs_ot_get_derivative                33  9.0    0.000    0.000    2.350    2.350
- pw_gather_s                        269 11.8    2.296    2.296    2.296    2.296
- qs_ot_get_derivative_diag           32 10.0    0.001    0.001    1.909    1.909
- pw_integral_ab_c1d_c1d_gs           33  9.0    1.629    1.629    1.629    1.629
- pw_derive                          297 11.3    1.561    1.561    1.561    1.561
- qs_init_subsys                       1  2.0    0.003    0.003    1.542    1.542
- qs_env_setup                         1  3.0    0.001    0.001    1.514    1.514
- qs_env_rebuild_pw_env                2  3.5    0.000    0.000    1.513    1.513
- pw_env_rebuild                       1  5.0    0.003    0.003    1.513    1.513
- pw_grid_setup                        4  6.0    0.000    0.000    1.509    1.509
- pw_grid_setup_internal               4  7.0    0.016    0.016    1.508    1.508
- make_m2s                          1460 11.1    0.011    0.011    1.486    1.486
- pw_grid_sort                         4  8.0    1.015    1.015    1.401    1.401
- dbcsr_finalize                    1453 11.6    0.362    0.362    1.294    1.294
- init_scf_loop                        1  4.0    0.000    0.000    1.284    1.284
- grid_collocate_task_list            34  7.0    1.176    1.176    1.176    1.176
- pw_copy                            495 10.5    1.126    1.126    1.126    1.126
+ CP2K                                 1  1.0    0.048    0.048   46.758   46.758
+ qs_energies                          1  2.0    0.002    0.002   45.131   45.131
+ scf_env_do_scf                       1  3.0    0.000    0.000   44.523   44.523
+ scf_env_do_scf_inner_loop           33  4.0    0.003    0.003   43.256   43.256
+ qs_ks_update_qs_env                 34  5.0    0.000    0.000   32.346   32.346
+ rebuild_ks_matrix                   33  6.0    0.000    0.000   32.345   32.345
+ qs_ks_build_kohn_sham_matrix        33  7.0    0.005    0.005   32.345   32.345
+ fft_wrap_pw1pw2                    567 10.3    0.007    0.007   25.990   25.990
+ fft_wrap_pw1pw2_250                366 11.7    3.207    3.207   25.064   25.064
+ qs_vxc_create                       33  8.0    0.001    0.001   23.791   23.791
+ xc_vxc_pw_create                    33  9.0    1.442    1.442   23.791   23.791
+ xc_pw_derive                       198 11.0    0.002    0.002   14.859   14.859
+ fft3d_s                            568 12.2   14.251   14.251   14.255   14.255
+ xc_rho_set_and_dset_create          33 10.0    0.520    0.520   12.080   12.080
+ xc_pw_divergence                    33 10.0    0.001    0.001   10.118   10.118
+ qs_rho_update_rho_low               34  5.0    0.000    0.000    7.994    7.994
+ calculate_rho_elec                  34  6.0    1.345    1.345    7.994    7.994
+ density_rs2pw                       34  7.0    0.002    0.002    5.486    5.486
+ pw_scatter_s                       298 12.7    5.198    5.198    5.198    5.198
+ qs_scf_new_mos                      33  5.0    0.000    0.000    4.480    4.480
+ qs_scf_loop_do_ot                   33  6.0    0.000    0.000    4.480    4.480
+ ot_scf_mini                         33  7.0    0.000    0.000    4.355    4.355
+ xc_functional_eval                  33 11.0    0.000    0.000    4.084    4.084
+ pbe_lda_eval                        33 12.0    4.083    4.083    4.083    4.083
+ dbcsr_multiply_generic             730 10.1    0.072    0.072    3.528    3.528
+ ot_mini                             33  8.0    0.000    0.000    3.352    3.352
+ sum_up_and_integrate                33  8.0    0.001    0.001    3.182    3.182
+ integrate_v_rspace                  33  9.0    0.007    0.007    3.098    3.098
+ potential_pw2rs                     33 10.0    0.038    0.038    2.927    2.927
+ pw_poisson_solve                    33  8.0    0.001    0.001    2.808    2.808
+ qs_ot_get_derivative                33  9.0    0.000    0.000    2.472    2.472
+ pw_gather_s                        269 11.8    2.337    2.337    2.337    2.337
+ qs_ot_get_derivative_diag           32 10.0    0.001    0.001    2.028    2.028
+ pw_integral_ab_c1d_c1d_gs           33  9.0    1.630    1.630    1.630    1.630
+ make_m2s                          1460 11.1    0.011    0.011    1.550    1.550
+ pw_derive                          297 11.3    1.543    1.543    1.543    1.543
+ qs_init_subsys                       1  2.0    0.004    0.004    1.536    1.536
+ qs_env_setup                         1  3.0    0.001    0.001    1.507    1.507
+ qs_env_rebuild_pw_env                2  3.5    0.000    0.000    1.505    1.505
+ pw_env_rebuild                       1  5.0    0.002    0.002    1.504    1.504
+ pw_grid_setup                        4  6.0    0.000    0.000    1.501    1.501
+ pw_grid_setup_internal               4  7.0    0.015    0.015    1.500    1.500
+ pw_grid_sort                         4  8.0    1.013    1.013    1.397    1.397
+ dbcsr_finalize                    1453 11.6    0.370    0.370    1.322    1.322
+ init_scf_loop                        1  4.0    0.000    0.000    1.265    1.265
+ grid_collocate_task_list            34  7.0    1.163    1.163    1.163    1.163
+ pw_copy                            495 10.5    1.121    1.121    1.121    1.121
  -------------------------------------------------------------------------------
 
  The number of warnings for this run is : 0
  
  -------------------------------------------------------------------------------
-  **** **** ******  **  PROGRAM ENDED AT                 2025-09-26 10:20:15.384
+  **** **** ******  **  PROGRAM ENDED AT                 2025-09-29 12:39:03.641
  ***** ** ***  *** **   PROGRAM RAN ON                                       Mac
  **    ****   ******    PROGRAM RAN BY                               jdmusgraves
- ***** **    ** ** **   PROGRAM PROCESS ID                                  3031
-  **** **  *******  **  PROGRAM STOPPED IN /Users/jdmusgraves/Downloads/local_sh
-                                           akedown_kit
+ ***** **    ** ** **   PROGRAM PROCESS ID                                  8537
+  **** **  *******  **  PROGRAM STOPPED IN /Users/jdmusgraves/GitHub/local_shake
+                                           down_kit

@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-PY := python
+PY := python3
 CP2K ?= $(shell command -v cp2k.psmp || command -v cp2k)
 
 .PHONY: sp md sp_fast md_fast eval clean
