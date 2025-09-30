@@ -8,6 +8,8 @@
 
 ## Run (compat profile)
 ```bash
+export OMP_NUM_THREADS=6
+export MKL_NUM_THREADS=6
 make sp
 make md
 bash bin/doctor.sh md_smoke_compat

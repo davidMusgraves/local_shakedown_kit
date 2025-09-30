@@ -9,14 +9,15 @@ import math
 import os
 import pathlib
 import signal
+import socket
 import subprocess
 import sys
+import tempfile
 import threading
 import time
-import textwrap
 from collections import deque
 from dataclasses import dataclass, field
-from typing import Deque, Dict, Iterable, List, Optional
+from typing import Deque, Dict, List, Optional
 
 
 def which(candidate: str) -> Optional[str]:
@@ -88,25 +89,69 @@ def sparkline(values: List[float], width: int) -> str:
     return "".join(ASCII_BARS[int((value - vmin) / span * scale)] for value in sample)
 
 
+def find_free_port() -> int:
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+        sock.bind(("", 0))
+        return sock.getsockname()[1]
+
+
 @dataclass
 class MetricSeries:
-    steps: List[int] = field(default_factory=list)
-    energies: List[float] = field(default_factory=list)
-    potentials: List[float] = field(default_factory=list)
-    kinetics: List[float] = field(default_factory=list)
-    temperatures: List[float] = field(default_factory=list)
+    steps: List[Optional[int]] = field(default_factory=list)
+    time_fs: List[Optional[float]] = field(default_factory=list)
+    conserved_energy: List[Optional[float]] = field(default_factory=list)
+    cpu_time_per_step: List[Optional[float]] = field(default_factory=list)
+    cpu_time_per_step_avg: List[Optional[float]] = field(default_factory=list)
+    energy_drift_inst: List[Optional[float]] = field(default_factory=list)
+    energy_drift_avg: List[Optional[float]] = field(default_factory=list)
+    potential_inst: List[Optional[float]] = field(default_factory=list)
+    potential_avg: List[Optional[float]] = field(default_factory=list)
+    kinetic_inst: List[Optional[float]] = field(default_factory=list)
+    kinetic_avg: List[Optional[float]] = field(default_factory=list)
+    temperature_inst: List[Optional[float]] = field(default_factory=list)
+    temperature_avg: List[Optional[float]] = field(default_factory=list)
+    total_energy: List[Optional[float]] = field(default_factory=list)
+    total_energy_avg: List[Optional[float]] = field(default_factory=list)
 
-    def append(self, key: str, step: Optional[int], value: float) -> None:
-        if key == "step" and step is not None:
-            self.steps.append(step)
-        elif key == "potential":
-            self.potentials.append(value)
-        elif key == "kinetic":
-            self.kinetics.append(value)
-        elif key == "temperature":
-            self.temperatures.append(value)
-        elif key == "total_energy":
-            self.energies.append(value)
+    def add_block(self, block: Dict[str, Optional[float]]) -> None:
+        self.steps.append(block.get("step"))
+        self.time_fs.append(block.get("time_fs"))
+        self.conserved_energy.append(block.get("conserved_energy"))
+        self.cpu_time_per_step.append(block.get("cpu_time_per_step"))
+        self.cpu_time_per_step_avg.append(block.get("cpu_time_per_step_avg"))
+        self.energy_drift_inst.append(block.get("energy_drift_inst"))
+        self.energy_drift_avg.append(block.get("energy_drift_avg"))
+        self.potential_inst.append(block.get("potential_inst"))
+        self.potential_avg.append(block.get("potential_avg"))
+        self.kinetic_inst.append(block.get("kinetic_inst"))
+        self.kinetic_avg.append(block.get("kinetic_avg"))
+        self.temperature_inst.append(block.get("temperature_inst"))
+        self.temperature_avg.append(block.get("temperature_avg"))
+        self.total_energy.append(block.get("total_energy"))
+        self.total_energy_avg.append(block.get("total_energy_avg"))
+
+    def as_blocks(self) -> List[Dict[str, Optional[float]]]:
+        result: List[Dict[str, Optional[float]]] = []
+        for idx, step in enumerate(self.steps):
+            block = {
+                "step": step,
+                "time_fs": self.time_fs[idx] if idx < len(self.time_fs) else None,
+                "conserved_energy": self.conserved_energy[idx] if idx < len(self.conserved_energy) else None,
+                "cpu_time_per_step": self.cpu_time_per_step[idx] if idx < len(self.cpu_time_per_step) else None,
+                "cpu_time_per_step_avg": self.cpu_time_per_step_avg[idx] if idx < len(self.cpu_time_per_step_avg) else None,
+                "energy_drift_inst": self.energy_drift_inst[idx] if idx < len(self.energy_drift_inst) else None,
+                "energy_drift_avg": self.energy_drift_avg[idx] if idx < len(self.energy_drift_avg) else None,
+                "potential_inst": self.potential_inst[idx] if idx < len(self.potential_inst) else None,
+                "potential_avg": self.potential_avg[idx] if idx < len(self.potential_avg) else None,
+                "kinetic_inst": self.kinetic_inst[idx] if idx < len(self.kinetic_inst) else None,
+                "kinetic_avg": self.kinetic_avg[idx] if idx < len(self.kinetic_avg) else None,
+                "temperature_inst": self.temperature_inst[idx] if idx < len(self.temperature_inst) else None,
+                "temperature_avg": self.temperature_avg[idx] if idx < len(self.temperature_avg) else None,
+                "total_energy": self.total_energy[idx] if idx < len(self.total_energy) else None,
+                "total_energy_avg": self.total_energy_avg[idx] if idx < len(self.total_energy_avg) else None,
+            }
+            result.append(block)
+        return result
 
 
 class RunState:
@@ -118,6 +163,7 @@ class RunState:
         self.mode = mode
         self.tail: Deque[str] = deque(maxlen=100)
         self.metrics = MetricSeries()
+        self.blocks: List[Dict[str, Optional[float]]] = []
         self.lock = threading.Lock()
         self.start_time = time.time()
         self.status = "launching"
@@ -126,36 +172,162 @@ class RunState:
         self.done = threading.Event()
         self.cancel_requested = False
         self._last_step: Optional[int] = None
+        self._current_block: Optional[Dict[str, Optional[float]]] = None
+        self._state_file: Optional[pathlib.Path] = None
+        self._last_snapshot_write: float = 0.0
+        self.echo_to_stdout: bool = False
 
     def runtime(self) -> float:
         return time.time() - self.start_time
 
     def snapshot(self) -> Dict[str, object]:
         with self.lock:
-            data = {
-                "project": self.project,
-                "logfile": self.logfile,
-                "input_path": self.input_path,
-                "profile": self.profile,
-                "mode": self.mode,
-                "status": self.status,
-                "runtime": self.runtime(),
-                "return_code": self.return_code,
-                "pid": self.pid,
-                "tail": list(self.tail),
-                "metrics": {
-                    "steps": list(self.metrics.steps),
-                    "energies": list(self.metrics.energies),
-                    "potentials": list(self.metrics.potentials),
-                    "kinetics": list(self.metrics.kinetics),
-                    "temperatures": list(self.metrics.temperatures),
-                },
-            }
-        return data
+            return self._snapshot_locked()
+
+    def _snapshot_locked(self) -> Dict[str, object]:
+        return {
+            "project": self.project,
+            "logfile": self.logfile,
+            "input_path": self.input_path,
+            "profile": self.profile,
+            "mode": self.mode,
+            "status": self.status,
+            "runtime": self.runtime(),
+            "return_code": self.return_code,
+            "pid": self.pid,
+            "tail": list(self.tail),
+            "metrics": {
+                "steps": list(self.metrics.steps),
+                "time_fs": list(self.metrics.time_fs),
+                "conserved_energy": list(self.metrics.conserved_energy),
+                "cpu_time_per_step": list(self.metrics.cpu_time_per_step),
+                "cpu_time_per_step_avg": list(self.metrics.cpu_time_per_step_avg),
+                "energy_drift_inst": list(self.metrics.energy_drift_inst),
+                "energy_drift_avg": list(self.metrics.energy_drift_avg),
+                "potential_inst": list(self.metrics.potential_inst),
+                "potential_avg": list(self.metrics.potential_avg),
+                "kinetic_inst": list(self.metrics.kinetic_inst),
+                "kinetic_avg": list(self.metrics.kinetic_avg),
+                "temperature_inst": list(self.metrics.temperature_inst),
+                "temperature_avg": list(self.metrics.temperature_avg),
+                "total_energy": list(self.metrics.total_energy),
+                "total_energy_avg": list(self.metrics.total_energy_avg),
+            },
+            "blocks": [dict(block) for block in self.blocks],
+        }
 
     def append_tail(self, line: str) -> None:
         with self.lock:
             self.tail.append(line.rstrip("\n"))
+        self.write_snapshot()
+
+    def set_state_file(self, path: Optional[pathlib.Path]) -> None:
+        with self.lock:
+            self._state_file = pathlib.Path(path) if path is not None else None
+
+    def write_snapshot(self, force: bool = False) -> None:
+        with self.lock:
+            if self._state_file is None:
+                return
+            now = time.time()
+            if not force and (now - self._last_snapshot_write) < 0.5:
+                return
+            snapshot = self._snapshot_locked()
+            self._last_snapshot_write = now
+            path = self._state_file
+        try:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            temp_path = path.with_suffix(path.suffix + ".tmp")
+            with open(temp_path, "w", encoding="utf-8") as handle:
+                json.dump(snapshot, handle, indent=2)
+            os.replace(temp_path, path)
+        except OSError:
+            pass
+
+    def is_block_open(self) -> bool:
+        with self.lock:
+            return self._current_block is not None
+
+    def start_block(self) -> None:
+        with self.lock:
+            self._current_block = {}
+
+    def set_block_values(self, **values: Optional[float]) -> None:
+        with self.lock:
+            if self._current_block is None:
+                self._current_block = {}
+            for key, value in values.items():
+                if value is not None:
+                    self._current_block[key] = value
+
+    def finalize_block(self) -> None:
+        block: Optional[Dict[str, Optional[float]]] = None
+        with self.lock:
+            if not self._current_block or "step" not in self._current_block:
+                self._current_block = None
+                return
+            block = dict(self._current_block)
+            potential = block.get("potential_inst")
+            kinetic = block.get("kinetic_inst")
+            if block.get("total_energy") is None and potential is not None and kinetic is not None:
+                block["total_energy"] = potential + kinetic
+            potential_avg = block.get("potential_avg")
+            kinetic_avg = block.get("kinetic_avg")
+            if block.get("total_energy_avg") is None and potential_avg is not None and kinetic_avg is not None:
+                block["total_energy_avg"] = potential_avg + kinetic_avg
+            self.blocks.append(block)
+            self.metrics.add_block(block)
+            if block.get("step") is not None:
+                self._last_step = int(block["step"])
+            self._current_block = None
+        self.write_snapshot()
+
+    def _update_metric_value(self, key: str, index: int, value: Optional[float]) -> None:
+        if value is None:
+            return
+        mapping = {
+            "time_fs": "time_fs",
+            "conserved_energy": "conserved_energy",
+            "cpu_time_per_step": "cpu_time_per_step",
+            "cpu_time_per_step_avg": "cpu_time_per_step_avg",
+            "energy_drift_inst": "energy_drift_inst",
+            "energy_drift_avg": "energy_drift_avg",
+            "potential_inst": "potential_inst",
+            "potential_avg": "potential_avg",
+            "kinetic_inst": "kinetic_inst",
+            "kinetic_avg": "kinetic_avg",
+            "temperature_inst": "temperature_inst",
+            "temperature_avg": "temperature_avg",
+            "total_energy": "total_energy",
+            "total_energy_avg": "total_energy_avg",
+        }
+        attr = mapping.get(key)
+        if not attr:
+            return
+        series = getattr(self.metrics, attr)
+        if index < len(series):
+            series[index] = value
+
+    def update_latest_block(self, **values: Optional[float]) -> None:
+        should_write = False
+        with self.lock:
+            if self._current_block is not None:
+                for key, value in values.items():
+                    if value is not None:
+                        self._current_block[key] = value
+                        should_write = True
+            elif self.blocks:
+                block = self.blocks[-1]
+                target_index = len(self.blocks) - 1
+                for key, value in values.items():
+                    if value is not None:
+                        block[key] = value
+                        self._update_metric_value(key, target_index, value)
+                        should_write = True
+            else:
+                return
+        if should_write:
+            self.write_snapshot()
 
     def set_pid(self, pid: int) -> None:
         with self.lock:
@@ -170,6 +342,7 @@ class RunState:
             self.return_code = return_code
             self.status = "completed" if return_code == 0 else f"failed ({return_code})"
         self.done.set()
+        self.write_snapshot(force=True)
 
     def request_cancel(self) -> None:
         with self.lock:
@@ -179,61 +352,70 @@ class RunState:
         with self.lock:
             return self.cancel_requested
 
-    def record_metric(self, key: str, value: float, step: Optional[int] = None) -> None:
-        with self.lock:
-            if step is not None:
-                self._last_step = step
-                if not self.metrics.steps or self.metrics.steps[-1] != step:
-                    self.metrics.steps.append(step)
-            if key == "potential":
-                self.metrics.potentials.append(value)
-            elif key == "kinetic":
-                self.metrics.kinetics.append(value)
-            elif key == "temperature":
-                self.metrics.temperatures.append(value)
-            elif key == "total_energy":
-                self.metrics.energies.append(value)
-
 
 def parse_line_for_metrics(line: str, state: RunState) -> None:
-    text = line.strip()
-    if not text:
+    text = line.rstrip("\n")
+    if not text.strip():
         return
     lower = text.lower()
 
-    if "md|" in text:
-        if "step number" in text:
-            parts = text.split()
-            try:
-                value = int(parts[-1])
-            except (IndexError, ValueError):
-                value = None
+    if text.startswith(" MD|"):
+        if text.startswith(" MD| ***"):
+            if state.is_block_open():
+                state.finalize_block()
+            else:
+                state.start_block()
+            return
+        if not state.is_block_open():
+            return
+        numbers = [_to_float(tok) for tok in text.split() if _is_float(tok)]
+        if "step number" in lower:
+            value = numbers[-1] if numbers else None
             if value is not None:
-                state.record_metric("step", float(value), step=value)
-        elif "potential energy" in text:
-            numbers = [float(x) for x in text.split() if _is_float(x)]
+                state.set_block_values(step=int(round(value)))
+        elif "time [fs]" in lower:
             if numbers:
-                state.record_metric("potential", numbers[0])
-        elif "kinetic energy" in text:
-            numbers = [float(x) for x in text.split() if _is_float(x)]
+                state.set_block_values(time_fs=numbers[0])
+        elif "conserved quantity" in lower:
             if numbers:
-                state.record_metric("kinetic", numbers[0])
-        elif "temperature" in text:
-            numbers = [float(x) for x in text.split() if _is_float(x)]
-            if numbers:
-                state.record_metric("temperature", numbers[0])
-    elif "total energy" in lower and "scf" not in lower:
-        numbers = [float(x) for x in text.split() if _is_float(x)]
+                state.set_block_values(conserved_energy=numbers[0])
+        elif "cpu time per md step" in lower:
+            first = numbers[0] if numbers else None
+            second = numbers[1] if len(numbers) > 1 else None
+            state.set_block_values(cpu_time_per_step=first, cpu_time_per_step_avg=second)
+        elif "energy drift per atom" in lower:
+            first = numbers[0] if numbers else None
+            second = numbers[1] if len(numbers) > 1 else None
+            state.set_block_values(energy_drift_inst=first, energy_drift_avg=second)
+        elif "potential energy" in lower:
+            first = numbers[0] if numbers else None
+            second = numbers[1] if len(numbers) > 1 else None
+            state.set_block_values(potential_inst=first, potential_avg=second)
+        elif "kinetic energy" in lower:
+            first = numbers[0] if numbers else None
+            second = numbers[1] if len(numbers) > 1 else None
+            state.set_block_values(kinetic_inst=first, kinetic_avg=second)
+        elif "temperature" in lower:
+            first = numbers[0] if numbers else None
+            second = numbers[1] if len(numbers) > 1 else None
+            state.set_block_values(temperature_inst=first, temperature_avg=second)
+        state.write_snapshot()
+    elif "energy|" in lower and "total force_eval" in lower:
+        numbers = [_to_float(tok) for tok in text.split() if _is_float(tok)]
         if numbers:
-            state.record_metric("total_energy", numbers[-1])
+            state.update_latest_block(total_energy=numbers[-1])
 
 
 def _is_float(token: str) -> bool:
     try:
-        float(token)
+        float(token.replace("D", "E"))
         return True
     except ValueError:
         return False
+
+
+def _to_float(token: str) -> float:
+    return float(token.replace("D", "E"))
 
 
 def run_cp2k_process(cp2k: str, inp: str, env: Dict[str, str], state: RunState) -> int:
@@ -255,6 +437,9 @@ def run_cp2k_process(cp2k: str, inp: str, env: Dict[str, str], state: RunState) 
                 state.append_tail(raw_line)
                 parse_line_for_metrics(raw_line, state)
                 log.write(raw_line)
+                if state.echo_to_stdout:
+                    sys.stdout.write(raw_line)
+                    sys.stdout.flush()
             proc.stdout.close()
 
         reader_thread = threading.Thread(target=reader, name="cp2k-log-reader", daemon=True)
@@ -297,6 +482,17 @@ def dashboard_loop(state: RunState, input_render: List[str]) -> None:
         stdscr.nodelay(True)
         stdscr.timeout(200)
 
+        def safe_addnstr(row: int, col: int, text: str, max_cols: int) -> None:
+            if max_cols <= 0:
+                return
+            height, width = stdscr.getmaxyx()
+            if row < 0 or row >= height:
+                return
+            try:
+                stdscr.addnstr(row, col, text, min(max_cols, width - col))
+            except Exception:
+                pass
+
         while True:
             stdscr.erase()
             snap = state.snapshot()
@@ -310,52 +506,84 @@ def dashboard_loop(state: RunState, input_render: List[str]) -> None:
             ]
             y = 0
             for line in header_lines:
-                stdscr.addnstr(y, 0, line, width - 1)
+                safe_addnstr(y, 0, line, width - 1)
                 y += 1
 
             y += 1
-            stdscr.addnstr(y, 0, "Input Summary", width - 1)
+            safe_addnstr(y, 0, "Input Summary", width - 1)
             y += 1
             max_input_height = max(4, height // 3)
             for idx in range(min(max_input_height, len(input_render))):
-                stdscr.addnstr(y + idx, 2, input_render[idx], width - 4)
+                safe_addnstr(y + idx, 2, input_render[idx], width - 4)
             y += max_input_height + 1
 
             metrics = snap["metrics"]
-            stdscr.addnstr(y, 0, "Run Metrics", width - 1)
+            safe_addnstr(y, 0, "Run Metrics", width - 1)
             y += 1
-            md_steps = metrics["steps"]
-            potentials = metrics["potentials"]
-            temperatures = metrics["temperatures"]
-            energies = metrics["energies"]
+            md_steps = metrics.get("steps", [])
+            time_fs = metrics.get("time_fs", [])
+            conserved = metrics.get("conserved_energy", [])
+            cpu_time = metrics.get("cpu_time_per_step", [])
+            cpu_time_avg = metrics.get("cpu_time_per_step_avg", [])
+            drift = metrics.get("energy_drift_inst", [])
+            drift_avg = metrics.get("energy_drift_avg", [])
+            potentials = metrics.get("potential_inst", [])
+            potentials_avg = metrics.get("potential_avg", [])
+            kinetics = metrics.get("kinetic_inst", [])
+            kinetics_avg = metrics.get("kinetic_avg", [])
+            temperatures = metrics.get("temperature_inst", [])
+            temperatures_avg = metrics.get("temperature_avg", [])
+            energies = metrics.get("total_energy", [])
+            energies_avg = metrics.get("total_energy_avg", [])
             latest_step = md_steps[-1] if md_steps else None
+            latest_time = time_fs[-1] if time_fs else None
+            latest_conserved = conserved[-1] if conserved else None
+            latest_drift = drift[-1] if drift else None
             latest_temp = temperatures[-1] if temperatures else None
             latest_pot = potentials[-1] if potentials else None
+            latest_kin = kinetics[-1] if kinetics else None
             latest_energy = energies[-1] if energies else None
+            latest_cpu = cpu_time[-1] if cpu_time else None
+            pos_candidate = f"{snap['project']}-pos-1.xyz"
+            pos_status = pos_candidate if os.path.exists(pos_candidate) else "(pending write)"
             table_rows = [
                 f"MD steps: {len(md_steps)}" + (f" (last {latest_step})" if latest_step is not None else ""),
+                f"Time [fs]: {latest_time:.4f}" if latest_time is not None else "Time [fs]: -",
+                f"CPU time / step [s]: {latest_cpu:.3f}" if latest_cpu is not None else "CPU time / step [s]: -",
                 f"Temperature [K]: {latest_temp:.2f}" if latest_temp is not None else "Temperature [K]: -",
                 f"Potential E [Ha]: {latest_pot:.6f}" if latest_pot is not None else "Potential E [Ha]: -",
+                f"Kinetic E [Ha]: {latest_kin:.6f}" if latest_kin is not None else "Kinetic E [Ha]: -",
                 f"Total E [Ha]: {latest_energy:.6f}" if latest_energy is not None else "Total E [Ha]: -",
+                f"Conserved E [Ha]: {latest_conserved:.6f}" if latest_conserved is not None else "Conserved E [Ha]: -",
+                f"Energy drift / atom [K]: {latest_drift:.6f}" if latest_drift is not None else "Energy drift / atom [K]: -",
+                f"Potential E avg [Ha]: {potentials_avg[-1]:.6f}" if potentials_avg else "Potential E avg [Ha]: -",
+                f"Kinetic E avg [Ha]: {kinetics_avg[-1]:.6f}" if kinetics_avg else "Kinetic E avg [Ha]: -",
+                f"Total E avg [Ha]: {energies_avg[-1]:.6f}" if energies_avg else "Total E avg [Ha]: -",
+                f"Energy drift avg [K]: {drift_avg[-1]:.6f}" if drift_avg else "Energy drift avg [K]: -",
+                f"Positions file: {pos_status}",
             ]
             for row in table_rows:
-                stdscr.addnstr(y, 2, row, width - 4)
+                safe_addnstr(y, 2, row, width - 4)
                 y += 1
 
             chart_width = max(10, width - 4)
             if potentials:
-                stdscr.addnstr(y, 2, f"Potential energy trend: {sparkline(potentials, min(chart_width, 60))}", width - 4)
+                safe_addnstr(y, 2, f"Potential energy trend: {sparkline(potentials, min(chart_width, 60))}", width - 4)
+                y += 1
+            if energies:
+                safe_addnstr(y, 2, f"Total energy trend:     {sparkline(energies, min(chart_width, 60))}", width - 4)
                 y += 1
             if temperatures:
-                stdscr.addnstr(y, 2, f"Temperature trend:    {sparkline(temperatures, min(chart_width, 60))}", width - 4)
+                safe_addnstr(y, 2, f"Temperature trend:    {sparkline(temperatures, min(chart_width, 60))}", width - 4)
                 y += 1
 
             y += 1
-            stdscr.addnstr(y, 0, "Output Tail (last 100 lines)", width - 1)
+            safe_addnstr(y, 0, "Output Tail (last 100 lines)", width - 1)
             y += 1
-            tail_lines = snap["tail"][-(height - y - 1):]
+            available_rows = max(0, height - y - 1)
+            tail_lines = snap["tail"][-available_rows:] if available_rows else []
             for idx, line in enumerate(tail_lines):
-                stdscr.addnstr(y + idx, 2, line, width - 4)
+                safe_addnstr(y + idx, 2, line, width - 4)
 
             stdscr.refresh()
 
@@ -371,6 +599,47 @@ def dashboard_loop(state: RunState, input_render: List[str]) -> None:
                 break
 
     curses.wrapper(_loop)
+
+
+def launch_streamlit(state: RunState, input_render: List[str]) -> Optional[Dict[str, object]]:
+    streamlit_exec = which("streamlit")
+    if not streamlit_exec:
+        return None
+    dashboard_dir = pathlib.Path(tempfile.mkdtemp(prefix="cp2k_dash_"))
+    state_path = dashboard_dir / "state.json"
+    state.set_state_file(state_path)
+    state.write_snapshot(force=True)
+
+    port = find_free_port()
+    app_path = pathlib.Path(__file__).resolve().parent / "streamlit_dashboard.py"
+    if not app_path.exists():
+        return None
+
+    env = os.environ.copy()
+    env.update(
+        {
+            "CP2K_DASHBOARD_STATE": str(state_path),
+            "CP2K_DASHBOARD_PROJECT": state.project,
+            "CP2K_DASHBOARD_PROFILE": state.profile or "-",
+            "CP2K_DASHBOARD_MODE": state.mode or "-",
+            "CP2K_DASHBOARD_INPUT": "\n".join(input_render),
+            "CP2K_DASHBOARD_LOGFILE": state.logfile,
+            "CP2K_DASHBOARD_REFRESH_MS": os.environ.get("CP2K_DASHBOARD_REFRESH_MS", "1000"),
+        }
+    )
+
+    cmd = [
+        streamlit_exec,
+        "run",
+        str(app_path),
+        "--server.headless",
+        "true",
+        "--server.port",
+        str(port),
+    ]
+    proc = subprocess.Popen(cmd, env=env)
+    print(f"Streamlit dashboard available at http://localhost:{port}")
+    return {"process": proc, "dir": dashboard_dir, "state_path": state_path, "port": port}
 
 
 def basic_run(cp2k: str, inp: str, env: Dict[str, str], logfile: str) -> int:
@@ -393,6 +662,7 @@ def main() -> int:
     parser.add_argument("--project", help="Override CP2K PROJECT name")
     parser.add_argument("--cp2k", help="Path to cp2k executable (cp2k.psmp or cp2k)")
     parser.add_argument("--no-dashboard", action="store_true", help="Disable the interactive dashboard")
+    parser.add_argument("--dashboard", choices=["auto", "streamlit", "curses", "none"], default="auto", help="Dashboard rendering backend")
     args = parser.parse_args()
 
     inp = args.inp or default_inp(args.mode, args.profile)
@@ -410,25 +680,75 @@ def main() -> int:
     env["PROJECT"] = project
     logfile = f"{project}.out"
 
-    use_dashboard = (not args.no_dashboard) and _isatty()
+    dashboard_mode = args.dashboard
+    if args.no_dashboard:
+        dashboard_mode = "none"
 
-    if use_dashboard:
+    if dashboard_mode == "auto":
+        if which("streamlit"):
+            dashboard_mode = "streamlit"
+        elif _isatty():
+            dashboard_mode = "curses"
+        else:
+            dashboard_mode = "none"
+
+    state: Optional[RunState] = None
+    input_render: List[str] = []
+    streamlit_info: Optional[Dict[str, object]] = None
+
+    if dashboard_mode in {"streamlit", "curses"}:
         state = RunState(project=project, logfile=logfile, input_path=inp, profile=args.profile, mode=args.mode)
         input_render = pretty_cp2k_input(inp)
 
+    def make_runner(run_state: RunState) -> threading.Thread:
         def worker() -> None:
             try:
-                run_cp2k_process(cp2k, inp, env, state)
+                run_cp2k_process(cp2k, inp, env, run_state)
             except Exception as exc:  # pragma: no cover - defensive
-                state.append_tail(f"<dashboard error: {exc}>")
-                state.finalize(return_code=1)
+                run_state.append_tail(f"<dashboard error: {exc}>")
+                run_state.finalize(return_code=1)
 
-        runner = threading.Thread(target=worker, name="cp2k-runner", daemon=True)
-        runner.start()
+        thread = threading.Thread(target=worker, name="cp2k-runner", daemon=True)
+        thread.start()
+        return thread
+
+    if dashboard_mode == "streamlit" and state is not None:
+        streamlit_info = launch_streamlit(state, input_render)
+        if not streamlit_info:
+            print("Streamlit not available; falling back to curses dashboard.")
+            dashboard_mode = "curses" if _isatty() else "none"
+
+    if dashboard_mode == "streamlit" and state is not None:
+        state.echo_to_stdout = True
+        runner = make_runner(state)
+        try:
+            runner.join()
+        finally:
+            if streamlit_info and streamlit_info.get("process"):
+                proc = streamlit_info["process"]
+                assert isinstance(proc, subprocess.Popen)
+                proc.terminate()
+                try:
+                    proc.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    proc.kill()
+            if streamlit_info and streamlit_info.get("dir"):
+                temp_dir = streamlit_info["dir"]
+                try:
+                    import shutil
+
+                    shutil.rmtree(temp_dir, ignore_errors=True)
+                except Exception:
+                    pass
+        return_code = state.return_code if state.return_code is not None else 1
+    elif dashboard_mode == "curses" and state is not None and _isatty():
+        runner = make_runner(state)
         dashboard_loop(state, input_render)
         runner.join()
         return_code = state.return_code if state.return_code is not None else 1
     else:
+        if state is not None:
+            state.set_state_file(None)
         return_code = basic_run(cp2k, inp, env, logfile)
 
     print(json.dumps({"project": project, "logfile": logfile, "return_code": return_code}))

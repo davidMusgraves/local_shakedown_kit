@@ -2,7 +2,7 @@
   "project": "sp_smoke_compat",
   "log": {
     "energies": [
-      -40.85908691539972
+      -40.85908691539974
     ],
     "temperatures": [],
     "scf_cycles": [
@@ -17,7 +17,7 @@
   "rdf_json": "reports/rdf.json",
   "vdos_json": "reports/vdos.json",
   "derived_temperature": {
-    "temperature_from_vel_mean": 620.5545680007882,
-    "temperature_from_vel_std": 253.8338918804501
+    "temperature_from_vel_mean": 3352.135770392506,
+    "temperature_from_vel_std": 3055.2367303548576
   }
 }
