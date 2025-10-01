@@ -2020,3 +2020,2731 @@
      4 Broy./Diag. 0.20E+00    3.6     0.00522945      -815.6801726420 -1.53E-02
      5 Broy./Diag. 0.20E+00    3.5     0.00290982      -815.6885553892 -8.38E-03
      6 Broy./Diag. 0.20E+00    3.5     0.00139015      -815.6935098013 -4.95E-03
+     7 Broy./Diag. 0.20E+00    3.5     0.00107243      -815.6941830680 -6.73E-04
+     8 Broy./Diag. 0.20E+00    3.4     0.00069535      -815.6962577069 -2.07E-03
+     9 Broy./Diag. 0.20E+00    3.6     0.00022927      -815.6961586692  9.90E-05
+    10 Broy./Diag. 0.20E+00    3.5     0.00011224      -815.6964608147 -3.02E-04
+    11 Broy./Diag. 0.20E+00    3.4     0.00006762      -815.6963444950  1.16E-04
+    12 Broy./Diag. 0.20E+00    3.5     0.00004409      -815.6962070974  1.37E-04
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999987        0.0000000013
+  Core density on regular grids:              559.9999998898       -0.0000001102
+  Total charge density on r-space grids:       -0.0000001089
+  Total charge density g-space grids:          -0.0000001089
+
+  Overlap energy of the core charge distribution:               0.00027195121129
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    397.54501730396140
+  Hartree energy:                                             713.20540419460713
+  Exchange-correlation energy:                               -187.58706297043187
+  Dispersion energy:                                           -0.71684760510626
+  Electronic entropic energy:                                  -0.89859361137741
+  Fermi energy:                                                 0.12564909824185
+
+  Total energy:                                              -815.69620709739377
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.696147627737218
+
+ MD| ***************************************************************************
+ MD| Step number                                                              30
+ MD| Time [fs]                                                         15.000000
+ MD| Conserved quantity [hartree]                            -0.807909060403E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     45.642905            52.011589
+ MD| Energy drift per atom [K]          -0.195793465257E+02  -0.217576941936E+02
+ MD| Potential energy [hartree]         -0.815696147628E+03  -0.813347488222E+03
+ MD| Kinetic energy [hartree]            0.748339737024E+01   0.533336715981E+01
+ MD| Temperature [K]                           15912.910234         11341.024492
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.5     0.05306610      -815.6976780894 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.0     0.02151903      -815.6470127004  5.07E-02
+     3 Broy./Diag. 0.20E+00    3.1     0.00883910      -815.6796335809 -3.26E-02
+     4 Broy./Diag. 0.20E+00    3.5     0.00500166      -815.6951662660 -1.55E-02
+     5 Broy./Diag. 0.20E+00    3.2     0.00283610      -815.7031648618 -8.00E-03
+     6 Broy./Diag. 0.20E+00    3.3     0.00141200      -815.7085023957 -5.34E-03
+     7 Broy./Diag. 0.20E+00    3.4     0.00100746      -815.7090370029 -5.35E-04
+     8 Broy./Diag. 0.20E+00    3.4     0.00064650      -815.7109639725 -1.93E-03
+     9 Broy./Diag. 0.20E+00    3.3     0.00020896      -815.7108282265  1.36E-04
+    10 Broy./Diag. 0.20E+00    3.8     0.00010917      -815.7110866946 -2.58E-04
+    11 Broy./Diag. 0.20E+00    3.3     0.00006514      -815.7109688510  1.18E-04
+    12 Broy./Diag. 0.20E+00    3.3     0.00004603      -815.7108257183  1.43E-04
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998897       -0.0000001103
+  Total charge density on r-space grids:       -0.0000001091
+  Total charge density g-space grids:          -0.0000001091
+
+  Overlap energy of the core charge distribution:               0.00033764295069
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    397.37157849360148
+  Hartree energy:                                             713.30837568300331
+  Exchange-correlation energy:                               -187.53209621299467
+  Dispersion energy:                                           -0.71672721206224
+  Electronic entropic energy:                                  -0.89789773464600
+  Fermi energy:                                                 0.12566468144007
+
+  Total energy:                                              -815.71082571828072
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.710764305331168
+
+ MD| ***************************************************************************
+ MD| Step number                                                              31
+ MD| Time [fs]                                                         15.500000
+ MD| Conserved quantity [hartree]                            -0.807908981456E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     44.528120            51.770187
+ MD| Energy drift per atom [K]          -0.193300508270E+02  -0.216793831172E+02
+ MD| Potential energy [hartree]         -0.815710764305E+03  -0.813423722934E+03
+ MD| Kinetic energy [hartree]            0.748664759234E+01   0.540282781893E+01
+ MD| Temperature [K]                           15919.821599         11488.727624
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.2     0.05347308      -815.7088055154 -8.16E+02
+     2 Broy./Diag. 0.20E+00    2.9     0.02171695      -815.6593018656  4.95E-02
+     3 Broy./Diag. 0.20E+00    3.3     0.00832757      -815.6906172311 -3.13E-02
+     4 Broy./Diag. 0.20E+00    4.1     0.00478960      -815.7063241098 -1.57E-02
+     5 Broy./Diag. 0.20E+00    3.8     0.00296975      -815.7140271337 -7.70E-03
+     6 Broy./Diag. 0.20E+00    4.5     0.00141499      -815.7196434208 -5.62E-03
+     7 Broy./Diag. 0.20E+00    3.7     0.00094195      -815.7200500050 -4.07E-04
+     8 Broy./Diag. 0.20E+00    3.5     0.00060156      -815.7218254278 -1.78E-03
+     9 Broy./Diag. 0.20E+00    3.7     0.00019669      -815.7216625996  1.63E-04
+    10 Broy./Diag. 0.20E+00    4.3     0.00010710      -815.7218884687 -2.26E-04
+    11 Broy./Diag. 0.20E+00    3.5     0.00006327      -815.7217715068  1.17E-04
+    12 Broy./Diag. 0.20E+00    3.2     0.00004758      -815.7216255336  1.46E-04
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999987        0.0000000013
+  Core density on regular grids:              559.9999998897       -0.0000001103
+  Total charge density on r-space grids:       -0.0000001091
+  Total charge density g-space grids:          -0.0000001091
+
+  Overlap energy of the core charge distribution:               0.00040659789834
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    397.21542664356724
+  Hartree energy:                                             713.40242611994756
+  Exchange-correlation energy:                               -187.48167187336190
+  Dispersion energy:                                           -0.71661170747372
+  Electronic entropic energy:                                  -0.89720491946959
+  Fermi energy:                                                 0.12568200032320
+
+  Total energy:                                              -815.72162553356611
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.721561946724819
+
+ MD| ***************************************************************************
+ MD| Step number                                                              32
+ MD| Time [fs]                                                         16.000000
+ MD| Conserved quantity [hartree]                            -0.807908909737E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     48.260183            51.660499
+ MD| Energy drift per atom [K]          -0.191035820204E+02  -0.215988893329E+02
+ MD| Potential energy [hartree]         -0.815721561947E+03  -0.813495530404E+03
+ MD| Kinetic energy [hartree]            0.747606534377E+01   0.546761649158E+01
+ MD| Temperature [K]                           15897.319203         11626.496111
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.3     0.05279827      -815.7172604626 -8.16E+02
+     2 Broy./Diag. 0.20E+00    2.9     0.02192059      -815.6685996613  4.87E-02
+     3 Broy./Diag. 0.20E+00    3.5     0.00776580      -815.6990780608 -3.05E-02
+     4 Broy./Diag. 0.20E+00    3.4     0.00460606      -815.7148710919 -1.58E-02
+     5 Broy./Diag. 0.20E+00    3.3     0.00310714      -815.7223583317 -7.49E-03
+     6 Broy./Diag. 0.20E+00    3.3     0.00140685      -815.7281196745 -5.76E-03
+     7 Broy./Diag. 0.20E+00    3.5     0.00088491      -815.7283945078 -2.75E-04
+     8 Broy./Diag. 0.20E+00    3.7     0.00056309      -815.7300143600 -1.62E-03
+     9 Broy./Diag. 0.20E+00    3.4     0.00019984      -815.7298287910  1.86E-04
+    10 Broy./Diag. 0.20E+00    3.3     0.00010613      -815.7300310485 -2.02E-04
+    11 Broy./Diag. 0.20E+00    3.1     0.00006645      -815.7299181316  1.13E-04
+    12 Broy./Diag. 0.20E+00    3.2     0.00004875      -815.7297720015  1.46E-04
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999987        0.0000000013
+  Core density on regular grids:              559.9999998897       -0.0000001103
+  Total charge density on r-space grids:       -0.0000001091
+  Total charge density g-space grids:          -0.0000001091
+
+  Overlap energy of the core charge distribution:               0.00047389634795
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    397.07506124628259
+  Hartree energy:                                             713.48771278340450
+  Exchange-correlation energy:                               -187.43559165317657
+  Dispersion energy:                                           -0.71650571274750
+  Electronic entropic energy:                                  -0.89652615147677
+  Fermi energy:                                                 0.12569954428354
+
+  Total energy:                                              -815.72977200145476
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.729706404270246
+
+ MD| ***************************************************************************
+ MD| Step number                                                              33
+ MD| Time [fs]                                                         16.500000
+ MD| Conserved quantity [hartree]                            -0.807908850247E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     44.310715            51.437779
+ MD| Energy drift per atom [K]          -0.189157272971E+02  -0.215175813925E+02
+ MD| Potential energy [hartree]         -0.815729706404E+03  -0.813563232707E+03
+ MD| Kinetic energy [hartree]            0.745593730614E+01   0.552786863747E+01
+ MD| Temperature [K]                           15854.518368         11754.617998
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.3     0.05228108      -815.7240493898 -8.16E+02
+     2 Broy./Diag. 0.20E+00    2.7     0.02207890      -815.6754988560  4.86E-02
+     3 Broy./Diag. 0.20E+00    3.2     0.00716039      -815.7056695345 -3.02E-02
+     4 Broy./Diag. 0.20E+00    3.4     0.00447631      -815.7215441198 -1.59E-02
+     5 Broy./Diag. 0.20E+00    3.7     0.00317436      -815.7290436220 -7.50E-03
+     6 Broy./Diag. 0.20E+00    3.5     0.00139231      -815.7348850330 -5.84E-03
+     7 Broy./Diag. 0.20E+00    3.0     0.00084708      -815.7350524788 -1.67E-04
+     8 Broy./Diag. 0.20E+00    3.3     0.00053611      -815.7365300809 -1.48E-03
+     9 Broy./Diag. 0.20E+00    3.7     0.00020108      -815.7363231940  2.07E-04
+    10 Broy./Diag. 0.20E+00    3.3     0.00010619      -815.7365103743 -1.87E-04
+    11 Broy./Diag. 0.20E+00    3.7     0.00006778      -815.7364045101  1.06E-04
+    12 Broy./Diag. 0.20E+00    3.1     0.00004933      -815.7362605690  1.44E-04
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999987        0.0000000013
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001091
+  Total charge density g-space grids:          -0.0000001091
+
+  Overlap energy of the core charge distribution:               0.00053371635486
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.94931622583613
+  Hartree energy:                                             713.56422585389919
+  Exchange-correlation energy:                               -187.39365579660924
+  Dispersion energy:                                           -0.71641453313298
+  Electronic entropic energy:                                  -0.89586961202566
+  Fermi energy:                                                 0.12571604658528
+
+  Total energy:                                              -815.73626056900741
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.736193977164021
+
+ MD| ***************************************************************************
+ MD| Step number                                                              34
+ MD| Time [fs]                                                         17.000000
+ MD| Conserved quantity [hartree]                            -0.807908807688E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     44.293822            51.227662
+ MD| Energy drift per atom [K]          -0.187813345576E+02  -0.214371035444E+02
+ MD| Potential energy [hartree]         -0.815736193977E+03  -0.813627143332E+03
+ MD| Kinetic energy [hartree]            0.745554412203E+01   0.558456497525E+01
+ MD| Temperature [K]                           15853.682290         11875.178712
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.5     0.05175504      -815.7299086324 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.3     0.02219646      -815.6820563450  4.79E-02
+     3 Broy./Diag. 0.20E+00    3.2     0.00659188      -815.7119577021 -2.99E-02
+     4 Broy./Diag. 0.20E+00    3.4     0.00443208      -815.7275627008 -1.56E-02
+     5 Broy./Diag. 0.20E+00    3.5     0.00314742      -815.7350291948 -7.47E-03
+     6 Broy./Diag. 0.20E+00    3.5     0.00137379      -815.7407467163 -5.72E-03
+     7 Broy./Diag. 0.20E+00    3.4     0.00083725      -815.7407997517 -5.30E-05
+     8 Broy./Diag. 0.20E+00    3.3     0.00052838      -815.7421448356 -1.35E-03
+     9 Broy./Diag. 0.20E+00    3.1     0.00020027      -815.7419068076  2.38E-04
+    10 Broy./Diag. 0.20E+00    3.3     0.00010680      -815.7420855879 -1.79E-04
+    11 Broy./Diag. 0.20E+00    3.3     0.00006729      -815.7419882773  9.73E-05
+    12 Broy./Diag. 0.20E+00    3.3     0.00004916      -815.7418495751  1.39E-04
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999987        0.0000000013
+  Core density on regular grids:              559.9999998897       -0.0000001103
+  Total charge density on r-space grids:       -0.0000001090
+  Total charge density g-space grids:          -0.0000001090
+
+  Overlap energy of the core charge distribution:               0.00058027019637
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.83697593725617
+  Hartree energy:                                             713.63221772953841
+  Exchange-correlation energy:                               -187.35564434979656
+  Dispersion energy:                                           -0.71634276034116
+  Electronic entropic energy:                                  -0.89523997556032
+  Fermi energy:                                                 0.12573062483928
+
+  Total energy:                                              -815.74184957514865
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.741783977569185
+
+ MD| ***************************************************************************
+ MD| Step number                                                              35
+ MD| Time [fs]                                                         17.500000
+ MD| Conserved quantity [hartree]                            -0.807908787606E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     44.479451            51.034856
+ MD| Energy drift per atom [K]          -0.187179234007E+02  -0.213594126831E+02
+ MD| Potential energy [hartree]         -0.815741783978E+03  -0.813687561636E+03
+ MD| Kinetic energy [hartree]            0.744560053335E+01   0.563773741977E+01
+ MD| Temperature [K]                           15832.537959         11988.246119
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.5     0.05471334      -815.7353699183 -8.16E+02
+     2 Broy./Diag. 0.20E+00    2.5     0.02201841      -815.6865740460  4.88E-02
+     3 Broy./Diag. 0.20E+00    3.5     0.00594686      -815.7169942377 -3.04E-02
+     4 Broy./Diag. 0.20E+00    3.2     0.00434057      -815.7327996547 -1.58E-02
+     5 Broy./Diag. 0.20E+00    3.2     0.00315050      -815.7404890283 -7.69E-03
+     6 Broy./Diag. 0.20E+00    3.2     0.00136204      -815.7462195982 -5.73E-03
+     7 Broy./Diag. 0.20E+00    3.0     0.00080973      -815.7461280301  9.16E-05
+     8 Broy./Diag. 0.20E+00    3.3     0.00051258      -815.7473000764 -1.17E-03
+     9 Broy./Diag. 0.20E+00    3.3     0.00019973      -815.7470299970  2.70E-04
+    10 Broy./Diag. 0.20E+00    3.4     0.00010650      -815.7472017416 -1.72E-04
+    11 Broy./Diag. 0.20E+00    3.4     0.00006652      -815.7471175400  8.42E-05
+    12 Broy./Diag. 0.20E+00    3.3     0.00004922      -815.7469879094  1.30E-04
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999987        0.0000000013
+  Core density on regular grids:              559.9999998897       -0.0000001103
+  Total charge density on r-space grids:       -0.0000001090
+  Total charge density g-space grids:          -0.0000001090
+
+  Overlap energy of the core charge distribution:               0.00060869834931
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.73738589219471
+  Hartree energy:                                             713.69174958775920
+  Exchange-correlation energy:                               -187.32140091116929
+  Dispersion energy:                                           -0.71629345054252
+  Electronic entropic energy:                                  -0.89464130170038
+  Fermi energy:                                                 0.12574262053940
+
+  Total energy:                                              -815.74698790935804
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.746923598463923
+
+ MD| ***************************************************************************
+ MD| Step number                                                              36
+ MD| Time [fs]                                                         18.000000
+ MD| Conserved quantity [hartree]                            -0.807908792469E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     43.530821            50.826411
+ MD| Energy drift per atom [K]          -0.187332781249E+02  -0.212864645010E+02
+ MD| Potential energy [hartree]         -0.815746923598E+03  -0.813744766135E+03
+ MD| Kinetic energy [hartree]            0.743075741481E+01   0.568754353074E+01
+ MD| Temperature [K]                           15800.975127         12094.155258
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.6     0.05662601      -815.7404253172 -8.16E+02
+     2 Broy./Diag. 0.20E+00    2.7     0.02196388      -815.6916003546  4.88E-02
+     3 Broy./Diag. 0.20E+00    3.1     0.00595080      -815.7221515786 -3.06E-02
+     4 Broy./Diag. 0.20E+00    3.3     0.00436555      -815.7377111749 -1.56E-02
+     5 Broy./Diag. 0.20E+00    3.3     0.00304348      -815.7456157371 -7.90E-03
+     6 Broy./Diag. 0.20E+00    3.3     0.00134716      -815.7512504571 -5.63E-03
+     7 Broy./Diag. 0.20E+00    3.4     0.00081942      -815.7510693449  1.81E-04
+     8 Broy./Diag. 0.20E+00    3.4     0.00052070      -815.7521271292 -1.06E-03
+     9 Broy./Diag. 0.20E+00    3.4     0.00019870      -815.7518182723  3.09E-04
+    10 Broy./Diag. 0.20E+00    3.2     0.00010744      -815.7519889884 -1.71E-04
+    11 Broy./Diag. 0.20E+00    3.4     0.00006451      -815.7519150523  7.39E-05
+    12 Broy./Diag. 0.20E+00    3.6     0.00004831      -815.7517942480  1.21E-04
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999987        0.0000000013
+  Core density on regular grids:              559.9999998898       -0.0000001102
+  Total charge density on r-space grids:       -0.0000001089
+  Total charge density g-space grids:          -0.0000001089
+
+  Overlap energy of the core charge distribution:               0.00061634928600
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.64965916187271
+  Hartree energy:                                             713.74331383640038
+  Exchange-correlation energy:                               -187.29064481728759
+  Dispersion energy:                                           -0.71626749048723
+  Electronic entropic energy:                                  -0.89407488312284
+  Fermi energy:                                                 0.12575162271439
+
+  Total energy:                                              -815.75179424804230
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.751732903016887
+
+ MD| ***************************************************************************
+ MD| Step number                                                              37
+ MD| Time [fs]                                                         18.500000
+ MD| Conserved quantity [hartree]                            -0.807908822359E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     44.475514            50.654765
+ MD| Energy drift per atom [K]          -0.188276625326E+02  -0.212200103937E+02
+ MD| Potential energy [hartree]         -0.815751732903E+03  -0.813799008480E+03
+ MD| Kinetic energy [hartree]            0.741023623726E+01   0.573410279308E+01
+ MD| Temperature [K]                           15757.338308         12193.160206
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.4     0.05712562      -815.7449563716 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.1     0.02176678      -815.6961003834  4.89E-02
+     3 Broy./Diag. 0.20E+00    3.4     0.00602085      -815.7268102000 -3.07E-02
+     4 Broy./Diag. 0.20E+00    3.3     0.00437728      -815.7421405787 -1.53E-02
+     5 Broy./Diag. 0.20E+00    3.5     0.00293961      -815.7501806008 -8.04E-03
+     6 Broy./Diag. 0.20E+00    3.5     0.00133243      -815.7557229100 -5.54E-03
+     7 Broy./Diag. 0.20E+00    3.2     0.00082032      -815.7554480704  2.75E-04
+     8 Broy./Diag. 0.20E+00    3.2     0.00052680      -815.7563758394 -9.28E-04
+     9 Broy./Diag. 0.20E+00    3.4     0.00019755      -815.7560233498  3.52E-04
+    10 Broy./Diag. 0.20E+00    3.6     0.00010738      -815.7561916439 -1.68E-04
+    11 Broy./Diag. 0.20E+00    3.6     0.00006237      -815.7561290591  6.26E-05
+    12 Broy./Diag. 0.20E+00    3.2     0.00004752      -815.7560198981  1.09E-04
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999987        0.0000000013
+  Core density on regular grids:              559.9999998898       -0.0000001102
+  Total charge density on r-space grids:       -0.0000001089
+  Total charge density g-space grids:          -0.0000001089
+
+  Overlap energy of the core charge distribution:               0.00060334824007
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.57327006610734
+  Hartree energy:                                             713.78748892624753
+  Exchange-correlation energy:                               -187.26317734618840
+  Dispersion energy:                                           -0.71626429585544
+  Electronic entropic energy:                                  -0.89354422364932
+  Fermi energy:                                                 0.12575736644485
+
+  Total energy:                                              -815.75601989809672
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.755963132190232
+
+ MD| ***************************************************************************
+ MD| Step number                                                              38
+ MD| Time [fs]                                                         19.000000
+ MD| Conserved quantity [hartree]                            -0.807908875543E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     44.579105            50.494879
+ MD| Energy drift per atom [K]          -0.189956045244E+02  -0.211614733971E+02
+ MD| Potential energy [hartree]         -0.815755963132E+03  -0.813850507287E+03
+ MD| Kinetic energy [hartree]            0.737805795777E+01   0.577736477110E+01
+ MD| Temperature [K]                           15688.913494         12285.153713
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.4     0.05632153      -815.7483349516 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.2     0.02133665      -815.6994670916  4.89E-02
+     3 Broy./Diag. 0.20E+00    4.4     0.00607692      -815.7303160042 -3.08E-02
+     4 Broy./Diag. 0.20E+00    3.4     0.00438503      -815.7454166656 -1.51E-02
+     5 Broy./Diag. 0.20E+00    3.5     0.00281881      -815.7535779867 -8.16E-03
+     6 Broy./Diag. 0.20E+00    3.4     0.00131674      -815.7590281861 -5.45E-03
+     7 Broy./Diag. 0.20E+00    3.3     0.00081792      -815.7586849439  3.43E-04
+     8 Broy./Diag. 0.20E+00    3.3     0.00053387      -815.7594917737 -8.07E-04
+     9 Broy./Diag. 0.20E+00    3.4     0.00019612      -815.7590949887  3.97E-04
+    10 Broy./Diag. 0.20E+00    3.4     0.00010688      -815.7592607632 -1.66E-04
+    11 Broy./Diag. 0.20E+00    3.4     0.00006091      -815.7592074655  5.33E-05
+    12 Broy./Diag. 0.20E+00    3.4     0.00004655      -815.7591109594  9.65E-05
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999987        0.0000000013
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001091
+  Total charge density g-space grids:          -0.0000001091
+
+  Overlap energy of the core charge distribution:               0.00057293414014
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.50780968431576
+  Hartree energy:                                             713.82497766161623
+  Exchange-correlation energy:                               -187.23873831037224
+  Dispersion energy:                                           -0.71628221375594
+  Electronic entropic energy:                                  -0.89305438529497
+  Fermi energy:                                                 0.12575962851890
+
+  Total energy:                                              -815.75911095944127
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.759059605068956
+
+ MD| ***************************************************************************
+ MD| Step number                                                              39
+ MD| Time [fs]                                                         19.500000
+ MD| Conserved quantity [hartree]                            -0.807908946450E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     46.093338            50.382019
+ MD| Energy drift per atom [K]          -0.192195118237E+02  -0.211116795106E+02
+ MD| Potential energy [hartree]         -0.815759059605E+03  -0.813899444526E+03
+ MD| Kinetic energy [hartree]            0.736282375313E+01   0.581801756551E+01
+ MD| Temperature [K]                           15656.519045         12371.598978
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.4     0.05434666      -815.7497757834 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.2     0.02079434      -815.7013824784  4.84E-02
+     3 Broy./Diag. 0.20E+00    3.4     0.00616102      -815.7321580696 -3.08E-02
+     4 Broy./Diag. 0.20E+00    3.5     0.00440672      -815.7468936405 -1.47E-02
+     5 Broy./Diag. 0.20E+00    3.6     0.00273354      -815.7550705491 -8.18E-03
+     6 Broy./Diag. 0.20E+00    3.6     0.00129533      -815.7603724211 -5.30E-03
+     7 Broy./Diag. 0.20E+00    3.6     0.00081632      -815.7599828169  3.90E-04
+     8 Broy./Diag. 0.20E+00    3.5     0.00054380      -815.7606836115 -7.01E-04
+     9 Broy./Diag. 0.20E+00    3.5     0.00020198      -815.7602414145  4.42E-04
+    10 Broy./Diag. 0.20E+00    3.3     0.00010618      -815.7604039019 -1.62E-04
+    11 Broy./Diag. 0.20E+00    3.7     0.00006146      -815.7603577134  4.62E-05
+    12 Broy./Diag. 0.20E+00    3.5     0.00004533      -815.7602741217  8.36E-05
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999986        0.0000000014
+  Core density on regular grids:              559.9999998897       -0.0000001103
+  Total charge density on r-space grids:       -0.0000001090
+  Total charge density g-space grids:          -0.0000001090
+
+  Overlap energy of the core charge distribution:               0.00053119179084
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.45284983669018
+  Hartree energy:                                             713.85673195766003
+  Exchange-correlation energy:                               -187.21705893671950
+  Dispersion energy:                                           -0.71631902086561
+  Electronic entropic energy:                                  -0.89261286682118
+  Fermi energy:                                                 0.12575820360462
+
+  Total energy:                                              -815.76027412173755
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.760228930097469
+
+ MD| ***************************************************************************
+ MD| Step number                                                              40
+ MD| Time [fs]                                                         20.000000
+ MD| Conserved quantity [hartree]                            -0.807909027052E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     46.152092            50.276271
+ MD| Energy drift per atom [K]          -0.194740306828E+02  -0.210707382899E+02
+ MD| Potential energy [hartree]         -0.815760228930E+03  -0.813945964136E+03
+ MD| Kinetic energy [hartree]            0.732762485921E+01   0.585575774785E+01
+ MD| Temperature [K]                           15581.671110         12451.850781
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                438
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.5     0.05144508      -815.7483352256 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.1     0.02013040      -815.7004577847  4.79E-02
+     3 Broy./Diag. 0.20E+00    3.4     0.00624447      -815.7310682084 -3.06E-02
+     4 Broy./Diag. 0.20E+00    3.5     0.00443164      -815.7454526945 -1.44E-02
+     5 Broy./Diag. 0.20E+00    3.4     0.00273927      -815.7536510251 -8.20E-03
+     6 Broy./Diag. 0.20E+00    3.4     0.00126646      -815.7588073650 -5.16E-03
+     7 Broy./Diag. 0.20E+00    3.5     0.00081147      -815.7584102131  3.97E-04
+     8 Broy./Diag. 0.20E+00    3.5     0.00055379      -815.7590219612 -6.12E-04
+     9 Broy./Diag. 0.20E+00    3.4     0.00021406      -815.7585371656  4.85E-04
+    10 Broy./Diag. 0.20E+00    3.5     0.00010513      -815.7586952808 -1.58E-04
+    11 Broy./Diag. 0.20E+00    3.6     0.00006197      -815.7586535191  4.18E-05
+    12 Broy./Diag. 0.20E+00    3.6     0.00004391      -815.7585822035  7.13E-05
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999986        0.0000000014
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001090
+  Total charge density g-space grids:          -0.0000001090
+
+  Overlap energy of the core charge distribution:               0.00048637593211
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.40800233727481
+  Hartree energy:                                             713.88376742123000
+  Exchange-correlation energy:                               -187.19784111102533
+  Dispersion energy:                                           -0.71637218716886
+  Electronic entropic energy:                                  -0.89222880070328
+  Fermi energy:                                                 0.12575290579016
+
+  Total energy:                                              -815.75858220350585
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.758543643619987
+
+ MD| ***************************************************************************
+ MD| Step number                                                              41
+ MD| Time [fs]                                                         20.500000
+ MD| Conserved quantity [hartree]                            -0.807909107418E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     46.028166            50.172659
+ MD| Energy drift per atom [K]          -0.197278071215E+02  -0.210379838712E+02
+ MD| Potential energy [hartree]         -0.815758543644E+03  -0.813990173392E+03
+ MD| Kinetic energy [hartree]            0.733791263019E+01   0.589190786694E+01
+ MD| Temperature [K]                           15603.547321         12528.721429
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                438
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.7     0.04760081      -815.7431258412 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.1     0.01933577      -815.6961176863  4.70E-02
+     3 Broy./Diag. 0.20E+00    3.3     0.00631076      -815.7263879228 -3.03E-02
+     4 Broy./Diag. 0.20E+00    3.6     0.00445658      -815.7403368410 -1.39E-02
+     5 Broy./Diag. 0.20E+00    3.5     0.00274077      -815.7484869956 -8.15E-03
+     6 Broy./Diag. 0.20E+00    3.5     0.00122802      -815.7534464999 -4.96E-03
+     7 Broy./Diag. 0.20E+00    3.6     0.00080147      -815.7530592883  3.87E-04
+     8 Broy./Diag. 0.20E+00    3.4     0.00056214      -815.7535907671 -5.31E-04
+     9 Broy./Diag. 0.20E+00    3.6     0.00022619      -815.7530675364  5.23E-04
+    10 Broy./Diag. 0.20E+00    3.9     0.00010362      -815.7532204476 -1.53E-04
+    11 Broy./Diag. 0.20E+00    3.5     0.00006237      -815.7531805540  3.99E-05
+    12 Broy./Diag. 0.20E+00    3.5     0.00004226      -815.7531206421  5.99E-05
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001092
+  Total charge density g-space grids:          -0.0000001092
+
+  Overlap energy of the core charge distribution:               0.00044811996407
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.37281535125743
+  Hartree energy:                                             713.90717595734964
+  Exchange-correlation energy:                               -187.18081268428773
+  Dispersion energy:                                           -0.71643883476400
+  Electronic entropic energy:                                  -0.89191235086957
+  Fermi energy:                                                 0.12574361824546
+
+  Total energy:                                              -815.75312064205502
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.753088763221854
+
+ MD| ***************************************************************************
+ MD| Step number                                                              42
+ MD| Time [fs]                                                         21.000000
+ MD| Conserved quantity [hartree]                            -0.807909176360E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     46.696315            50.089889
+ MD| Energy drift per atom [K]          -0.199455073049E+02  -0.210119725244E+02
+ MD| Potential energy [hartree]         -0.815753088763E+03  -0.814032147568E+03
+ MD| Kinetic energy [hartree]            0.731376746356E+01   0.592576166686E+01
+ MD| Temperature [K]                           15552.204348         12600.709117
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.8     0.04314033      -815.7334476886 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.1     0.01839921      -815.6875034987  4.59E-02
+     3 Broy./Diag. 0.20E+00    3.8     0.00635553      -815.7172515209 -2.97E-02
+     4 Broy./Diag. 0.20E+00    3.8     0.00446948      -815.7307378718 -1.35E-02
+     5 Broy./Diag. 0.20E+00    3.8     0.00273317      -815.7388192122 -8.08E-03
+     6 Broy./Diag. 0.20E+00    3.9     0.00118029      -815.7435692731 -4.75E-03
+     7 Broy./Diag. 0.20E+00    3.9     0.00078548      -815.7432153383  3.54E-04
+     8 Broy./Diag. 0.20E+00    3.1     0.00056699      -815.7436771997 -4.62E-04
+     9 Broy./Diag. 0.20E+00    3.3     0.00023668      -815.7431230250  5.54E-04
+    10 Broy./Diag. 0.20E+00    3.2     0.00010159      -815.7432700404 -1.47E-04
+    11 Broy./Diag. 0.20E+00    3.4     0.00006255      -815.7432299279  4.01E-05
+    12 Broy./Diag. 0.20E+00    3.3     0.00004038      -815.7431801861  4.97E-05
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001092
+  Total charge density g-space grids:          -0.0000001092
+
+  Overlap energy of the core charge distribution:               0.00042636081311
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.34670515082558
+  Hartree energy:                                             713.92795872533441
+  Exchange-correlation energy:                               -187.16568669635879
+  Dispersion energy:                                           -0.71651571203829
+  Electronic entropic energy:                                  -0.89167184296437
+  Fermi energy:                                                 0.12573033894611
+
+  Total energy:                                              -815.74318018611962
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.743154685814602
+
+ MD| ***************************************************************************
+ MD| Step number                                                              43
+ MD| Time [fs]                                                         21.500000
+ MD| Conserved quantity [hartree]                            -0.807909222016E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     47.022767            50.018560
+ MD| Energy drift per atom [K]          -0.200896793067E+02  -0.209905238449E+02
+ MD| Potential energy [hartree]         -0.815743154686E+03  -0.814071938431E+03
+ MD| Kinetic energy [hartree]            0.728047672838E+01   0.595726666829E+01
+ MD| Temperature [K]                           15481.413976         12667.702253
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.3     0.04331306      -815.7189520827 -8.16E+02
+     2 Broy./Diag. 0.20E+00    2.9     0.01733498      -815.6744329248  4.45E-02
+     3 Broy./Diag. 0.20E+00    3.2     0.00637357      -815.7034650126 -2.90E-02
+     4 Broy./Diag. 0.20E+00    3.3     0.00446942      -815.7164176624 -1.30E-02
+     5 Broy./Diag. 0.20E+00    3.3     0.00271666      -815.7243606575 -7.94E-03
+     6 Broy./Diag. 0.20E+00    3.8     0.00112614      -815.7288676356 -4.51E-03
+     7 Broy./Diag. 0.20E+00    3.4     0.00076386      -815.7285506898  3.17E-04
+     8 Broy./Diag. 0.20E+00    3.3     0.00056754      -815.7289461402 -3.95E-04
+     9 Broy./Diag. 0.20E+00    3.7     0.00024478      -815.7283675177  5.79E-04
+    10 Broy./Diag. 0.20E+00    3.3     0.00009909      -815.7285076207 -1.40E-04
+    11 Broy./Diag. 0.20E+00    3.1     0.00006248      -815.7284653420  4.23E-05
+    12 Broy./Diag. 0.20E+00    3.2     0.00003839      -815.7284243117  4.10E-05
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001092
+  Total charge density g-space grids:          -0.0000001092
+
+  Overlap energy of the core charge distribution:               0.00043012982172
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.32868462423556
+  Hartree energy:                                             713.94713203589708
+  Exchange-correlation energy:                               -187.15216400706262
+  Dispersion energy:                                           -0.71659934579638
+  Electronic entropic energy:                                  -0.89151159628457
+  Fermi energy:                                                 0.12571323897846
+
+  Total energy:                                              -815.72842431174354
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.728404879745540
+
+ MD| ***************************************************************************
+ MD| Step number                                                              44
+ MD| Time [fs]                                                         22.000000
+ MD| Conserved quantity [hartree]                            -0.807909235065E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     44.201024            49.886343
+ MD| Energy drift per atom [K]          -0.201308826049E+02  -0.209709865440E+02
+ MD| Potential energy [hartree]         -0.815728404880E+03  -0.814109585396E+03
+ MD| Kinetic energy [hartree]            0.721897194083E+01   0.598594178812E+01
+ MD| Temperature [K]                           15350.628437         12728.677849
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.3     0.04303430      -815.6998175418 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.0     0.01618034      -815.6568258245  4.30E-02
+     3 Broy./Diag. 0.20E+00    3.6     0.00650069      -815.6850227300 -2.82E-02
+     4 Broy./Diag. 0.20E+00    3.2     0.00445827      -815.6974284655 -1.24E-02
+     5 Broy./Diag. 0.20E+00    3.1     0.00269140      -815.7052222095 -7.79E-03
+     6 Broy./Diag. 0.20E+00    3.5     0.00106813      -815.7094994231 -4.28E-03
+     7 Broy./Diag. 0.20E+00    3.5     0.00073815      -815.7092340517  2.65E-04
+     8 Broy./Diag. 0.20E+00    3.3     0.00056380      -815.7095717104 -3.38E-04
+     9 Broy./Diag. 0.20E+00    3.3     0.00025012      -815.7089771514  5.95E-04
+    10 Broy./Diag. 0.20E+00    4.0     0.00009623      -815.7091101328 -1.33E-04
+    11 Broy./Diag. 0.20E+00    3.3     0.00006216      -815.7090643548  4.58E-05
+    12 Broy./Diag. 0.20E+00    3.9     0.00003629      -815.7090307132  3.36E-05
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001092
+  Total charge density g-space grids:          -0.0000001092
+
+  Overlap energy of the core charge distribution:               0.00046622733298
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.31744691037818
+  Hartree energy:                                             713.96549924828059
+  Exchange-correlation energy:                               -187.13992951902119
+  Dispersion energy:                                           -0.71668618139885
+  Electronic entropic energy:                                  -0.89143125661508
+  Fermi energy:                                                 0.12569265940233
+
+  Total energy:                                              -815.70903071318219
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.709016945310282
+
+ MD| ***************************************************************************
+ MD| Step number                                                              45
+ MD| Time [fs]                                                         22.500000
+ MD| Conserved quantity [hartree]                            -0.807909209765E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     45.300299            49.784431
+ MD| Energy drift per atom [K]          -0.200509933409E+02  -0.209505422506E+02
+ MD| Potential energy [hartree]         -0.815709016945E+03  -0.814145128319E+03
+ MD| Kinetic energy [hartree]            0.718830005025E+01   0.601266086061E+01
+ MD| Temperature [K]                           15285.406851         12785.494049
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.3     0.04242073      -815.6767341523 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.0     0.01497155      -815.6355784228  4.12E-02
+     3 Broy./Diag. 0.20E+00    3.4     0.00661728      -815.6627852143 -2.72E-02
+     4 Broy./Diag. 0.20E+00    3.2     0.00444475      -815.6745918286 -1.18E-02
+     5 Broy./Diag. 0.20E+00    3.3     0.00266026      -815.6821775594 -7.59E-03
+     6 Broy./Diag. 0.20E+00    3.5     0.00101104      -815.6862199512 -4.04E-03
+     7 Broy./Diag. 0.20E+00    3.7     0.00071054      -815.6859974995  2.22E-04
+     8 Broy./Diag. 0.20E+00    3.4     0.00055613      -815.6862784238 -2.81E-04
+     9 Broy./Diag. 0.20E+00    3.2     0.00025240      -815.6856735347  6.05E-04
+    10 Broy./Diag. 0.20E+00    3.3     0.00009329      -815.6857987629 -1.25E-04
+    11 Broy./Diag. 0.20E+00    3.6     0.00006166      -815.6857487498  5.00E-05
+    12 Broy./Diag. 0.20E+00    3.4     0.00003427      -815.6857212207  2.75E-05
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001091
+  Total charge density g-space grids:          -0.0000001091
+
+  Overlap energy of the core charge distribution:               0.00053780401230
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.31127231152681
+  Hartree energy:                                             713.98371860242025
+  Exchange-correlation energy:                               -187.12865505560981
+  Dispersion energy:                                           -0.71677298772697
+  Electronic entropic energy:                                  -0.89142575665025
+  Fermi energy:                                                 0.12566907033071
+
+  Total energy:                                              -815.68572122065950
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.685712449495327
+
+ MD| ***************************************************************************
+ MD| Step number                                                              46
+ MD| Time [fs]                                                         23.000000
+ MD| Conserved quantity [hartree]                            -0.807909144318E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     44.955700            49.679459
+ MD| Energy drift per atom [K]          -0.198443291992E+02  -0.209264941408E+02
+ MD| Potential energy [hartree]         -0.815685712449E+03  -0.814178619278E+03
+ MD| Kinetic energy [hartree]            0.714513884089E+01   0.603727994714E+01
+ MD| Temperature [K]                           15193.627621         12837.844778
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.5     0.04136623      -815.6510656387 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.1     0.01392509      -815.6117338442  3.93E-02
+     3 Broy./Diag. 0.20E+00    3.2     0.00670031      -815.6379057220 -2.62E-02
+     4 Broy./Diag. 0.20E+00    3.7     0.00442717      -815.6491141203 -1.12E-02
+     5 Broy./Diag. 0.20E+00    3.4     0.00262346      -815.6564954650 -7.38E-03
+     6 Broy./Diag. 0.20E+00    3.5     0.00095448      -815.6603354078 -3.84E-03
+     7 Broy./Diag. 0.20E+00    3.6     0.00068144      -815.6601652946  1.70E-04
+     8 Broy./Diag. 0.20E+00    3.3     0.00054499      -815.6603978989 -2.33E-04
+     9 Broy./Diag. 0.20E+00    3.8     0.00025221      -815.6597908132  6.07E-04
+    10 Broy./Diag. 0.20E+00    3.6     0.00009044      -815.6599091826 -1.18E-04
+    11 Broy./Diag. 0.20E+00    3.6     0.00006098      -815.6598549672  5.42E-05
+    12 Broy./Diag. 0.20E+00    3.2     0.00003223      -815.6598328757  2.21E-05
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001091
+  Total charge density g-space grids:          -0.0000001091
+
+  Overlap energy of the core charge distribution:               0.00064262899680
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.30819431676588
+  Hartree energy:                                             714.00210301080415
+  Exchange-correlation energy:                               -187.11803297783891
+  Dispersion energy:                                           -0.71685682264761
+  Electronic entropic energy:                                  -0.89148689262463
+  Fermi energy:                                                 0.12564309804372
+
+  Total energy:                                              -815.65983287569782
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.659828539656360
+
+ MD| ***************************************************************************
+ MD| Step number                                                              47
+ MD| Time [fs]                                                         23.500000
+ MD| Conserved quantity [hartree]                            -0.807909043695E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     45.627109            49.593239
+ MD| Energy drift per atom [K]          -0.195265872681E+02  -0.208967088882E+02
+ MD| Potential energy [hartree]         -0.815659828540E+03  -0.814210134369E+03
+ MD| Kinetic energy [hartree]            0.708622801912E+01   0.605959799122E+01
+ MD| Temperature [K]                           15068.357964         12885.302506
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.7     0.04129839      -815.6246197603 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.4     0.01345312      -815.5873001328  3.73E-02
+     3 Broy./Diag. 0.20E+00    3.1     0.00674733      -815.6123201066 -2.50E-02
+     4 Broy./Diag. 0.20E+00    3.4     0.00441061      -815.6229166544 -1.06E-02
+     5 Broy./Diag. 0.20E+00    3.7     0.00258216      -815.6300582437 -7.14E-03
+     6 Broy./Diag. 0.20E+00    3.7     0.00090216      -815.6337075682 -3.65E-03
+     7 Broy./Diag. 0.20E+00    3.7     0.00065209      -815.6335745757  1.33E-04
+     8 Broy./Diag. 0.20E+00    3.5     0.00053051      -815.6337589319 -1.84E-04
+     9 Broy./Diag. 0.20E+00    3.6     0.00024914      -815.6331550405  6.04E-04
+    10 Broy./Diag. 0.20E+00    3.5     0.00008772      -815.6332668779 -1.12E-04
+    11 Broy./Diag. 0.20E+00    3.6     0.00006013      -815.6332092483  5.76E-05
+    12 Broy./Diag. 0.20E+00    3.5     0.00003133      -815.6331918073  1.74E-05
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001092
+  Total charge density g-space grids:          -0.0000001092
+
+  Overlap energy of the core charge distribution:               0.00077197010192
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.30596496798148
+  Hartree energy:                                             714.02075866609141
+  Exchange-correlation energy:                               -187.10775139540854
+  Dispersion energy:                                           -0.71693541306075
+  Electronic entropic energy:                                  -0.89160446080869
+  Fermi energy:                                                 0.12561541378783
+
+  Total energy:                                              -815.63319180729013
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.633191226233180
+
+ MD| ***************************************************************************
+ MD| Step number                                                              48
+ MD| Time [fs]                                                         24.000000
+ MD| Conserved quantity [hartree]                            -0.807908919382E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     46.487462            49.528535
+ MD| Energy drift per atom [K]          -0.191340367508E+02  -0.208599865520E+02
+ MD| Potential energy [hartree]         -0.815633191226E+03  -0.814239781387E+03
+ MD| Kinetic energy [hartree]            0.702961430393E+01   0.607980666440E+01
+ MD| Temperature [K]                           14947.972941         12928.274807
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.7     0.04189131      -815.5995271960 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.2     0.01295788      -815.5638842384  3.56E-02
+     3 Broy./Diag. 0.20E+00    3.4     0.00675521      -815.5878825123 -2.40E-02
+     4 Broy./Diag. 0.20E+00    3.4     0.00441004      -815.5979532807 -1.01E-02
+     5 Broy./Diag. 0.20E+00    3.7     0.00254280      -815.6049321872 -6.98E-03
+     6 Broy./Diag. 0.20E+00    6.0     0.00085273      -815.6084439238 -3.51E-03
+     7 Broy./Diag. 0.20E+00    4.4     0.00062505      -815.6083508378  9.31E-05
+     8 Broy./Diag. 0.20E+00    6.8     0.00051600      -815.6084954051 -1.45E-04
+     9 Broy./Diag. 0.20E+00    6.1     0.00024509      -815.6079005991  5.95E-04
+    10 Broy./Diag. 0.20E+00    6.4     0.00008533      -815.6080084367 -1.08E-04
+    11 Broy./Diag. 0.20E+00    6.1     0.00005933      -815.6079488142  5.96E-05
+    12 Broy./Diag. 0.20E+00    6.3     0.00003128      -815.6079355608  1.33E-05
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001092
+  Total charge density g-space grids:          -0.0000001092
+
+  Overlap energy of the core charge distribution:               0.00091056037745
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.30223666808814
+  Hartree energy:                                             714.03960453719935
+  Exchange-correlation energy:                               -187.09751601966596
+  Dispersion energy:                                           -0.71700715231319
+  Electronic entropic energy:                                  -0.89176801015571
+  Fermi energy:                                                 0.12558673002381
+
+  Total energy:                                              -815.60793556083377
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.607937770856665
+
+ MD| ***************************************************************************
+ MD| Step number                                                              49
+ MD| Time [fs]                                                         24.500000
+ MD| Conserved quantity [hartree]                            -0.807908788331E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     65.912499            49.862902
+ MD| Energy drift per atom [K]          -0.187202111534E+02  -0.208163176663E+02
+ MD| Potential energy [hartree]         -0.815607937771E+03  -0.814267702946E+03
+ MD| Kinetic energy [hartree]            0.699180995839E+01   0.609841897652E+01
+ MD| Temperature [K]                           14867.584699         12967.852559
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    4.1     0.04290144      -815.5779428664 -8.16E+02
+     2 Broy./Diag. 0.20E+00    5.3     0.01252535      -815.5434575879  3.45E-02
+     3 Broy./Diag. 0.20E+00    6.6     0.00669686      -815.5666375823 -2.32E-02
+     4 Broy./Diag. 0.20E+00    5.9     0.00443273      -815.5763272718 -9.69E-03
+     5 Broy./Diag. 0.20E+00    5.6     0.00250891      -815.5832806650 -6.95E-03
+     6 Broy./Diag. 0.20E+00    6.1     0.00080764      -815.5867244436 -3.44E-03
+     7 Broy./Diag. 0.20E+00    6.3     0.00060171      -815.5866694843  5.50E-05
+     8 Broy./Diag. 0.20E+00    6.6     0.00050213      -815.5867790637 -1.10E-04
+     9 Broy./Diag. 0.20E+00    6.5     0.00024037      -815.5861971262  5.82E-04
+    10 Broy./Diag. 0.20E+00    6.3     0.00008351      -815.5863042143 -1.07E-04
+    11 Broy./Diag. 0.20E+00    6.1     0.00005866      -815.5862448452  5.94E-05
+    12 Broy./Diag. 0.20E+00    5.9     0.00003115      -815.5862358578  8.99E-06
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001092
+  Total charge density g-space grids:          -0.0000001092
+
+  Overlap energy of the core charge distribution:               0.00103845885066
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.29481453201424
+  Hartree energy:                                             714.05838160201188
+  Exchange-correlation energy:                               -187.08703551146388
+  Dispersion energy:                                           -0.71707103832923
+  Electronic entropic energy:                                  -0.89196775430954
+  Fermi energy:                                                 0.12555771441619
+
+  Total energy:                                              -815.58623585783153
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.586240888089833
+
+ MD| ***************************************************************************
+ MD| Step number                                                              50
+ MD| Time [fs]                                                         25.000000
+ MD| Conserved quantity [hartree]                            -0.807908669514E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     81.478202            50.495208
+ MD| Energy drift per atom [K]          -0.183450163732E+02  -0.207668916404E+02
+ MD| Potential energy [hartree]         -0.815586240888E+03  -0.814294073705E+03
+ MD| Kinetic energy [hartree]            0.696058649116E+01   0.611566232682E+01
+ MD| Temperature [K]                           14801.190225         13004.519313
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    5.0     0.04309914      -815.5618786329 -8.16E+02
+     2 Broy./Diag. 0.20E+00    4.8     0.01209471      -815.5290544631  3.28E-02
+     3 Broy./Diag. 0.20E+00    5.8     0.00658820      -815.5511997916 -2.21E-02
+     4 Broy./Diag. 0.20E+00    6.0     0.00445863      -815.5603760564 -9.18E-03
+     5 Broy./Diag. 0.20E+00    5.7     0.00247209      -815.5672013815 -6.83E-03
+     6 Broy./Diag. 0.20E+00    6.7     0.00076633      -815.5705439522 -3.34E-03
+     7 Broy./Diag. 0.20E+00    5.7     0.00057884      -815.5705076965  3.63E-05
+     8 Broy./Diag. 0.20E+00    7.2     0.00048569      -815.5705813231 -7.36E-05
+     9 Broy./Diag. 0.20E+00    6.5     0.00023412      -815.5700153064  5.66E-04
+    10 Broy./Diag. 0.20E+00    6.4     0.00008206      -815.5701227189 -1.07E-04
+    11 Broy./Diag. 0.20E+00    6.3     0.00005795      -815.5700643612  5.84E-05
+    12 Broy./Diag. 0.20E+00    6.3     0.00003090      -815.5700598742  4.49E-06
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998895       -0.0000001105
+  Total charge density on r-space grids:       -0.0000001093
+  Total charge density g-space grids:          -0.0000001093
+
+  Overlap energy of the core charge distribution:               0.00113448935094
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.28167109102316
+  Hartree energy:                                             714.07691384700240
+  Exchange-correlation energy:                               -187.07606197981815
+  Dispersion energy:                                           -0.71712636679157
+  Electronic entropic energy:                                  -0.89219480330968
+  Fermi energy:                                                 0.12552905342760
+
+  Total energy:                                              -815.57005987415312
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.570067222131456
+
+ MD| ***************************************************************************
+ MD| Step number                                                              51
+ MD| Time [fs]                                                         25.500000
+ MD| Conserved quantity [hartree]                            -0.807908582913E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     81.386301            51.100915
+ MD| Energy drift per atom [K]          -0.180715525099E+02  -0.207140418536E+02
+ MD| Potential energy [hartree]         -0.815570067222E+03  -0.814319093185E+03
+ MD| Kinetic energy [hartree]            0.693004976893E+01   0.613163070804E+01
+ MD| Temperature [K]                           14736.256066         13038.474935
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    5.7     0.04256901      -815.5528132377 -8.16E+02
+     2 Broy./Diag. 0.20E+00    5.8     0.01171956      -815.5218296138  3.10E-02
+     3 Broy./Diag. 0.20E+00    5.6     0.00660910      -815.5428869509 -2.11E-02
+     4 Broy./Diag. 0.20E+00    6.7     0.00448531      -815.5514993107 -8.61E-03
+     5 Broy./Diag. 0.20E+00    5.6     0.00243798      -815.5581387509 -6.64E-03
+     6 Broy./Diag. 0.20E+00    6.5     0.00072357      -815.5613478625 -3.21E-03
+     7 Broy./Diag. 0.20E+00    5.8     0.00055414      -815.5613319534  1.59E-05
+     8 Broy./Diag. 0.20E+00    6.6     0.00046866      -815.5613838931 -5.19E-05
+     9 Broy./Diag. 0.20E+00    5.7     0.00022815      -815.5608431634  5.41E-04
+    10 Broy./Diag. 0.20E+00    6.1     0.00008025      -815.5609537034 -1.11E-04
+    11 Broy./Diag. 0.20E+00    6.2     0.00005710      -815.5608962997  5.74E-05
+    12 Broy./Diag. 0.20E+00    6.4     0.00003067      -815.5608953385  9.61E-07
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998895       -0.0000001105
+  Total charge density on r-space grids:       -0.0000001093
+  Total charge density g-space grids:          -0.0000001093
+
+  Overlap energy of the core charge distribution:               0.00118122241708
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.26115411879744
+  Hartree energy:                                             714.09515376731792
+  Exchange-correlation energy:                               -187.06437469310154
+  Dispersion energy:                                           -0.71717257110029
+  Electronic entropic energy:                                  -0.89244103113947
+  Fermi energy:                                                 0.12550141079220
+
+  Total energy:                                              -815.56089533849467
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.560902952659603
+
+ MD| ***************************************************************************
+ MD| Step number                                                              52
+ MD| Time [fs]                                                         26.000000
+ MD| Conserved quantity [hartree]                            -0.807908542238E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     81.923920            51.693665
+ MD| Energy drift per atom [K]          -0.179431118392E+02  -0.206607547379E+02
+ MD| Potential energy [hartree]         -0.815560902953E+03  -0.814342974142E+03
+ MD| Kinetic energy [hartree]            0.691390046525E+01   0.614667435721E+01
+ MD| Temperature [K]                           14701.915724         13070.464181
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    5.2     0.04136330      -815.5514445992 -8.16E+02
+     2 Broy./Diag. 0.20E+00    6.2     0.01108023      -815.5216027746  2.98E-02
+     3 Broy./Diag. 0.20E+00    6.1     0.00668292      -815.5418771175 -2.03E-02
+     4 Broy./Diag. 0.20E+00    7.0     0.00452376      -815.5501544432 -8.28E-03
+     5 Broy./Diag. 0.20E+00    6.0     0.00241597      -815.5567738448 -6.62E-03
+     6 Broy./Diag. 0.20E+00    6.7     0.00068388      -815.5598998577 -3.13E-03
+     7 Broy./Diag. 0.20E+00    6.0     0.00053063      -815.5598974929  2.36E-06
+     8 Broy./Diag. 0.20E+00    5.7     0.00045218      -815.5599304983 -3.30E-05
+     9 Broy./Diag. 0.20E+00    6.1     0.00022217      -815.5594204395  5.10E-04
+    10 Broy./Diag. 0.20E+00    5.6     0.00007840      -815.5595389260 -1.18E-04
+    11 Broy./Diag. 0.20E+00    6.1     0.00005627      -815.5594850749  5.39E-05
+    12 Broy./Diag. 0.20E+00    6.1     0.00003044      -815.5594873054 -2.23E-06
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998895       -0.0000001105
+  Total charge density on r-space grids:       -0.0000001092
+  Total charge density g-space grids:          -0.0000001092
+
+  Overlap energy of the core charge distribution:               0.00116997346621
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.23205976232492
+  Hartree energy:                                             714.11333641390354
+  Exchange-correlation energy:                               -187.05174806505511
+  Dispersion energy:                                           -0.71720928930343
+  Electronic entropic energy:                                  -0.89269995557169
+  Fermi energy:                                                 0.12547529001786
+
+  Total energy:                                              -815.55948730536659
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.559493630925431
+
+ MD| ***************************************************************************
+ MD| Step number                                                              53
+ MD| Time [fs]                                                         26.500000
+ MD| Conserved quantity [hartree]                            -0.807908554132E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     81.578430            52.257529
+ MD| Energy drift per atom [K]          -0.179806712398E+02  -0.206101871247E+02
+ MD| Potential energy [hartree]         -0.815559493631E+03  -0.814365927340E+03
+ MD| Kinetic energy [hartree]            0.689754635940E+01   0.616084175348E+01
+ MD| Temperature [K]                           14667.139886         13100.590138
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    4.3     0.04347613      -815.5577516507 -8.16E+02
+     2 Broy./Diag. 0.20E+00    5.5     0.01046688      -815.5293514696  2.84E-02
+     3 Broy./Diag. 0.20E+00    6.0     0.00678614      -815.5487037689 -1.94E-02
+     4 Broy./Diag. 0.20E+00    5.8     0.00458075      -815.5565984893 -7.89E-03
+     5 Broy./Diag. 0.20E+00    5.8     0.00239439      -815.5630995967 -6.50E-03
+     6 Broy./Diag. 0.20E+00    6.8     0.00065111      -815.5661291208 -3.03E-03
+     7 Broy./Diag. 0.20E+00    6.0     0.00050955      -815.5661326317 -3.51E-06
+     8 Broy./Diag. 0.20E+00    6.6     0.00043574      -815.5661547655 -2.21E-05
+     9 Broy./Diag. 0.20E+00    5.2     0.00021564      -815.5656764933  4.78E-04
+    10 Broy./Diag. 0.20E+00    3.5     0.00007716      -815.5658031949 -1.27E-04
+    11 Broy./Diag. 0.20E+00    3.2     0.00005550      -815.5657533420  4.99E-05
+    12 Broy./Diag. 0.20E+00    3.6     0.00003019      -815.5657584475 -5.11E-06
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001091
+  Total charge density g-space grids:          -0.0000001091
+
+  Overlap energy of the core charge distribution:               0.00110327862310
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.19366408521080
+  Hartree energy:                                             714.13205540293700
+  Exchange-correlation energy:                               -187.03798275749733
+  Dispersion energy:                                           -0.71723628639822
+  Electronic entropic energy:                                  -0.89296603373758
+  Fermi energy:                                                 0.12545109932419
+
+  Total energy:                                              -815.56575844750785
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.565763196494913
+
+ MD| ***************************************************************************
+ MD| Step number                                                              54
+ MD| Time [fs]                                                         27.000000
+ MD| Conserved quantity [hartree]                            -0.807908615226E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     69.205110            52.571373
+ MD| Energy drift per atom [K]          -0.181735882726E+02  -0.205650649238E+02
+ MD| Potential energy [hartree]         -0.815565763196E+03  -0.814388146523E+03
+ MD| Kinetic energy [hartree]            0.690148942313E+01   0.617455745107E+01
+ MD| Temperature [K]                           14675.524529         13129.755590
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.6     0.04498733      -815.5708992845 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.1     0.01061562      -815.5439035476  2.70E-02
+     3 Broy./Diag. 0.20E+00    3.2     0.00690216      -815.5623843770 -1.85E-02
+     4 Broy./Diag. 0.20E+00    3.4     0.00464108      -815.5698913138 -7.51E-03
+     5 Broy./Diag. 0.20E+00    3.5     0.00237633      -815.5762591955 -6.37E-03
+     6 Broy./Diag. 0.20E+00    3.3     0.00062080      -815.5791825939 -2.92E-03
+     7 Broy./Diag. 0.20E+00    3.2     0.00048911      -815.5791884591 -5.87E-06
+     8 Broy./Diag. 0.20E+00    3.3     0.00041987      -815.5792073876 -1.89E-05
+     9 Broy./Diag. 0.20E+00    3.4     0.00020957      -815.5787637240  4.44E-04
+    10 Broy./Diag. 0.20E+00    3.4     0.00007579      -815.5788999056 -1.36E-04
+    11 Broy./Diag. 0.20E+00    3.4     0.00005468      -815.5788544264  4.55E-05
+    12 Broy./Diag. 0.20E+00    3.4     0.00003007      -815.5788618129 -7.39E-06
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001092
+  Total charge density g-space grids:          -0.0000001092
+
+  Overlap energy of the core charge distribution:               0.00099471412204
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.14578167771629
+  Hartree energy:                                             714.15218929033495
+  Exchange-correlation energy:                               -187.02294435534907
+  Dispersion energy:                                           -0.71725342131948
+  Electronic entropic energy:                                  -0.89323359509332
+  Fermi energy:                                                 0.12542919094896
+
+  Total energy:                                              -815.57886181285267
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.578864284933161
+
+ MD| ***************************************************************************
+ MD| Step number                                                              55
+ MD| Time [fs]                                                         27.500000
+ MD| Conserved quantity [hartree]                            -0.807908711711E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     44.355832            52.422000
+ MD| Energy drift per atom [K]          -0.184782661498E+02  -0.205271231279E+02
+ MD| Potential energy [hartree]         -0.815578864285E+03  -0.814409795937E+03
+ MD| Kinetic energy [hartree]            0.687294151551E+01   0.618725534315E+01
+ MD| Temperature [K]                           14614.819442         13156.756751
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.3     0.04599730      -815.5894611154 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.2     0.01076906      -815.5638299850  2.56E-02
+     3 Broy./Diag. 0.20E+00    3.4     0.00701958      -815.5814947433 -1.77E-02
+     4 Broy./Diag. 0.20E+00    3.4     0.00470466      -815.5886482361 -7.15E-03
+     5 Broy./Diag. 0.20E+00    3.2     0.00236684      -815.5948750556 -6.23E-03
+     6 Broy./Diag. 0.20E+00    3.4     0.00061308      -815.5976882196 -2.81E-03
+     7 Broy./Diag. 0.20E+00    3.4     0.00046911      -815.5976873570  8.63E-07
+     8 Broy./Diag. 0.20E+00    3.5     0.00040355      -815.5977059623 -1.86E-05
+     9 Broy./Diag. 0.20E+00    3.3     0.00020341      -815.5972984050  4.08E-04
+    10 Broy./Diag. 0.20E+00    3.5     0.00007431      -815.5974447459 -1.46E-04
+    11 Broy./Diag. 0.20E+00    3.4     0.00005383      -815.5974040421  4.07E-05
+    12 Broy./Diag. 0.20E+00    3.5     0.00003003      -815.5974134801 -9.44E-06
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001091
+  Total charge density g-space grids:          -0.0000001091
+
+  Overlap energy of the core charge distribution:               0.00086508688186
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.08845831183498
+  Hartree energy:                                             714.17490181416974
+  Exchange-correlation energy:                               -187.00648347530910
+  Dispersion energy:                                           -0.71726089357747
+  Electronic entropic energy:                                  -0.89349821887178
+  Fermi energy:                                                 0.12540971460731
+
+  Total energy:                                              -815.59741348005934
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.597413247387294
+
+ MD| ***************************************************************************
+ MD| Step number                                                              56
+ MD| Time [fs]                                                         28.000000
+ MD| Conserved quantity [hartree]                            -0.807908823791E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     44.523883            52.280962
+ MD| Energy drift per atom [K]          -0.188321842686E+02  -0.204968563625E+02
+ MD| Potential energy [hartree]         -0.815597413247E+03  -0.814431003389E+03
+ MD| Kinetic energy [hartree]            0.687607035242E+01   0.619955561117E+01
+ MD| Temperature [K]                           14621.472690         13182.912392
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.4     0.04665352      -815.6117685263 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.1     0.01097320      -815.5872088291  2.46E-02
+     3 Broy./Diag. 0.20E+00    3.2     0.00715887      -815.6042446286 -1.70E-02
+     4 Broy./Diag. 0.20E+00    3.2     0.00477666      -815.6111138394 -6.87E-03
+     5 Broy./Diag. 0.20E+00    3.3     0.00236834      -815.6172375777 -6.12E-03
+     6 Broy./Diag. 0.20E+00    3.8     0.00060799      -815.6199630918 -2.73E-03
+     7 Broy./Diag. 0.20E+00    3.4     0.00045057      -815.6199619425  1.15E-06
+     8 Broy./Diag. 0.20E+00    3.3     0.00038804      -815.6199861043 -2.42E-05
+     9 Broy./Diag. 0.20E+00    3.2     0.00019797      -815.6196134978  3.73E-04
+    10 Broy./Diag. 0.20E+00    3.2     0.00007282      -815.6197697052 -1.56E-04
+    11 Broy./Diag. 0.20E+00    3.8     0.00005307      -815.6197333269  3.64E-05
+    12 Broy./Diag. 0.20E+00    3.4     0.00003013      -815.6197447026 -1.14E-05
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998897       -0.0000001103
+  Total charge density on r-space grids:       -0.0000001091
+  Total charge density g-space grids:          -0.0000001091
+
+  Overlap energy of the core charge distribution:               0.00073762968558
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    396.02208433412073
+  Hartree energy:                                             714.20131722730719
+  Exchange-correlation energy:                               -186.98847272848448
+  Dispersion energy:                                           -0.71725916533351
+  Electronic entropic energy:                                  -0.89375591675739
+  Fermi energy:                                                 0.12539266566871
+
+  Total energy:                                              -815.61974470262476
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.619741898544021
+
+ MD| ***************************************************************************
+ MD| Step number                                                              57
+ MD| Time [fs]                                                         28.500000
+ MD| Conserved quantity [hartree]                            -0.807908928785E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     44.105615            52.137535
+ MD| Energy drift per atom [K]          -0.191637280524E+02  -0.204734681466E+02
+ MD| Potential energy [hartree]         -0.815619741899E+03  -0.814451858450E+03
+ MD| Kinetic energy [hartree]            0.688773772727E+01   0.621162898163E+01
+ MD| Temperature [K]                           14646.282530         13208.585553
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.5     0.04675209      -815.6362012725 -8.16E+02
+     2 Broy./Diag. 0.20E+00    2.7     0.01115954      -815.6128373773  2.34E-02
+     3 Broy./Diag. 0.20E+00    3.0     0.00728180      -815.6292823866 -1.64E-02
+     4 Broy./Diag. 0.20E+00    2.9     0.00484584      -815.6358292385 -6.55E-03
+     5 Broy./Diag. 0.20E+00    3.3     0.00237615      -815.6417925175 -5.96E-03
+     6 Broy./Diag. 0.20E+00    3.1     0.00060632      -815.6443989624 -2.61E-03
+     7 Broy./Diag. 0.20E+00    3.3     0.00043115      -815.6443786075  2.04E-05
+     8 Broy./Diag. 0.20E+00    3.2     0.00037104      -815.6444032204 -2.46E-05
+     9 Broy./Diag. 0.20E+00    3.4     0.00019215      -815.6440638819  3.39E-04
+    10 Broy./Diag. 0.20E+00    3.5     0.00007095      -815.6442285250 -1.65E-04
+    11 Broy./Diag. 0.20E+00    3.5     0.00005220      -815.6441962258  3.23E-05
+    12 Broy./Diag. 0.20E+00    3.2     0.00003028      -815.6442099109 -1.37E-05
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999987        0.0000000013
+  Core density on regular grids:              559.9999998897       -0.0000001103
+  Total charge density on r-space grids:       -0.0000001090
+  Total charge density g-space grids:          -0.0000001090
+
+  Overlap energy of the core charge distribution:               0.00063322857759
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    395.94717519401667
+  Hartree energy:                                             714.23247974639651
+  Exchange-correlation energy:                               -186.96885070923662
+  Dispersion energy:                                           -0.71724894268301
+  Electronic entropic energy:                                  -0.89400236888180
+  Fermi energy:                                                 0.12537794620170
+
+  Total energy:                                              -815.64420991086297
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.644205026188388
+
+ MD| ***************************************************************************
+ MD| Step number                                                              58
+ MD| Time [fs]                                                         29.000000
+ MD| Conserved quantity [hartree]                            -0.807909005548E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     43.055873            51.980954
+ MD| Energy drift per atom [K]          -0.194061290763E+02  -0.204550657488E+02
+ MD| Potential energy [hartree]         -0.815644205026E+03  -0.814472416150E+03
+ MD| Kinetic energy [hartree]            0.689121507264E+01   0.622334598320E+01
+ MD| Temperature [K]                           14653.676856         13233.500920
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.4     0.04656280      -815.6614880385 -8.16E+02
+     2 Broy./Diag. 0.20E+00    2.8     0.01138895      -815.6391969832  2.23E-02
+     3 Broy./Diag. 0.20E+00    3.4     0.00741303      -815.6551587795 -1.60E-02
+     4 Broy./Diag. 0.20E+00    3.2     0.00492518      -815.6614155515 -6.26E-03
+     5 Broy./Diag. 0.20E+00    3.4     0.00239047      -815.6672278491 -5.81E-03
+     6 Broy./Diag. 0.20E+00    3.2     0.00060712      -815.6697262737 -2.50E-03
+     7 Broy./Diag. 0.20E+00    4.5     0.00041216      -815.6696862451  4.00E-05
+     8 Broy./Diag. 0.20E+00    3.8     0.00035375      -815.6697121035 -2.59E-05
+     9 Broy./Diag. 0.20E+00    3.5     0.00018613      -815.6694040608  3.08E-04
+    10 Broy./Diag. 0.20E+00    3.9     0.00006888      -815.6695754745 -1.71E-04
+    11 Broy./Diag. 0.20E+00    3.5     0.00005128      -815.6695467309  2.87E-05
+    12 Broy./Diag. 0.20E+00    3.8     0.00003047      -815.6695626791 -1.59E-05
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998897       -0.0000001103
+  Total charge density on r-space grids:       -0.0000001091
+  Total charge density g-space grids:          -0.0000001091
+
+  Overlap energy of the core charge distribution:               0.00056636139965
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    395.86413408608200
+  Hartree energy:                                             714.26915291114483
+  Exchange-correlation energy:                               -186.94755506500124
+  Dispersion energy:                                           -0.71723110117684
+  Electronic entropic energy:                                  -0.89423383660901
+  Fermi energy:                                                 0.12536530701579
+
+  Total energy:                                              -815.66956267907608
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.669555928495356
+
+ MD| ***************************************************************************
+ MD| Step number                                                              59
+ MD| Time [fs]                                                         29.500000
+ MD| Conserved quantity [hartree]                            -0.807909039050E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     46.642576            51.890473
+ MD| Energy drift per atom [K]          -0.195119176097E+02  -0.204390801871E+02
+ MD| Potential energy [hartree]         -0.815669555928E+03  -0.814492706655E+03
+ MD| Kinetic energy [hartree]            0.691990659807E+01   0.623515209531E+01
+ MD| Temperature [K]                           14714.687337         13258.605775
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.3     0.04601634      -815.6869531988 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.1     0.01163933      -815.6657420059  2.12E-02
+     3 Broy./Diag. 0.20E+00    3.5     0.00753994      -815.6812989628 -1.56E-02
+     4 Broy./Diag. 0.20E+00    3.4     0.00499628      -815.6872409741 -5.94E-03
+     5 Broy./Diag. 0.20E+00    3.3     0.00240932      -815.6928785144 -5.64E-03
+     6 Broy./Diag. 0.20E+00    3.6     0.00061227      -815.6952586920 -2.38E-03
+     7 Broy./Diag. 0.20E+00    2.9     0.00039305      -815.6951904116  6.83E-05
+     8 Broy./Diag. 0.20E+00    3.3     0.00033567      -815.6952132965 -2.29E-05
+     9 Broy./Diag. 0.20E+00    3.4     0.00017970      -815.6949336610  2.80E-04
+    10 Broy./Diag. 0.20E+00    3.3     0.00006655      -815.6951102642 -1.77E-04
+    11 Broy./Diag. 0.20E+00    3.3     0.00005027      -815.6950850509  2.52E-05
+    12 Broy./Diag. 0.20E+00    3.2     0.00003066      -815.6951038987 -1.88E-05
+
+  *** SCF run converged in    12 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998897       -0.0000001103
+  Total charge density on r-space grids:       -0.0000001091
+  Total charge density g-space grids:          -0.0000001091
+
+  Overlap energy of the core charge distribution:               0.00054343385065
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    395.77337336028461
+  Hartree energy:                                             714.31161016912847
+  Exchange-correlation energy:                               -186.92458213328527
+  Dispersion energy:                                           -0.71720662048522
+  Electronic entropic energy:                                  -0.89444609539767
+  Fermi energy:                                                 0.12535441357632
+
+  Total energy:                                              -815.69510389873039
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.695096087940101
+
+ MD| ***************************************************************************
+ MD| Step number                                                              60
+ MD| Time [fs]                                                         30.000000
+ MD| Conserved quantity [hartree]                            -0.807909022996E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     44.276782            51.763578
+ MD| Energy drift per atom [K]          -0.194612223466E+02  -0.204227825564E+02
+ MD| Potential energy [hartree]         -0.815695096088E+03  -0.814512746478E+03
+ MD| Kinetic energy [hartree]            0.692036404870E+01   0.624657229454E+01
+ MD| Temperature [K]                           14715.660073         13282.890013
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.8     0.04525172      -815.7125897975 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.1     0.01194720      -815.6926566529  1.99E-02
+     3 Broy./Diag. 0.20E+00    3.5     0.00766666      -815.7078296634 -1.52E-02
+     4 Broy./Diag. 0.20E+00    3.6     0.00505041      -815.7133273081 -5.50E-03
+     5 Broy./Diag. 0.20E+00    3.5     0.00243532      -815.7187340030 -5.41E-03
+     6 Broy./Diag. 0.20E+00    3.7     0.00062514      -815.7209795458 -2.25E-03
+     7 Broy./Diag. 0.20E+00    3.8     0.00037409      -815.7208873230  9.22E-05
+     8 Broy./Diag. 0.20E+00    3.5     0.00031711      -815.7209094897 -2.22E-05
+     9 Broy./Diag. 0.20E+00    3.6     0.00017283      -815.7206552918  2.54E-04
+    10 Broy./Diag. 0.20E+00    3.9     0.00006589      -815.7208351069 -1.80E-04
+    11 Broy./Diag. 0.20E+00    3.9     0.00004926      -815.7208130165  2.21E-05
+
+  *** SCF run converged in    11 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998897       -0.0000001103
+  Total charge density on r-space grids:       -0.0000001090
+  Total charge density g-space grids:          -0.0000001090
+
+  Overlap energy of the core charge distribution:               0.00056211433157
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    395.67507528145893
+  Hartree energy:                                             714.35972178678730
+  Exchange-correlation energy:                               -186.89996396217646
+  Dispersion energy:                                           -0.71717648075330
+  Electronic entropic energy:                                  -0.89463437016642
+  Fermi energy:                                                 0.12534484423063
+
+  Total energy:                                              -815.72081301645471
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.720827593347963
+
+ MD| ***************************************************************************
+ MD| Step number                                                              61
+ MD| Time [fs]                                                         30.500000
+ MD| Conserved quantity [hartree]                            -0.807908960801E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     44.409648            51.643022
+ MD| Energy drift per atom [K]          -0.192648285770E+02  -0.204037997043E+02
+ MD| Potential energy [hartree]         -0.815720827593E+03  -0.814532551087E+03
+ MD| Kinetic energy [hartree]            0.692541094197E+01   0.625770079695E+01
+ MD| Temperature [K]                           14726.391931         13306.553979
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.6     0.04590495      -815.7390432996 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.3     0.01281865      -815.7199486172  1.91E-02
+     3 Broy./Diag. 0.20E+00    3.6     0.00807927      -815.7349261593 -1.50E-02
+     4 Broy./Diag. 0.20E+00    3.5     0.00521175      -815.7402297021 -5.30E-03
+     5 Broy./Diag. 0.20E+00    4.0     0.00242774      -815.7454888695 -5.26E-03
+     6 Broy./Diag. 0.20E+00    3.7     0.00065558      -815.7476332394 -2.14E-03
+     7 Broy./Diag. 0.20E+00    4.5     0.00036405      -815.7474659836  1.67E-04
+     8 Broy./Diag. 0.20E+00    3.9     0.00030717      -815.7474872230 -2.12E-05
+     9 Broy./Diag. 0.20E+00    4.0     0.00016852      -815.7472521325  2.35E-04
+    10 Broy./Diag. 0.20E+00    3.5     0.00006476      -815.7474342721 -1.82E-04
+    11 Broy./Diag. 0.20E+00    3.7     0.00004858      -815.7474148723  1.94E-05
+
+  *** SCF run converged in    11 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998897       -0.0000001103
+  Total charge density on r-space grids:       -0.0000001091
+  Total charge density g-space grids:          -0.0000001091
+
+  Overlap energy of the core charge distribution:               0.00061233073539
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    395.56907230821389
+  Hartree energy:                                             714.41295953355484
+  Exchange-correlation energy:                               -186.87372521875074
+  Dispersion energy:                                           -0.71714152971756
+  Electronic entropic energy:                                  -0.89479493911749
+  Fermi energy:                                                 0.12533613052381
+
+  Total energy:                                              -815.74741487225799
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.747432363283792
+
+ MD| ***************************************************************************
+ MD| Step number                                                              62
+ MD| Time [fs]                                                         31.000000
+ MD| Conserved quantity [hartree]                            -0.807908863679E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     45.488312            51.543753
+ MD| Energy drift per atom [K]          -0.189581400586E+02  -0.203804826133E+02
+ MD| Potential energy [hartree]         -0.815747432363E+03  -0.814552145946E+03
+ MD| Kinetic energy [hartree]            0.695058632841E+01   0.626887637004E+01
+ MD| Temperature [K]                           14779.925593         13330.318037
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    3.7     0.04933232      -815.7674557651 -8.16E+02
+     2 Broy./Diag. 0.20E+00    4.0     0.01307240      -815.7491970175  1.83E-02
+     3 Broy./Diag. 0.20E+00    3.5     0.00822046      -815.7640316222 -1.48E-02
+     4 Broy./Diag. 0.20E+00    3.2     0.00529529      -815.7692797793 -5.25E-03
+     5 Broy./Diag. 0.20E+00    3.8     0.00245061      -815.7745020280 -5.22E-03
+     6 Broy./Diag. 0.20E+00    3.6     0.00069147      -815.7764557844 -1.95E-03
+     7 Broy./Diag. 0.20E+00    4.2     0.00035306      -815.7761270897  3.29E-04
+     8 Broy./Diag. 0.20E+00    3.9     0.00029674      -815.7760839324  4.32E-05
+     9 Broy./Diag. 0.20E+00    3.6     0.00016504      -815.7758550155  2.29E-04
+    10 Broy./Diag. 0.20E+00    4.2     0.00006495      -815.7760384261 -1.83E-04
+    11 Broy./Diag. 0.20E+00    3.6     0.00004762      -815.7760226379  1.58E-05
+
+  *** SCF run converged in    11 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001091
+  Total charge density g-space grids:          -0.0000001091
+
+  Overlap energy of the core charge distribution:               0.00067819515497
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    395.45522942958331
+  Hartree energy:                                             714.47044811341368
+  Exchange-correlation energy:                               -186.84595648610340
+  Dispersion energy:                                           -0.71710248270375
+  Electronic entropic energy:                                  -0.89492206436155
+  Fermi energy:                                                 0.12532775573812
+
+  Total energy:                                              -815.77602263785332
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.776044500088688
+
+ MD| ***************************************************************************
+ MD| Step number                                                              63
+ MD| Time [fs]                                                         31.500000
+ MD| Conserved quantity [hartree]                            -0.807908749891E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     46.440633            51.462751
+ MD| Energy drift per atom [K]          -0.185988283455E+02  -0.203522023868E+02
+ MD| Potential energy [hartree]         -0.815776044500E+03  -0.814571572907E+03
+ MD| Kinetic energy [hartree]            0.696536353836E+01   0.627993172192E+01
+ MD| Temperature [K]                           14811.348275         13353.826453
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.3     0.05412964      -815.7993767449 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.8     0.01371082      -815.7841232119  1.53E-02
+     3 Broy./Diag. 0.20E+00    3.2     0.00846524      -815.7979175294 -1.38E-02
+     4 Broy./Diag. 0.20E+00    3.4     0.00534592      -815.8021426526 -4.23E-03
+     5 Broy./Diag. 0.20E+00    3.3     0.00246782      -815.8066904702 -4.55E-03
+     6 Broy./Diag. 0.20E+00    3.6     0.00073842      -815.8083965397 -1.71E-03
+     7 Broy./Diag. 0.20E+00    3.5     0.00032941      -815.8080433682  3.53E-04
+     8 Broy./Diag. 0.20E+00    3.7     0.00027218      -815.8080098665  3.35E-05
+     9 Broy./Diag. 0.20E+00    3.4     0.00015390      -815.8078111881  1.99E-04
+    10 Broy./Diag. 0.20E+00    3.6     0.00006490      -815.8079963737 -1.85E-04
+    11 Broy./Diag. 0.20E+00    3.3     0.00004583      -815.8079854253  1.09E-05
+
+  *** SCF run converged in    11 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998897       -0.0000001103
+  Total charge density on r-space grids:       -0.0000001090
+  Total charge density g-space grids:          -0.0000001090
+
+  Overlap energy of the core charge distribution:               0.00074085359435
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    395.33354529811379
+  Hartree energy:                                             714.53099717876296
+  Exchange-correlation energy:                               -186.81680192511374
+  Dispersion energy:                                           -0.71705988349007
+  Electronic entropic energy:                                  -0.89500963556103
+  Fermi energy:                                                 0.12531917972733
+
+  Total energy:                                              -815.80798542530442
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.808013632832740
+
+ MD| ***************************************************************************
+ MD| Step number                                                              64
+ MD| Time [fs]                                                         32.000000
+ MD| Conserved quantity [hartree]                            -0.807908640149E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     42.107281            51.316572
+ MD| Energy drift per atom [K]          -0.182522885927E+02  -0.203193912338E+02
+ MD| Potential energy [hartree]         -0.815808013633E+03  -0.814590892294E+03
+ MD| Kinetic energy [hartree]            0.696633550639E+01   0.629065678105E+01
+ MD| Temperature [K]                           14813.415096         13376.632526
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.6     0.05630928      -815.8359883292 -8.16E+02
+     2 Broy./Diag. 0.20E+00    4.2     0.01399644      -815.8231382627  1.29E-02
+     3 Broy./Diag. 0.20E+00    3.9     0.00860058      -815.8359289750 -1.28E-02
+     4 Broy./Diag. 0.20E+00    3.1     0.00540688      -815.8396530847 -3.72E-03
+     5 Broy./Diag. 0.20E+00    3.5     0.00247865      -815.8437750903 -4.12E-03
+     6 Broy./Diag. 0.20E+00    3.7     0.00076647      -815.8452050264 -1.43E-03
+     7 Broy./Diag. 0.20E+00    3.4     0.00030677      -815.8447066293  4.98E-04
+     8 Broy./Diag. 0.20E+00    3.6     0.00025055      -815.8446197705  8.69E-05
+     9 Broy./Diag. 0.20E+00    3.9     0.00014368      -815.8444428505  1.77E-04
+    10 Broy./Diag. 0.20E+00    3.7     0.00006412      -815.8446296043 -1.87E-04
+    11 Broy./Diag. 0.20E+00    4.2     0.00004321      -815.8446246778  4.93E-06
+
+  *** SCF run converged in    11 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999987        0.0000000013
+  Core density on regular grids:              559.9999998897       -0.0000001103
+  Total charge density on r-space grids:       -0.0000001091
+  Total charge density g-space grids:          -0.0000001091
+
+  Overlap energy of the core charge distribution:               0.00078244909166
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    395.20400949943138
+  Hartree energy:                                             714.59345430742144
+  Exchange-correlation energy:                               -186.78640887380607
+  Dispersion energy:                                           -0.71701400517032
+  Electronic entropic energy:                                  -0.89505078630666
+  Fermi energy:                                                 0.12530985182575
+
+  Total energy:                                              -815.84462467781566
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.844656820570663
+
+ MD| ***************************************************************************
+ MD| Step number                                                              65
+ MD| Time [fs]                                                         32.500000
+ MD| Conserved quantity [hartree]                            -0.807908554394E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     45.200131            51.222472
+ MD| Energy drift per atom [K]          -0.179814989653E+02  -0.202834236604E+02
+ MD| Potential energy [hartree]         -0.815844656821E+03  -0.814610180979E+03
+ MD| Kinetic energy [hartree]            0.698641700622E+01   0.630136078452E+01
+ MD| Temperature [K]                           14856.116971         13399.393825
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                439
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.4     0.05849987      -815.8781792780 -8.16E+02
+     2 Broy./Diag. 0.20E+00    2.8     0.01454268      -815.8673224694  1.09E-02
+     3 Broy./Diag. 0.20E+00    3.1     0.00884478      -815.8795612382 -1.22E-02
+     4 Broy./Diag. 0.20E+00    3.7     0.00548990      -815.8827277302 -3.17E-03
+     5 Broy./Diag. 0.20E+00    3.3     0.00249573      -815.8864723085 -3.74E-03
+     6 Broy./Diag. 0.20E+00    3.3     0.00079447      -815.8876260422 -1.15E-03
+     7 Broy./Diag. 0.20E+00    3.8     0.00031094      -815.8870070325  6.19E-04
+     8 Broy./Diag. 0.20E+00    4.0     0.00023918      -815.8868953952  1.12E-04
+     9 Broy./Diag. 0.20E+00    2.9     0.00013832      -815.8867349887  1.60E-04
+    10 Broy./Diag. 0.20E+00    3.4     0.00006350      -815.8869246196 -1.90E-04
+    11 Broy./Diag. 0.20E+00    3.7     0.00004170      -815.8869241520  4.68E-07
+
+  *** SCF run converged in    11 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001092
+  Total charge density g-space grids:          -0.0000001092
+
+  Overlap energy of the core charge distribution:               0.00078998005608
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    395.06685148585876
+  Hartree energy:                                             714.65678377399092
+  Exchange-correlation energy:                               -186.75494898709451
+  Dispersion energy:                                           -0.71696484663604
+  Electronic entropic energy:                                  -0.89503831003737
+  Fermi energy:                                                 0.12529918664038
+
+  Total energy:                                              -815.88692415200467
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.886962214897153
+
+ MD| ***************************************************************************
+ MD| Step number                                                              66
+ MD| Time [fs]                                                         33.000000
+ MD| Conserved quantity [hartree]                            -0.807908507200E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     41.632904            51.077176
+ MD| Energy drift per atom [K]          -0.178324714932E+02  -0.202462880215E+02
+ MD| Potential energy [hartree]         -0.815886962215E+03  -0.814629526149E+03
+ MD| Kinetic energy [hartree]            0.700860717972E+01   0.631207663899E+01
+ MD| Temperature [K]                           14903.302791         13422.180325
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                440
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.7     0.05985138      -815.9264622287 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.0     0.01511343      -815.9176145735  8.85E-03
+     3 Broy./Diag. 0.20E+00    3.4     0.00909179      -815.9292701044 -1.17E-02
+     4 Broy./Diag. 0.20E+00    3.1     0.00557708      -815.9318954093 -2.63E-03
+     5 Broy./Diag. 0.20E+00    3.3     0.00251364      -815.9352608514 -3.37E-03
+     6 Broy./Diag. 0.20E+00    4.0     0.00081843      -815.9361307625 -8.70E-04
+     7 Broy./Diag. 0.20E+00    3.3     0.00031619      -815.9353870461  7.44E-04
+     8 Broy./Diag. 0.20E+00    3.2     0.00022892      -815.9352503716  1.37E-04
+     9 Broy./Diag. 0.20E+00    3.4     0.00013322      -815.9351060920  1.44E-04
+    10 Broy./Diag. 0.20E+00    3.2     0.00006276      -815.9352986227 -1.93E-04
+    11 Broy./Diag. 0.20E+00    3.3     0.00004004      -815.9353023362 -3.71E-06
+
+  *** SCF run converged in    11 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001092
+  Total charge density g-space grids:          -0.0000001092
+
+  Overlap energy of the core charge distribution:               0.00075803926708
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    394.92274246899302
+  Hartree energy:                                             714.72011224182847
+  Exchange-correlation energy:                               -186.72264054661252
+  Dispersion energy:                                           -0.71691218406407
+  Electronic entropic energy:                                  -0.89496513068201
+  Fermi energy:                                                 0.12528665066930
+
+  Total energy:                                              -815.93530233616696
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.935345688931875
+
+ MD| ***************************************************************************
+ MD| Step number                                                              67
+ MD| Time [fs]                                                         33.500000
+ MD| Conserved quantity [hartree]                            -0.807908506014E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     41.295834            50.931186
+ MD| Energy drift per atom [K]          -0.178287261299E+02  -0.202102050082E+02
+ MD| Potential energy [hartree]         -0.815935345689E+03  -0.814649015993E+03
+ MD| Kinetic energy [hartree]            0.703693565156E+01   0.632289543022E+01
+ MD| Temperature [K]                           14963.541264         13445.185712
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                440
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.9     0.06019617      -815.9805951154 -8.16E+02
+     2 Broy./Diag. 0.20E+00    2.9     0.01575784      -815.9735332051  7.06E-03
+     3 Broy./Diag. 0.20E+00    3.6     0.00937074      -815.9847138760 -1.12E-02
+     4 Broy./Diag. 0.20E+00    3.9     0.00567245      -815.9868393428 -2.13E-03
+     5 Broy./Diag. 0.20E+00    3.3     0.00253477      -815.9898638651 -3.02E-03
+     6 Broy./Diag. 0.20E+00    3.5     0.00084095      -815.9904663469 -6.02E-04
+     7 Broy./Diag. 0.20E+00    3.4     0.00031774      -815.9896084251  8.58E-04
+     8 Broy./Diag. 0.20E+00    3.6     0.00022139      -815.9894527360  1.56E-04
+     9 Broy./Diag. 0.20E+00    3.8     0.00012933      -815.9893229842  1.30E-04
+    10 Broy./Diag. 0.20E+00    3.6     0.00006204      -815.9895186611 -1.96E-04
+    11 Broy./Diag. 0.20E+00    3.4     0.00003850      -815.9895260263 -7.37E-06
+
+  *** SCF run converged in    11 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999989        0.0000000011
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001092
+  Total charge density g-space grids:          -0.0000001092
+
+  Overlap energy of the core charge distribution:               0.00068958019533
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    394.77277107144556
+  Hartree energy:                                             714.78281079620433
+  Exchange-correlation energy:                               -186.68972013685530
+  Dispersion energy:                                           -0.71685556164246
+  Electronic entropic energy:                                  -0.89482457141256
+  Fermi energy:                                                 0.12527170719389
+
+  Total energy:                                              -815.98952602629015
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -815.989574341180173
+
+ MD| ***************************************************************************
+ MD| Step number                                                              68
+ MD| Time [fs]                                                         34.000000
+ MD| Conserved quantity [hartree]                            -0.807908549964E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     43.182464            50.817234
+ MD| Energy drift per atom [K]          -0.179675097571E+02  -0.201772241957E+02
+ MD| Potential energy [hartree]         -0.815989574341E+03  -0.814668730086E+03
+ MD| Kinetic energy [hartree]            0.707095426942E+01   0.633389629550E+01
+ MD| Temperature [K]                           15035.879426         13468.578266
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                440
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    2.6     0.05961461      -816.0396692825 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.3     0.01640702      -816.0340304589  5.64E-03
+     3 Broy./Diag. 0.20E+00    3.0     0.00966191      -816.0448976548 -1.09E-02
+     4 Broy./Diag. 0.20E+00    3.1     0.00577095      -816.0465998889 -1.70E-03
+     5 Broy./Diag. 0.20E+00    3.5     0.00255756      -816.0493434581 -2.74E-03
+     6 Broy./Diag. 0.20E+00    3.4     0.00086284      -816.0497084687 -3.65E-04
+     7 Broy./Diag. 0.20E+00    3.5     0.00031545      -816.0487510373  9.57E-04
+     8 Broy./Diag. 0.20E+00    3.6     0.00021636      -816.0485813739  1.70E-04
+     9 Broy./Diag. 0.20E+00    3.6     0.00012651      -816.0484633591  1.18E-04
+    10 Broy./Diag. 0.20E+00    3.7     0.00006138      -816.0486616195 -1.98E-04
+    11 Broy./Diag. 0.20E+00    4.1     0.00003708      -816.0486718127 -1.02E-05
+
+  *** SCF run converged in    11 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001092
+  Total charge density g-space grids:          -0.0000001092
+
+  Overlap energy of the core charge distribution:               0.00059442805902
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    394.61856284071018
+  Hartree energy:                                             714.84445563705344
+  Exchange-correlation energy:                               -186.65648124687348
+  Dispersion energy:                                           -0.71679439801816
+  Electronic entropic energy:                                  -0.89461188876146
+  Fermi energy:                                                 0.12525389911725
+
+  Total energy:                                              -816.04867181267934
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -816.048724290521250
+
+ MD| ***************************************************************************
+ MD| Step number                                                              69
+ MD| Time [fs]                                                         34.500000
+ MD| Conserved quantity [hartree]                            -0.807908630564E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     43.289406            50.708135
+ MD| Energy drift per atom [K]          -0.182220246483E+02  -0.201488879703E+02
+ MD| Potential energy [hartree]         -0.816048724291E+03  -0.814688730002E+03
+ MD| Kinetic energy [hartree]            0.708841878503E+01   0.634483140405E+01
+ MD| Temperature [K]                           15073.016472         13491.830994
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                440
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    3.4     0.05821566      -816.1023086595 -8.16E+02
+     2 Broy./Diag. 0.20E+00    4.2     0.01707765      -816.0977672284  4.54E-03
+     3 Broy./Diag. 0.20E+00    4.7     0.00996789      -816.1084617369 -1.07E-02
+     4 Broy./Diag. 0.20E+00    5.2     0.00587933      -816.1098112310 -1.35E-03
+     5 Broy./Diag. 0.20E+00    5.2     0.00258555      -816.1123389148 -2.53E-03
+     6 Broy./Diag. 0.20E+00    4.8     0.00088598      -816.1125069117 -1.68E-04
+     7 Broy./Diag. 0.20E+00    4.1     0.00030965      -816.1114698691  1.04E-03
+     8 Broy./Diag. 0.20E+00    5.4     0.00021384      -816.1112941866  1.76E-04
+     9 Broy./Diag. 0.20E+00    5.7     0.00012477      -816.1111863574  1.08E-04
+    10 Broy./Diag. 0.20E+00    4.9     0.00006076      -816.1113869889 -2.01E-04
+    11 Broy./Diag. 0.20E+00    4.5     0.00003589      -816.1113990884 -1.21E-05
+
+  *** SCF run converged in    11 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001092
+  Total charge density g-space grids:          -0.0000001092
+
+  Overlap energy of the core charge distribution:               0.00048582357720
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    394.46179799985248
+  Hartree energy:                                             714.90494303805667
+  Exchange-correlation energy:                               -186.62317664637891
+  Dispersion energy:                                           -0.71672786499097
+  Electronic entropic energy:                                  -0.89432427025947
+  Fermi energy:                                                 0.12523280935532
+
+  Total energy:                                              -816.11139908840744
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -816.111454486062485
+
+ MD| ***************************************************************************
+ MD| Step number                                                              70
+ MD| Time [fs]                                                         35.000000
+ MD| Conserved quantity [hartree]                            -0.807908734831E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     61.078914            50.856289
+ MD| Energy drift per atom [K]          -0.185512714004E+02  -0.201260648765E+02
+ MD| Potential energy [hartree]         -0.816111454486E+03  -0.814709054638E+03
+ MD| Kinetic energy [hartree]            0.715511599319E+01   0.635640689818E+01
+ MD| Temperature [K]                           15214.843323         13516.445456
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                440
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    4.4     0.05615892      -816.1668541012 -8.16E+02
+     2 Broy./Diag. 0.20E+00    5.6     0.01786671      -816.1629849397  3.87E-03
+     3 Broy./Diag. 0.20E+00    5.2     0.01030540      -816.1736644111 -1.07E-02
+     4 Broy./Diag. 0.20E+00    4.0     0.00600632      -816.1747687455 -1.10E-03
+     5 Broy./Diag. 0.20E+00    4.8     0.00262050      -816.1771754287 -2.41E-03
+     6 Broy./Diag. 0.20E+00    4.9     0.00091211      -816.1772127075 -3.73E-05
+     7 Broy./Diag. 0.20E+00    6.4     0.00030138      -816.1761246809  1.09E-03
+     8 Broy./Diag. 0.20E+00    4.7     0.00021306      -816.1759507309  1.74E-04
+     9 Broy./Diag. 0.20E+00    4.7     0.00012372      -816.1758510140  9.97E-05
+    10 Broy./Diag. 0.20E+00    5.0     0.00006018      -816.1760532027 -2.02E-04
+    11 Broy./Diag. 0.20E+00    5.5     0.00003486      -816.1760663941 -1.32E-05
+
+  *** SCF run converged in    11 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001093
+  Total charge density g-space grids:          -0.0000001093
+
+  Overlap energy of the core charge distribution:               0.00037688954832
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    394.30436009355299
+  Hartree energy:                                             714.96426415944927
+  Exchange-correlation energy:                               -186.59005401140308
+  Dispersion energy:                                           -0.71665498441173
+  Electronic entropic energy:                                  -0.89396138972548
+  Fermi energy:                                                 0.12520810100856
+
+  Total energy:                                              -816.17606639412270
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -816.176123398757113
+
+ MD| ***************************************************************************
+ MD| Step number                                                              71
+ MD| Time [fs]                                                         35.500000
+ MD| Conserved quantity [hartree]                            -0.807908848360E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     63.355428            51.032333
+ MD| Energy drift per atom [K]          -0.189097688383E+02  -0.201089339464E+02
+ MD| Potential energy [hartree]         -0.816176123399E+03  -0.814729717578E+03
+ MD| Kinetic energy [hartree]            0.719803726767E+01   0.636826084704E+01
+ MD| Temperature [K]                           15306.112349         13541.652032
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                440
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    3.3     0.05408722      -816.2313383946 -8.16E+02
+     2 Broy./Diag. 0.20E+00    4.8     0.01863949      -816.2275868923  3.75E-03
+     3 Broy./Diag. 0.20E+00    5.3     0.01060574      -816.2384391911 -1.09E-02
+     4 Broy./Diag. 0.20E+00    4.9     0.00611814      -816.2394102822 -9.71E-04
+     5 Broy./Diag. 0.20E+00    5.3     0.00265280      -816.2418004270 -2.39E-03
+     6 Broy./Diag. 0.20E+00    4.4     0.00094091      -816.2417812641  1.92E-05
+     7 Broy./Diag. 0.20E+00    5.3     0.00029002      -816.2406748163  1.11E-03
+     8 Broy./Diag. 0.20E+00    5.6     0.00021403      -816.2405057886  1.69E-04
+     9 Broy./Diag. 0.20E+00    5.7     0.00012318      -816.2404082480  9.75E-05
+    10 Broy./Diag. 0.20E+00    5.0     0.00005942      -816.2406094023 -2.01E-04
+    11 Broy./Diag. 0.20E+00    4.5     0.00003406      -816.2406225564 -1.32E-05
+
+  *** SCF run converged in    11 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998895       -0.0000001105
+  Total charge density on r-space grids:       -0.0000001093
+  Total charge density g-space grids:          -0.0000001093
+
+  Overlap energy of the core charge distribution:               0.00027834698316
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    394.14894940446061
+  Hartree energy:                                             715.02216520027980
+  Exchange-correlation energy:                               -186.55751533329732
+  Dispersion energy:                                           -0.71657507750764
+  Electronic entropic energy:                                  -0.89352796220774
+  Fermi energy:                                                 0.12517970081642
+
+  Total energy:                                              -816.24062255638819
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -816.240679548767275
+
+ MD| ***************************************************************************
+ MD| Step number                                                              72
+ MD| Time [fs]                                                         36.000000
+ MD| Conserved quantity [hartree]                            -0.807908956962E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     60.926241            51.169749
+ MD| Energy drift per atom [K]          -0.192527052800E+02  -0.200970418816E+02
+ MD| Potential energy [hartree]         -0.816240679549E+03  -0.814750703161E+03
+ MD| Kinetic energy [hartree]            0.724931885346E+01   0.638049776380E+01
+ MD| Temperature [K]                           15415.158980         13567.672962
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                440
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    4.6     0.05465971      -816.2940048598 -8.16E+02
+     2 Broy./Diag. 0.20E+00    5.8     0.01940290      -816.2898906085  4.11E-03
+     3 Broy./Diag. 0.20E+00    4.7     0.01089092      -816.3011114086 -1.12E-02
+     4 Broy./Diag. 0.20E+00    4.8     0.00622594      -816.3020447852 -9.33E-04
+     5 Broy./Diag. 0.20E+00    4.5     0.00269039      -816.3045187879 -2.47E-03
+     6 Broy./Diag. 0.20E+00    5.7     0.00100532      -816.3045211322 -2.34E-06
+     7 Broy./Diag. 0.20E+00    6.3     0.00028580      -816.3034339607  1.09E-03
+     8 Broy./Diag. 0.20E+00    4.7     0.00021634      -816.3032806568  1.53E-04
+     9 Broy./Diag. 0.20E+00    5.1     0.00012293      -816.3031839335  9.67E-05
+    10 Broy./Diag. 0.20E+00    5.8     0.00005849      -816.3033829090 -1.99E-04
+    11 Broy./Diag. 0.20E+00    6.3     0.00003358      -816.3033951617 -1.23E-05
+
+  *** SCF run converged in    11 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998896       -0.0000001104
+  Total charge density on r-space grids:       -0.0000001093
+  Total charge density g-space grids:          -0.0000001093
+
+  Overlap energy of the core charge distribution:               0.00019617870857
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    393.99752489577111
+  Hartree energy:                                             715.07859816586813
+  Exchange-correlation energy:                               -186.52579977357894
+  Dispersion energy:                                           -0.71648714351873
+  Electronic entropic energy:                                  -0.89303036062746
+  Fermi energy:                                                 0.12514755471496
+
+  Total energy:                                              -816.30339516174251
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -816.303449921737410
+
+ MD| ***************************************************************************
+ MD| Step number                                                              73
+ MD| Time [fs]                                                         36.500000
+ MD| Conserved quantity [hartree]                            -0.807909050264E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     66.558375            51.380552
+ MD| Energy drift per atom [K]          -0.195473290027E+02  -0.200895115682E+02
+ MD| Potential energy [hartree]         -0.816303449922E+03  -0.814771973665E+03
+ MD| Kinetic energy [hartree]            0.731032652331E+01   0.639323514407E+01
+ MD| Temperature [K]                           15544.887434         13594.758091
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                440
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    3.6     0.05436531      -816.3532741276 -8.16E+02
+     2 Broy./Diag. 0.20E+00    4.1     0.02017877      -816.3477889382  5.49E-03
+     3 Broy./Diag. 0.20E+00    5.5     0.01117741      -816.3597753048 -1.20E-02
+     4 Broy./Diag. 0.20E+00    6.5     0.00633067      -816.3608901659 -1.11E-03
+     5 Broy./Diag. 0.20E+00    4.5     0.00272888      -816.3636458424 -2.76E-03
+     6 Broy./Diag. 0.20E+00    5.6     0.00106136      -816.3638061973 -1.60E-04
+     7 Broy./Diag. 0.20E+00    5.8     0.00029313      -816.3627916165  1.01E-03
+     8 Broy./Diag. 0.20E+00    5.8     0.00021945      -816.3626603970  1.31E-04
+     9 Broy./Diag. 0.20E+00    5.1     0.00012264      -816.3625584760  1.02E-04
+    10 Broy./Diag. 0.20E+00    4.6     0.00005740      -816.3627517287 -1.93E-04
+    11 Broy./Diag. 0.20E+00    3.4     0.00003336      -816.3627617093 -9.98E-06
+
+  *** SCF run converged in    11 steps ***
+
+
+  Electronic density on regular grids:       -559.9999999988        0.0000000012
+  Core density on regular grids:              559.9999998895       -0.0000001105
+  Total charge density on r-space grids:       -0.0000001093
+  Total charge density g-space grids:          -0.0000001093
+
+  Overlap energy of the core charge distribution:               0.00013250035527
+  Self energy of the core charge distribution:              -1737.24439639931302
+  Core Hamiltonian energy:                                    393.85233069697915
+  Hartree energy:                                             715.13326060477380
+  Exchange-correlation energy:                               -186.49521938097169
+  Dispersion energy:                                           -0.71639044160556
+  Electronic entropic energy:                                  -0.89247857160712
+  Fermi energy:                                                 0.12511184710982
+
+  Total energy:                                              -816.36276170934002
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]           -816.362812624632056
+
+ MD| ***************************************************************************
+ MD| Step number                                                              74
+ MD| Time [fs]                                                         37.000000
+ MD| Conserved quantity [hartree]                            -0.807909121394E+03
+ MD| ---------------------------------------------------------------------------
+ MD|                                          Instantaneous             Averages
+ MD| CPU time per MD step [s]                     61.439408            51.516482
+ MD| Energy drift per atom [K]          -0.197719402810E+02  -0.200852200643E+02
+ MD| Potential energy [hartree]         -0.816362812625E+03  -0.814793471488E+03
+ MD| Kinetic energy [hartree]            0.733656253490E+01   0.640598281151E+01
+ MD| Temperature [K]                           15600.676440         13621.865096
+ MD| ***************************************************************************
+
+ Number of electrons:                                                        560
+ Number of occupied orbitals:                                                440
+ Number of molecular orbitals:                                               480
+
+ Number of orbital functions:                                               1300
+ Number of independent orbital functions:                                   1300
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 Broy./Diag. 0.20E+00    3.0     0.05556976      -816.4077688891 -8.16E+02
+     2 Broy./Diag. 0.20E+00    3.0     0.02257637      -816.4005063130  7.26E-03
+     3 Broy./Diag. 0.20E+00    3.2     0.01138684      -816.4133402158 -1.28E-02
