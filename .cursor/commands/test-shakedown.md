@@ -8,8 +8,11 @@
 
 ## Run (compat profile)
 ```bash
-export OMP_NUM_THREADS=6
-export MKL_NUM_THREADS=6
+unset MallocStackLogging MallocStackLoggingNoCompact
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export CP2K_LAUNCH="mpirun -np 6"
 make sp
 make md
 bash bin/doctor.sh md_smoke_compat
+```

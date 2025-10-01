@@ -8,6 +8,7 @@ import json
 import math
 import os
 import pathlib
+import shlex
 import signal
 import socket
 import subprocess
@@ -112,6 +113,12 @@ class MetricSeries:
     temperature_avg: List[Optional[float]] = field(default_factory=list)
     total_energy: List[Optional[float]] = field(default_factory=list)
     total_energy_avg: List[Optional[float]] = field(default_factory=list)
+    overlap_energy_core: List[Optional[float]] = field(default_factory=list)
+    self_energy_core: List[Optional[float]] = field(default_factory=list)
+    core_hamiltonian_energy: List[Optional[float]] = field(default_factory=list)
+    hartree_energy: List[Optional[float]] = field(default_factory=list)
+    exchange_correlation_energy: List[Optional[float]] = field(default_factory=list)
+    dispersion_energy: List[Optional[float]] = field(default_factory=list)
 
     def add_block(self, block: Dict[str, Optional[float]]) -> None:
         self.steps.append(block.get("step"))
@@ -129,6 +136,12 @@ class MetricSeries:
         self.temperature_avg.append(block.get("temperature_avg"))
         self.total_energy.append(block.get("total_energy"))
         self.total_energy_avg.append(block.get("total_energy_avg"))
+        self.overlap_energy_core.append(block.get("overlap_energy_core"))
+        self.self_energy_core.append(block.get("self_energy_core"))
+        self.core_hamiltonian_energy.append(block.get("core_hamiltonian_energy"))
+        self.hartree_energy.append(block.get("hartree_energy"))
+        self.exchange_correlation_energy.append(block.get("exchange_correlation_energy"))
+        self.dispersion_energy.append(block.get("dispersion_energy"))
 
     def as_blocks(self) -> List[Dict[str, Optional[float]]]:
         result: List[Dict[str, Optional[float]]] = []
@@ -149,6 +162,12 @@ class MetricSeries:
                 "temperature_avg": self.temperature_avg[idx] if idx < len(self.temperature_avg) else None,
                 "total_energy": self.total_energy[idx] if idx < len(self.total_energy) else None,
                 "total_energy_avg": self.total_energy_avg[idx] if idx < len(self.total_energy_avg) else None,
+                "overlap_energy_core": self.overlap_energy_core[idx] if idx < len(self.overlap_energy_core) else None,
+                "self_energy_core": self.self_energy_core[idx] if idx < len(self.self_energy_core) else None,
+                "core_hamiltonian_energy": self.core_hamiltonian_energy[idx] if idx < len(self.core_hamiltonian_energy) else None,
+                "hartree_energy": self.hartree_energy[idx] if idx < len(self.hartree_energy) else None,
+                "exchange_correlation_energy": self.exchange_correlation_energy[idx] if idx < len(self.exchange_correlation_energy) else None,
+                "dispersion_energy": self.dispersion_energy[idx] if idx < len(self.dispersion_energy) else None,
             }
             result.append(block)
         return result
@@ -212,6 +231,12 @@ class RunState:
                 "temperature_avg": list(self.metrics.temperature_avg),
                 "total_energy": list(self.metrics.total_energy),
                 "total_energy_avg": list(self.metrics.total_energy_avg),
+                "overlap_energy_core": list(self.metrics.overlap_energy_core),
+                "self_energy_core": list(self.metrics.self_energy_core),
+                "core_hamiltonian_energy": list(self.metrics.core_hamiltonian_energy),
+                "hartree_energy": list(self.metrics.hartree_energy),
+                "exchange_correlation_energy": list(self.metrics.exchange_correlation_energy),
+                "dispersion_energy": list(self.metrics.dispersion_energy),
             },
             "blocks": [dict(block) for block in self.blocks],
         }
@@ -300,6 +325,12 @@ class RunState:
             "temperature_avg": "temperature_avg",
             "total_energy": "total_energy",
             "total_energy_avg": "total_energy_avg",
+            "overlap_energy_core": "overlap_energy_core",
+            "self_energy_core": "self_energy_core",
+            "core_hamiltonian_energy": "core_hamiltonian_energy",
+            "hartree_energy": "hartree_energy",
+            "exchange_correlation_energy": "exchange_correlation_energy",
+            "dispersion_energy": "dispersion_energy",
         }
         attr = mapping.get(key)
         if not attr:
@@ -404,6 +435,34 @@ def parse_line_for_metrics(line: str, state: RunState) -> None:
         numbers = [_to_float(tok) for tok in text.split() if _is_float(tok)]
         if numbers:
             state.update_latest_block(total_energy=numbers[-1])
+    elif "overlap energy of the core charge distribution" in lower:
+        numbers = [_to_float(tok) for tok in text.split() if _is_float(tok)]
+        if numbers:
+            state.update_latest_block(overlap_energy_core=numbers[0])
+    elif "self energy of the core charge distribution" in lower:
+        numbers = [_to_float(tok) for tok in text.split() if _is_float(tok)]
+        if numbers:
+            state.update_latest_block(self_energy_core=numbers[0])
+    elif "core hamiltonian energy" in lower:
+        numbers = [_to_float(tok) for tok in text.split() if _is_float(tok)]
+        if numbers:
+            state.update_latest_block(core_hamiltonian_energy=numbers[0])
+    elif "hartree energy" in lower:
+        numbers = [_to_float(tok) for tok in text.split() if _is_float(tok)]
+        if numbers:
+            state.update_latest_block(hartree_energy=numbers[0])
+    elif "exchange-correlation energy" in lower:
+        numbers = [_to_float(tok) for tok in text.split() if _is_float(tok)]
+        if numbers:
+            state.update_latest_block(exchange_correlation_energy=numbers[0])
+    elif "dispersion energy" in lower:
+        numbers = [_to_float(tok) for tok in text.split() if _is_float(tok)]
+        if numbers:
+            state.update_latest_block(dispersion_energy=numbers[0])
+    elif "total energy:" in lower and "energy|" not in lower:
+        numbers = [_to_float(tok) for tok in text.split() if _is_float(tok)]
+        if numbers:
+            state.update_latest_block(total_energy=numbers[0])
 
 
 def _is_float(token: str) -> bool:
@@ -418,10 +477,10 @@ def _to_float(token: str) -> float:
     return float(token.replace("D", "E"))
 
 
-def run_cp2k_process(cp2k: str, inp: str, env: Dict[str, str], state: RunState) -> int:
+def run_cp2k_process(cmd: List[str], env: Dict[str, str], state: RunState) -> int:
     state.mark_status("running")
     with subprocess.Popen(
-        [cp2k, "-i", inp],
+        cmd,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         env=env,
@@ -642,10 +701,10 @@ def launch_streamlit(state: RunState, input_render: List[str]) -> Optional[Dict[
     return {"process": proc, "dir": dashboard_dir, "state_path": state_path, "port": port}
 
 
-def basic_run(cp2k: str, inp: str, env: Dict[str, str], logfile: str) -> int:
+def basic_run(cmd: List[str], env: Dict[str, str], logfile: str) -> int:
     with open(logfile, "w", encoding="utf-8", errors="ignore") as fout:
         proc = subprocess.Popen(
-            [cp2k, "-i", inp],
+            cmd,
             stdout=fout,
             stderr=subprocess.STDOUT,
             env=env,
@@ -661,6 +720,7 @@ def main() -> int:
     parser.add_argument("--profile", choices=["compat", "fast"], default="compat", help="Input profile")
     parser.add_argument("--project", help="Override CP2K PROJECT name")
     parser.add_argument("--cp2k", help="Path to cp2k executable (cp2k.psmp or cp2k)")
+    parser.add_argument("--launcher", help="Optional launcher prefix (e.g. 'mpirun -np 4')")
     parser.add_argument("--no-dashboard", action="store_true", help="Disable the interactive dashboard")
     parser.add_argument("--dashboard", choices=["auto", "streamlit", "curses", "none"], default="auto", help="Dashboard rendering backend")
     args = parser.parse_args()
@@ -674,6 +734,12 @@ def main() -> int:
     cp2k = args.cp2k or which("cp2k.psmp") or which("cp2k")
     if not cp2k:
         raise SystemExit("cp2k not found on PATH")
+
+    launcher = args.launcher or os.environ.get("CP2K_LAUNCH")
+    cmd: List[str] = []
+    if launcher:
+        cmd.extend(shlex.split(launcher))
+    cmd.extend([cp2k, "-i", inp])
 
     env = os.environ.copy()
     project = args.project or pathlib.Path(inp).stem
@@ -703,7 +769,7 @@ def main() -> int:
     def make_runner(run_state: RunState) -> threading.Thread:
         def worker() -> None:
             try:
-                run_cp2k_process(cp2k, inp, env, run_state)
+                run_cp2k_process(cmd, env, run_state)
             except Exception as exc:  # pragma: no cover - defensive
                 run_state.append_tail(f"<dashboard error: {exc}>")
                 run_state.finalize(return_code=1)
@@ -749,7 +815,7 @@ def main() -> int:
     else:
         if state is not None:
             state.set_state_file(None)
-        return_code = basic_run(cp2k, inp, env, logfile)
+        return_code = basic_run(cmd, env, logfile)
 
     print(json.dumps({"project": project, "logfile": logfile, "return_code": return_code}))
     return return_code

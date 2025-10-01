@@ -2,7 +2,7 @@
   "project": "sp_smoke_compat",
   "log": {
     "energies": [
-      -40.85908691539974
+      -40.85908691539973
     ],
     "temperatures": [],
     "scf_cycles": [
@@ -12,12 +12,12 @@
     "temperature_std": null,
     "scf_cycles_mean": 33.0
   },
-  "pos_xyz": "md_smoke_compat-md_smoke_compat-pos-1.xyz-pos-1.xyz",
-  "vel_xyz": "md_smoke_compat-md_smoke_compat-vel-1.xyz-vel-1.xyz",
+  "pos_xyz": "md_quick_test-md_quick_test-pos-1.xyz-pos-1.xyz",
+  "vel_xyz": "md_quick_test-md_quick_test-vel-1.xyz-vel-1.xyz",
   "rdf_json": "reports/rdf.json",
   "vdos_json": "reports/vdos.json",
   "derived_temperature": {
-    "temperature_from_vel_mean": 3352.135770392506,
-    "temperature_from_vel_std": 3055.2367303548576
+    "temperature_from_vel_mean": 270.02761406683845,
+    "temperature_from_vel_std": 0.0
   }
 }
