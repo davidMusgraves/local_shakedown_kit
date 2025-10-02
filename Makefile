@@ -3,7 +3,7 @@ SHELL := /bin/bash
 PY := python3
 CP2K ?= $(shell command -v cp2k.psmp || command -v cp2k)
 
-.PHONY: sp md sp_fast md_fast md_loose seed_as40se60 eval clean
+.PHONY: sp md sp_fast md_fast md_loose seed_as40se60 as40se60_phase eval clean
 
 sp:
 	$(PY) bin/run_cp2k.py --mode sp --profile compat --project sp_smoke_compat
@@ -24,6 +24,9 @@ md_loose:
 
 seed_as40se60:
 	./bin/run_as40se60_seed.sh
+
+as40se60_phase:
+	./bin/run_phase.sh
 
 eval:
 	$(PY) bin/eval_run.py $(proj)

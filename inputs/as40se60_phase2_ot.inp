@@ -2,6 +2,10 @@
   PROJECT as40se60_phase2
   RUN_TYPE MD
   PRINT_LEVEL LOW
+  &EXT_RESTART
+    RESTART_FILE_NAME as40se60_phase1.restart
+    RESTART_DEFAULT T           ! pull in density/MOs/velocities if present
+  &END EXT_RESTART
 &END GLOBAL
 
 &FORCE_EVAL
@@ -23,22 +27,22 @@
     &END QS
 
     &SCF
-      SCF_GUESS RESTART
-      EPS_SCF 1.0E-6
-      MAX_SCF 150
+      SCF_GUESS RESTART        ! use the density/MOs from EXT_RESTART
+      EPS_SCF 5.0E-7
+      MAX_SCF 160
+      LEVEL_SHIFT 0.30
 
-      ADDED_MOS 40
-      &SMEAR ON
-        METHOD FERMI_DIRAC
-        ELECTRONIC_TEMPERATURE [K] 300   ! was 500; tighten the ensemble
-      &END SMEAR
+      &OT
+        PRECONDITIONER FULL_KINETIC
+        MINIMIZER DIIS
+        ENERGY_GAP 0.005
+      &END OT
 
-      &DIAGONALIZATION
-      &END DIAGONALIZATION
-      &MIXING T
-        METHOD BROYDEN_MIXING
-        ALPHA 0.3
-      &END MIXING
+      &OUTER_SCF
+        EPS_SCF 2.0E-7
+        MAX_SCF 10
+      &END OUTER_SCF
+      ! No ADDED_MOS and no SMEAR with OT
     &END SCF
 
     &XC
@@ -79,15 +83,14 @@
   &MD
     ENSEMBLE NVT
     TIMESTEP 0.10
-    STEPS 100000                   ! 10 ps @ 0.10 fs (adjust as you like)
+    STEPS 100000               ! 10 ps
     TEMPERATURE 1500
     COMVEL_TOL 1.0E-4
-
     &THERMOSTAT
       TYPE CSVR
       REGION MASSIVE
       &CSVR
-        TIMECON 30.0               ! gentler coupling than phase-1
+        TIMECON 30.0
       &END CSVR
     &END THERMOSTAT
   &END MD
@@ -100,14 +103,11 @@
         MD 200
       &END EACH
     &END TRAJECTORY
-
     &VELOCITIES
       FILENAME as40se60_phase2-vel.xyz
       &EACH
         MD 200
       &END EACH
-    &END VELOCITIES
-
     &RESTART
       BACKUP_COPIES 0
       FILENAME as40se60_phase2.restart
