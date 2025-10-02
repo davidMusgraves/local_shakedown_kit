@@ -53,7 +53,12 @@ def md_block_stream(path: Path, follow: bool = True) -> Generator[Dict[str, floa
             lower = stripped.lower()
 
             if MD_LINE.match(stripped):
-                if "step number" in lower:
+                if stripped.startswith("MD| ***"):
+                    if current:
+                        yield finalize_record(current)
+                    else:
+                        inside_md = True
+                elif "step number" in lower:
                     if current:
                         yield finalize_record(current)
                     parts = stripped.split()
@@ -85,8 +90,6 @@ def md_block_stream(path: Path, follow: bool = True) -> Generator[Dict[str, floa
                         current["temperature_inst"] = values[0]
                         if len(values) > 1:
                             current["temperature_avg"] = values[1]
-                if "md| ***" in lower:
-                    inside_md = False
                 continue
 
             if current is None:

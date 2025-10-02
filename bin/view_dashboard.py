@@ -58,7 +58,12 @@ def parse_log(path: Path) -> Dict[str, List[float]]:
             lower = stripped.lower()
 
             if stripped.startswith(MD_PREFIX):
-                if "step number" in stripped:
+                if stripped.startswith("MD| ***"):
+                    if current:
+                        finalize_block(current, store, blocks)
+                    else:
+                        inside_md = True
+                elif "step number" in lower:
                     if current:
                         finalize_block(current, store, blocks)
                     parts = line.split()
@@ -90,8 +95,6 @@ def parse_log(path: Path) -> Dict[str, List[float]]:
                         current["temperature_inst"] = values[0]
                         if len(values) > 1:
                             current["temperature_avg"] = values[1]
-                if "md| ***" in lower:
-                    inside_md = False
                 continue
 
             if current is None:
